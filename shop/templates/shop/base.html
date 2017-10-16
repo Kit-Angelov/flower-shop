@@ -1,10 +1,188 @@
 <!DOCTYPE html>
+
+{% load staticfiles %}
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <link rel="stylesheet" href="{% static 'shop/css/style.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap..."></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="{% static 'shop/js/base.js' %}"></script>
+    <script src="{% static 'shop/js/menu.js' %}"></script>
+    <script src="{% static 'shop/js/select_filters.js' %}"></script>
+    <script src="{% static 'shop/js/infoflower.js' %}"></script>
+
+    <title>Title</title>
 </head>
 <body>
-$END$
+    <div class="menu_revers" id="menu_revers">
+        <div class="line_menu"></div>
+        <div class="menu_revers_main">
+            <a href="#">каталог</a>
+            <a href="#">конструктор</a>
+            <a href="#">контакты</a>
+            <a href="#">заказать звонок</a>
+            <a href="#">оптовыя торговля</a>
+            <div class="menu_infor">
+             <a href="#"><img class="socweb vk" src="{% static 'shop/img/vk.png' %}"></a>
+            <a href="#"><img class="socweb" src="{% static 'shop/img/whatsapp.png' %}"></a>
+            <a href="#"><img class="socweb" src="{% static 'shop/img/instagram.png' %}"></a>
+            </div>
+        </div>
+    </div>
+    <div class="row top-padding" id="top-padding"></div>
+    <div class="navigate" id="navigate">
+        <div class="row menu">
+        <div class="col-md-2 gamburger">
+            <div class="menuvip" id="menuvip">
+                <div class="menuvip-main-li-1"><img src="{% static 'shop/img/hamburger.png' %}"> </div>
+                    <div class="menuvip-main-li-2"><p>Меню</p></div>
+
+
+            </div>
+            <div class="count"><a href="">
+                <div class="count-main"><div id="count-basket" class="count-basket"><p id="counter">{{ count }}</p></div>
+                    <img class="basket-menu" src="{% static 'shop/img/shopping-cart.png' %}"></div></a>
+            </div>
+
+        </div>
+            <div class="col-md-2 info" id="info">
+            <p>+7(910)244-36-26 <br/>доставка с 10:00 до 12:00</p>
+        </div>
+        <div class="col-md-4 logo" id="logo">
+            <img src="{% static 'shop/img/logo.png' %}">
+        </div>
+        <div class="col-md-1 social" id="social">
+            <a href="#"><img class="socweb" src="{% static 'shop/img/whatsapp.png' %}"></a>
+            <a href="#"><img class="socweb vk" src="{% static 'shop/img/vk.png' %}"></a>
+            <a href="#"><img class="socweb" src="{% static 'shop/img/instagram.png' %}"></a>
+
+        </div>
+        <div class="col-md-3 search">
+            <div class="searchinput">
+                <form type="get" action="/search/">
+                    <input required type="text" placeholder="Поиск..." name="q">
+                    <button type="submit">
+                        <img src="{% static 'shop/img/LUPA.png' %}">
+                    </button>
+                </form>
+
+            </div>
+        </div>
+        </div>
+    </div>
+    <div class="imagegirl">
+        <img src="{% static 'shop/img/girl.png' %}">
+    </div>
+    <div class="imageround">
+        <img src="{% static 'shop/img/round.png' %}">
+    </div>
+    <div class="main">
+        <div class="row infmain">
+            <div class="col-md-2"></div>
+            <div class="col-md-8 textmain"><p>Цветы приносят ощущение романтики и весенней свежести<br/>Дарите девушкам цветы<br/>Им это нравится!</p></div>
+            <div class="col-md-2"></div>
+        </div>
+        <div class="row categor">
+            <div class="col-md-3 categor_list">
+                <div class="categor-text"><p>Категории:</p></div>
+                <div class="categor-menu">
+                    <select id="category" name="category" onChange="SelectFilters.call(this)">
+                        <option value="999">Все</option>
+                        {% for cat in categories %}
+                          <option value="{{ cat.id }}">{{ cat.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-6"></div>
+            <div class="col-md-3 sortir">
+                <div class="sortir-text"><p>Сортировка:</p></div>
+                <div class="sortir-menu">
+                    <select id="sort" name="sort" onChange="SelectFilters.call(this)">
+                        <option value="price">По возрастанию цены</option>
+                        <option value="-price">По убыванию цены</option>
+                    </select>
+                </div>
+                <img src="{% static 'shop/img/arrow_down.png' %}">
+            </div>
+        </div>
+        <div class="row catalog_content" id="catalog_content">
+            {% include 'shop/catalog.html' %}
+        </div>
+        <div class="row paige"></div>
+        <div class="row aftercatalog"></div>
+        <div class="row imagelego">
+            <div class="col-md-6">
+                <div class="row top">
+                    <p class="start_choise caption">1. Выберите цветы</p>
+                    <p class="choise_info descrip">В букет можно добавить любые цветы из<br/>ассортимента магазина </p>
+                </div>
+                <div class="row bot">
+                    <p class="start_quant caption">1. Выберите цветы</p>
+                    <p class="quant_info descrip">В букет можно добавить любые цветы из<br/>ассортимента магазина </p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row top">
+                    <p class="choise_pack caption">1. Выберите цветы</p>
+                    <p class="choise_pack_info descrip">В букет можно добавить любые цветы из<br/>ассортимента магазина </p>
+                </div>
+                <div class="row bot">
+                    <p class="order caption">1. Выберите цветы</p>
+                    <p class="order_info descrip">В букет можно добавить любые цветы из<br/>ассортимента магазина </p>
+                </div>
+            </div>
+        </div>
+        <div class="row lego">
+            <div class="col-md-5"></div>
+            <a class="legotext" href="#"> <div class="col-md-2 legotextmain"><p>Перейти в конструктор</p></div></a>
+            <div class="col-md-5"></div>
+        </div>
+        <div class="row aftercatalog"></div>
+        <div class="row revers_call">
+            <div class="col-md-1"></div>
+            <div class="col-md-7 revers_info">
+                <h4>Свяжитесь с нами</h4>
+                <p>Оставьте свой номер телефона,укажите имя и нажмите "заказать звонок"<br/>
+                мы перезвоним Вам в течение 15 минут</p>
+            </div>
+            <div class="col-md-3 revers_commun">
+                <form>
+                    <input type="text" placeholder="Телефон">
+                    <input type="text" placeholder="Имя">
+                    <button type="submit"><p>Заказать звонок</p></button>
+                </form>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+    <div class="footer row">
+        <div class="row end">
+            <div class="col-md-3 adress">
+                <div><p>Контакты
+                    <br/>89102342324
+                    <br/>afsdfasdfa@mail.com
+                    <br/>aderesxcvxv</p>
+                </div>
+                <div class="soc_adress">
+                    <a href="#"><img class="socweb socweb-footer" src="{% static 'shop/img/whatsapp.png' %}"></a>
+                    <a href="#"><img class="socweb vk socweb-footer" src="{% static 'shop/img/vk.png' %}"></a>
+                    <a href="#"><img class="socweb socweb-footer" src="{% static 'shop/img/instagram.png' %}"></a>
+                </div>
+            </div>
+            <div class="col-md-8"></div>
+            <div class="col-md-1 minilogo">
+                <img src="{% static 'shop/img/logo.png' %}">
+            </div>
+        </div>
+    </div>
+    <div class="podval row"></div>
+<div id="overlay"></div>
+{% include 'shop/infoflover.html' %}
 </body>
 </html>

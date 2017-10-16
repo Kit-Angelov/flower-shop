@@ -25,7 +25,7 @@ SECRET_KEY = 'zzc1nnekw1n$48-qn622%!mlufvot_!ve%uratkuje%hn$2%7q'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -63,6 +63,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'shop.context_processors.counter._counts',
             ],
         },
     },

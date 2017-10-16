@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Basket </title>
+
+    <link rel="stylesheet" href="staticmenu/stylemenu/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap..."></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</head>
+<body>
+    <div class="basket_full_main ">
+        <div class="basket_full">
+            <div class=" my_basket">
+                <p>Ваша корзина</p>
+                <a href="#"><img src="staticmenu/imagemenu/krest.png"></a>
+            </div>
+            <div class="block"></div>
+            <div class="block_info_flover">
+                <div class="flover_block">
+                    <img src="staticmenu/imagemenu/depositphotos_31813081-stock-photo-flowers.jpg">
+                    <h4>Розы бело-оранжевые</h4>
+                    <p>150р/шт</p>
+                    <p>без упаковки</p>
+                </div>
+                <div class="count_flover"><p>кол-во</p>
+                    <div class="counter_basket">
+                    <button type="button" class="but counterBut dec">-</button>
+                    <input type="number" class="field fieldCount" value="1" data-min="1" data-max="101">
+                    <button type="button" class="but counterBut inc">+</button>
+                    </div>
+                </div>
+                <div class="sum_inf">
+                    <p>Сумма</p>
+                    <p>1550</p>
+                    <a href="#"><img src="staticmenu/imagemenu/krest.png"></a>
+                </div>
+            </div>
+            <div class="block_info_flover">
+                <div class="flover_block">
+                    <img src="staticmenu/imagemenu/depositphotos_31813081-stock-photo-flowers.jpg">
+                    <h4>Розы бело-оранжевые</h4>
+                    <p>150р/шт</p>
+                    <p>без упаковки</p>
+                </div>
+                <div class="count_flover"><p>кол-во</p>
+                    <div class="counter_basket">
+                    <button type="button" class="but counterBut dec">-</button>
+                    <input type="number" class="field fieldCount" value="1" data-min="1" data-max="101">
+                    <button type="button" class="but counterBut inc">+</button>
+                    </div>
+                </div>
+                <div class="sum_inf">
+                    <p>Сумма</p>
+                    <p>1550</p>
+                </div>
+            </div>
+            <div class="delivery_main">
+                <div class="delivery">
+                    <input type="radio" id="contactChoice1" name="choise" value="Самовывоз" >
+                    <label for="contactChoice1" ><p>Самовывоз</p></label><br/>
+                    <input type="radio"  id="contactChoice2" name="choise" value="Доставка по адресу(250)">
+                    <label for="contactChoice2"><p>Доставка по адресу (250)</p></label>
+                </div>
+                <div class="delivery_sum">
+                    <p>Итого</p>
+                    <p>4 товара на сумму</p>
+                    <p>5500</p>
+                </div>
+            </div>
+            <div class=" accept">
+                <button class="accept_finish" type=submit value="Оформить заказ"><p>Оформить заказ</p> </button>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+<script>function catalogItemCounter(field){
+
+			var fieldCount = function(el) {
+
+				var
+					// Мин. значение
+					min = el.data('min') || false,
+
+					// Макс. значение
+					max = el.data('max') || false,
+
+					// Кнопка уменьшения кол-ва
+					dec = el.prev('.dec'),
+
+					// Кнопка увеличения кол-ва
+					inc = el.next('.inc');
+
+				function init(el) {
+					if(!el.attr('disabled')){
+						dec.on('click', decrement);
+						inc.on('click', increment);
+					}
+
+					// Уменьшим значение
+					function decrement() {
+						var value = parseInt(el[0].value);
+						value--;
+
+						if(!min || value >= min) {
+							el[0].value = value;
+						}
+					};
+
+					// Увеличим значение
+					function increment() {
+						var value = parseInt(el[0].value);
+
+						value++;
+
+						if(!max || value <= max) {
+							el[0].value = value++;
+						}
+					};
+
+				}
+
+				el.each(function() {
+					init($(this));
+				});
+			};
+
+			$(field).each(function(){
+				fieldCount($(this));
+			});
+		}
+    catalogItemCounter('.fieldCount');</script>
+</html>

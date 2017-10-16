@@ -1,10 +1,102 @@
-<!DOCTYPE html>
-<html lang="en">
+{% load staticfiles %}
 <head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
+<script src="{% static 'shop/js/popup.js' %}"></script>
+<script src="{% static 'shop/js/add_to_basket.js' %}"></script>
 </head>
-<body>
-$END$
-</body>
-</html>
+
+<img src="{{ product_info.photo.url }}">
+    <div class="close" id="close"><img src="{% static 'shop/img/krest.png' %}"></div>
+    <div class="window">
+        <div class="name"><h3>{{ product_info.name }}</h3></div>
+        <div class="block"></div>
+        <div class="content">
+            <p>Страна:Голландия</p>
+            <div class="sale"><p>{{ product_info.price }} р/шт</p>
+            <img src="{% static 'shop/img/sale.png' %}">
+            <p>-10%</p>
+            </div>
+            <div class="window_info"><p>{{ product_info.description }}</p>
+            </div>
+            <div class="order_counter">
+                    <div class="counter_main">
+                            <p>Koл-во</p>
+                            <div class="counter">
+                              <button type="button" class="but counterBut dec">-</button>
+                              <input type="number" id="flower_count" class="field fieldCount" value="1" data-min="1" data-max="101">
+                                <button type="button" class="but counterBut inc">+</button>
+                            </div>
+                    </div>
+                         <div class="list_order">
+                             <p>Упаковка</p>
+                            <select >
+                              <option>без упаковки</option>
+                              <option>с красной лентой</option>
+                              <option>с красной бумаге</option>
+                              <option>Пункт 2</option>
+                              <option>Пункт 2</option>
+                            </select>
+                        </div>
+            </div>
+        </div>
+        <div class="block"></div>
+        <a class="add_order" id="{{ product_info.id }}" onclick=Add_to_basket.call(this)><p>Добавить в корзину</p></a>
+        <a class="one_click_2" id="{{ product_info.id }}"> <p>купить в один клик</p></a>
+    </div>
+<script>
+    function catalogItemCounter(field){
+
+        var fieldCount = function(el) {
+
+            var
+                // Мин. значение
+                min = el.data('min') || false,
+
+                // Макс. значение
+                max = el.data('max') || false,
+
+                // Кнопка уменьшения кол-ва
+                dec = el.prev('.dec'),
+
+                // Кнопка увеличения кол-ва
+                inc = el.next('.inc');
+
+            function init(el) {
+                if(!el.attr('disabled')){
+                    dec.on('click', decrement);
+                    inc.on('click', increment);
+                }
+
+                // Уменьшим значение
+                function decrement() {
+                    var value = parseInt(el[0].value);
+                    value--;
+
+                    if(!min || value >= min) {
+                        el[0].value = value;
+                    }
+                }
+
+                // Увеличим значение
+                function increment() {
+                    var value = parseInt(el[0].value);
+
+                    value++;
+
+                    if(!max || value <= max) {
+                        el[0].value = value++;
+                    }
+                }
+
+            }
+
+            el.each(function() {
+                init($(this));
+            });
+        };
+
+        $(field).each(function(){
+            fieldCount($(this));
+        });
+    }
+catalogItemCounter('.fieldCount');
+</script>
