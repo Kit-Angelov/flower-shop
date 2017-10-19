@@ -14,7 +14,10 @@
     <script src="{% static 'shop/js/base.js' %}"></script>
     <script src="{% static 'shop/js/menu.js' %}"></script>
     <script src="{% static 'shop/js/select_filters.js' %}"></script>
-    <script src="{% static 'shop/js/infoflower.js' %}"></script>
+    <script src="{% static 'shop/js/delete_from_basket.js' %}"></script>
+    <script src="{% static 'shop/js/change_count_in_basket.js' %}"></script>
+
+
 
     <title>Title</title>
 </head>
@@ -41,12 +44,11 @@
             <div class="menuvip" id="menuvip">
                 <div class="menuvip-main-li-1"><img src="{% static 'shop/img/hamburger.png' %}"> </div>
                     <div class="menuvip-main-li-2"><p>Меню</p></div>
-
-
             </div>
-            <div class="count"><a href="">
+            <div class="count">
                 <div class="count-main"><div id="count-basket" class="count-basket"><p id="counter">{{ count }}</p></div>
-                    <img class="basket-menu" src="{% static 'shop/img/shopping-cart.png' %}"></div></a>
+                    <img class="basket-menu" src="{% static 'shop/img/shopping-cart.png' %}" onclick=OpenBasket()>
+                </div>
             </div>
 
         </div>
@@ -184,5 +186,6 @@
     <div class="podval row"></div>
 <div id="overlay"></div>
 {% include 'shop/infoflover.html' %}
+{% include 'shop/basket.html' %}
 </body>
 </html>

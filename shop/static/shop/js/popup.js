@@ -27,7 +27,7 @@ function SelectCard() {
 }
 
 $(document).ready(function() {
-	$('#close, #overlay').click( function(){
+	$('#close, #overlay').click(function(){
 		$('#info-flover')
 			.animate({opacity: 0, top: '45%'}, 200,
 				function(){

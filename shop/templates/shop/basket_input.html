@@ -1,0 +1,55 @@
+{% load staticfiles %}
+<head>
+<script src="{% static 'shop/js/popup_basket.js' %}"></script>
+</head>
+{% if basket_list %}
+<div class="basket_full">
+            <div class=" my_basket">
+                <p>Ваша корзина</p>
+                <div class="close close_basket" id="close_basket"><img src="{% static 'shop/img/krest.png' %}"></div>
+            </div>
+            <div class="divide"></div>
+            <div class="scroll" id="scroll">
+            {% for basket_elem in basket_list %}
+                <div class="block_info_flover">
+                    <div class="flover_block">
+                        <img src="{{ basket_elem.product.photo.url }}">
+                        <h4>{{ basket_elem.product.name }}</h4>
+                        <p>{{ basket_elem.sum }}</p>
+                        <p>{{ basket_elem.product.package }}</p>
+                    </div>
+                    <div class="count_flover"><p>кол-во</p>
+                        <div class="counter_basket">
+                        <button type="button" class="but counterBut dec" id="{{basket_elem.id}}" value="dec" onclick="change_count_in_basket.call(this)">-</button>
+                        <input type="number" class="field fieldCount" id="{{basket_elem.id}}" onchange="change_count_in_basket.call(this)" value="{{ basket_elem.count }}" data-min="1" data-max="101">
+                        <button type="button" class="but counterBut inc" id="{{basket_elem.id}}" value="inc" onclick="change_count_in_basket.call(this)">+</button>
+                        </div>
+                    </div>
+                    <button class="delete_basket_elem" type="button" id="{{basket_elem.id}}" onclick="delete_from_basket.call(this)">На хуй из корзины</button>
+                </div>
+            {% endfor %}
+                </div>
+            <div class="delivery_main">
+                <div class="delivery">
+                    <input type="radio" id="contactChoice1" name="choise" value="Самовывоз" >
+                    <label for="contactChoice1" ><p>Самовывоз</p></label><br/>
+                    <input type="radio"  id="contactChoice2" name="choise" value="Доставка по адресу(250)">
+                    <label for="contactChoice2"><p>Доставка по адресу (250)</p></label>
+                </div>
+                <div class="delivery_sum">
+                    <p>Итого</p>
+                    <p>{{ count_basket_elem }} товара на сумму</p>
+                    <p>{{ final_sum }} Руб.</p>
+                </div>
+            </div>
+            <div class=" accept">
+                <button class="accept_finish" type=submit value="Оформить заказ"><p>Оформить заказ</p> </button>
+            </div>
+        </div>
+{% else %}
+<div class="empty-basket">
+    <div class="divide"></div>
+    <p>Ваша корзина пуста</p>
+    <div class="divide"></div>
+</div>
+{% endif %}

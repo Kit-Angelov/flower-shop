@@ -634,13 +634,54 @@ ul:after {
 /*начало всплывающего окна корзины*/
 .basket_full_main{
     width: 890px;
-    height: 595px;
+    height: auto;
     padding: 45px 40px;
     text-align: center;
+    background-color: white;
+    position: fixed;
+	top: 45%;
+	left: 50%;
+	margin-top: -297px;
+	margin-left: -445px;
+	display: none;
+	opacity: 0;
+	z-index: 9998;
+}
+
+.scroll{
+    width: 100%;
+    height: auto!important;
+    max-height: 300px!important;
+    overflow: auto;
+    overflow-x: hidden;
+}
+.scroll::-webkit-scrollbar {
+    width: 10px;
+}
+
+.scroll::-webkit-scrollbar-track {
+    border-radius: 5px;
+    border: 1px solid rgba(128, 128, 128, 0.5);
+}
+
+.scroll::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    border: 1px solid rgba(128, 128, 128, 0.5);
 }
 .basket_full{
     width: 100%;
     height: auto;
+}
+.empty-basket{
+    width: 100%;
+    height: auto;
+    text-align: center;
+}
+.empty-basket p{
+    font-size: 20pt;
+    padding-top: 20px!important;
+    padding-bottom: 20px!important;
+    margin-bottom: 0!important;
 }
 .my_basket{
     width: 100%;
@@ -776,17 +817,27 @@ ul:after {
     display: block;
     float:left;
 }
+
 .close {
     height: 15px;
     margin-right: 15px;
     margin-top: 15px;
+    float: right;
+    opacity: .2;
 }
+
 .close img{
     width: 15px;
     height: 15px;
     float:left;
     display: block;
 }
+.close:hover{
+    cursor: pointer;
+    filter: alpha(opacity=50);
+    opacity: .5;
+}
+
 .window{
     width: 320px;
     height: 285px;
@@ -804,11 +855,16 @@ ul:after {
 .name h1{
    margin-top: 0;
 }
-.block{
+.divide{
     height: 1px;
     width: 100%;
-    border-bottom: solid grey;
-    display: inline-block;
+    background-color: grey;
+    opacity: 0.5;
+    display: block;
+    margin: 0!important;
+    padding: 0!important;
+    margin-top: 5px!important;
+    margin-bottom: 5px!important;
 }
 .content img{
     width: 20px;
@@ -943,8 +999,7 @@ ul:after {
     width: 100%;
     height:100px;
     float:left;
-    border-bottom: 1px solid grey;
-
+    border-bottom: 1px solid rgba(128, 128, 128, 0.5);
 }
 .flover_block{
     width: 500px;
@@ -1023,7 +1078,7 @@ ul:after {
 .delivery_main{
     width: 100%;
     height:100px;
-    margin-top: 50px;
+    margin-top: 20px;
     display: inline-block;
 
 }
@@ -1325,4 +1380,23 @@ ul:after {
 	left:0;
 	cursor:pointer;
 	display:none;
+}
+
+#add_to_basket{
+    height: 70.4px;
+}
+
+#done{
+    text-decoration: none;
+    text-underline-color: #b85778;
+    width: 150px;
+    margin: auto;
+}
+#done:hover{
+    text-decoration: none;
+    color:#b85778;
+    outline: none;
+}
+.done_cl{
+    text-align: center;
 }

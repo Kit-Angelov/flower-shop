@@ -124,3 +124,96 @@ def counts(request):
     except Exception as e:
         print(e)
         return {'count': str(0)}
+
+
+def basket(request):
+    # инициализация корзины
+    basket = check_basket(request)
+    if request.method == 'GET':
+        # print('REQUESTPOST', request.GET)
+        basket_list = basket.basketelem_set.all()
+        final_sum = sum(i.sum for i in basket_list)
+        basket_set = loader.render_to_string(
+            'shop/basket_input.html',
+            {
+                'basket_list': basket_list,
+                'count_basket_elem': len(basket_list),
+                'final_sum': final_sum,
+            }
+        )
+
+        output_data = {
+            'basket_set': basket_set,
+        }
+        return JsonResponse(output_data)
+
+
+def delete_from_basket(request):
+    if request.method == 'GET':
+        elem_id = request.GET.get('elem_id')
+        basket_elem = BasketElem.objects.get(id=elem_id)
+        basket_elem.delete()
+        basket = check_basket(request)
+        basket_list = basket.basketelem_set.all()
+        basket_count = len(basket_list)
+        basket_list = basket.basketelem_set.all()
+        final_sum = sum(i.sum for i in basket_list)
+        basket_set = loader.render_to_string(
+            'shop/basket_input.html',
+            {
+                'basket_list': basket_list,
+                'count_basket_elem': basket_count,
+                'final_sum': final_sum,
+            }
+        )
+
+        output_data = {
+            'basket_set': basket_set,
+            'basket_count': basket_count,
+        }
+        return JsonResponse(output_data)
+
+
+def change_count_in_basket(request):
+    if request.method == 'GET':
+        elem_id = request.GET.get('elem_id')
+        attr = request.GET.get('attr')
+
+        basket_elem = BasketElem.objects.get(id=elem_id)
+        count_elem_basket_change_validator(attr, basket_elem)
+
+        basket = check_basket(request)
+        basket_list = basket.basketelem_set.all()
+        basket_count = len(basket_list)
+
+        basket_list = basket.basketelem_set.all()
+        final_sum = sum(i.sum for i in basket_list)
+        basket_set = loader.render_to_string(
+            'shop/basket_input.html',
+            {
+                'basket_list': basket_list,
+                'count_basket_elem': basket_count,
+                'final_sum': final_sum,
+            }
+        )
+        output_data = {
+            'basket_set': basket_set,
+            'basket_count': basket_count,
+        }
+        return JsonResponse(output_data)
+
+
+def count_elem_basket_change_validator(attr, basket_elem):
+    count = basket_elem.count
+    try:
+        attr = int(attr)
+        if 0 < attr < 102:
+            basket_elem.count = attr
+        elif attr > 101:
+            basket_elem.count = 101
+    except:
+        if attr == 'inc' and count <= 100:
+            basket_elem.count += 1
+        elif attr == 'dec' and count > 1:
+            basket_elem.count -= 1
+    basket_elem.save()

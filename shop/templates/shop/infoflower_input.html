@@ -1,14 +1,14 @@
 {% load staticfiles %}
 <head>
-<script src="{% static 'shop/js/popup.js' %}"></script>
+<script src="{% static 'shop/js/popup_card.js' %}"></script>
 <script src="{% static 'shop/js/add_to_basket.js' %}"></script>
 </head>
 
 <img src="{{ product_info.photo.url }}">
-    <div class="close" id="close"><img src="{% static 'shop/img/krest.png' %}"></div>
+    <div class="close_card close" id="close_card"><img src="{% static 'shop/img/krest.png' %}"></div>
     <div class="window">
         <div class="name"><h3>{{ product_info.name }}</h3></div>
-        <div class="block"></div>
+        <div class="divide"></div>
         <div class="content">
             <p>Страна:Голландия</p>
             <div class="sale"><p>{{ product_info.price }} р/шт</p>
@@ -38,9 +38,17 @@
                         </div>
             </div>
         </div>
-        <div class="block"></div>
-        <a class="add_order" id="{{ product_info.id }}" onclick=Add_to_basket.call(this)><p>Добавить в корзину</p></a>
-        <a class="one_click_2" id="{{ product_info.id }}"> <p>купить в один клик</p></a>
+        <div class="divide"></div>
+
+        <div class="add_to_basket" id="add_to_basket">
+            <a class="add_order" id="{{ product_info.id }}" onclick=Add_to_basket.call(this)>
+                <p class="add_to_basket_done" id="add_to_basket_done">Добавить в корзину</p>
+            </a>
+        </div>
+        <div class="go_back">
+            <a class="one_click_2" id="{{ product_info.id }}"> <p>купить в один клик</p></a>
+        </div>
+        </div>
     </div>
 <script>
     function catalogItemCounter(field){
