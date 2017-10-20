@@ -16,9 +16,7 @@
     <script src="{% static 'shop/js/select_filters.js' %}"></script>
     <script src="{% static 'shop/js/delete_from_basket.js' %}"></script>
     <script src="{% static 'shop/js/change_count_in_basket.js' %}"></script>
-
-
-
+    <title>Title</title>
     <title>Title</title>
 </head>
 <body>
@@ -66,8 +64,8 @@
         </div>
         <div class="col-md-3 search">
             <div class="searchinput">
-                <form type="get" action="/search/">
-                    <input required type="text" placeholder="Поиск..." name="q">
+                <form type="get" action="" id="search-form">
+                    <input required type="text" id="search-product" placeholder="Поиск..." name="q">
                     <button type="submit">
                         <img src="{% static 'shop/img/LUPA.png' %}">
                     </button>
@@ -187,5 +185,6 @@
 <div id="overlay"></div>
 {% include 'shop/infoflover.html' %}
 {% include 'shop/basket.html' %}
+{% include 'shop/search.html' %}
 </body>
 </html>

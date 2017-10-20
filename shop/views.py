@@ -1,13 +1,12 @@
 from django.shortcuts import render, get_object_or_404, render_to_response, get_list_or_404
 from django.template import loader
 from django.http import HttpResponse, JsonResponse
-from django.core import serializers
-from .models import Category, Product, Basket, BasketElem
+from .models import Category, Product, Basket, BasketElem, Package
 # from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import uuid
-# from .forms import ProductsSearchForm
+from .forms import ProductsSearchForm
 # from .telebot import send_telegram
-# from datetime import datetime
+from datetime import datetime
 # from .send_email import send_email
 
 
@@ -53,35 +52,38 @@ def select_product(request):
         product_id = request.GET.get('product_id')
         print('product_id', product_id)
         product = Product.objects.get(id=product_id)
+        if product.package is True:
+            packages = Package.objects.all()
+        else:
+            packages = ""
         product_html = loader.render_to_string(
             'shop/infoflower_input.html',
             {
                 'product_info': product,
+                'packages': packages,
             }
         )
+        print(packages)
         output_data = {
-            'product_info': product_html,
+            'content': product_html,
         }
+
         return JsonResponse(output_data)
-
-
-def search(request):
-    pass
-
-
-def call(request):
-    pass
 
 
 def add_to_basket(request):
     basket = check_basket(request)
     if request.method == 'GET':
-        print('REQUESTPOST', request.POST)
         product_id = int(request.GET.get('product_id'))
         flower_count = int(request.GET.get('flower_count'))
+        pack_id = int(request.GET.get('pack'))
 
         product = Product.objects.get(id=product_id)
-        basket_elem = BasketElem(product=product, basket=basket, count=flower_count)
+        if pack_id == 999:
+            basket_elem = BasketElem(product=product, basket=basket, count=flower_count)
+        else:
+            pack = Package.objects.get(id=pack_id)
+            basket_elem = BasketElem(product=product, basket=basket, count=flower_count, package=pack)
         basket_elem.save()
 
         basket = check_basket(request)
@@ -132,7 +134,10 @@ def basket(request):
     if request.method == 'GET':
         # print('REQUESTPOST', request.GET)
         basket_list = basket.basketelem_set.all()
-        final_sum = sum(i.sum for i in basket_list)
+        for basket_elem in basket_list:
+            if basket_elem.package is not None:
+                print(basket_elem.package.name)
+        final_sum = final_sum_calc(basket)
         basket_set = loader.render_to_string(
             'shop/basket_input.html',
             {
@@ -156,8 +161,7 @@ def delete_from_basket(request):
         basket = check_basket(request)
         basket_list = basket.basketelem_set.all()
         basket_count = len(basket_list)
-        basket_list = basket.basketelem_set.all()
-        final_sum = sum(i.sum for i in basket_list)
+        final_sum = final_sum_calc(basket)
         basket_set = loader.render_to_string(
             'shop/basket_input.html',
             {
@@ -186,8 +190,7 @@ def change_count_in_basket(request):
         basket_list = basket.basketelem_set.all()
         basket_count = len(basket_list)
 
-        basket_list = basket.basketelem_set.all()
-        final_sum = sum(i.sum for i in basket_list)
+        final_sum = final_sum_calc(basket)
         basket_set = loader.render_to_string(
             'shop/basket_input.html',
             {
@@ -217,3 +220,38 @@ def count_elem_basket_change_validator(attr, basket_elem):
         elif attr == 'dec' and count > 1:
             basket_elem.count -= 1
     basket_elem.save()
+
+
+def add_delivery(request):
+    basket = check_basket(request)
+    if request.method == 'GET':
+        value = request.GET.get('val')
+        final_sum = final_sum_calc(basket)
+        if value == 'delivery2':
+            final_sum += 250
+        output_data = '{0} Руб.'.format(str(final_sum))
+        return HttpResponse(output_data)
+
+
+def final_sum_calc(basket):
+    basket_list = basket.basketelem_set.all()
+    final_sum = sum(i.sum for i in basket_list)
+    return final_sum
+
+
+def search(request):
+    if request.method == 'GET':
+        form = ProductsSearchForm(request.GET)
+        text_query = request.GET.get('q', None)
+        product_list = form.search()
+        search_set = loader.render_to_string(
+            'shop/search_input.html',
+            {
+                'search_products': product_list,
+                'text_query': text_query,
+            }
+        )
+        output_data = {
+            'search_set': search_set,
+        }
+        return JsonResponse(output_data)

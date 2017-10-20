@@ -859,6 +859,7 @@ ul:after {
     height: 1px;
     width: 100%;
     background-color: grey;
+    float: left;
     opacity: 0.5;
     display: block;
     margin: 0!important;
@@ -996,85 +997,96 @@ ul:after {
 }
 /*корзина не все тут*/
 .block_info_flover{
-    width: 100%;
-    height:100px;
-    float:left;
-    border-bottom: 1px solid rgba(128, 128, 128, 0.5);
+width: 100%;
+height:100px;
+float:left;
+border-bottom: 1px solid rgba(128, 128, 128, 0.5);
 }
 .flover_block{
-    width: 500px;
-    height: 100px;
-    float:left;
-    text-align: left;
+/*width: 500px;*/
+height: 100px;
+float:left;
+text-align: left;
 }
 .flover_block p:nth-child(2){
-    margin-top: 10px;
+margin-top: 10px;
 }
 .flover_block img{
-    width: 100px;
-    height: 80px;
-    display: block;
-    float:left;
-    margin-top: 10px;
+width: 100px;
+height: 80px;
+display: block;
+float:left;
+margin-top: 10px;
 }
 .flover_block p{
-    display: block;
-    margin-bottom: 0;
-    padding-left: 130px;
-    margin-top: 5px;
+display: block;
+margin-bottom: 0;
+padding-left: 130px;
+margin-top: 5px;
 }
 .flover_block h4{
-    padding-left: 130px;
-    margin-bottom: 0;
-    margin-top:15px;
+padding-left: 130px;
+margin-bottom: 0;
+margin-top:15px;
 }
 .counter_basket {
-    width: 72px;
-    height: 30px;
-    border: 1px solid black;
-    border-radius: 15px;
-    float: left;
+width: 72px;
+height: 30px;
+border: 1px solid rgba(128, 128, 128, 0.5);
+border-radius: 15px;
+float: left;
 }
 
 .counter_basket input{
-    width: 25px;
-    padding: 0;
-    height: 25px;
-    border: none;
-    outline: none;
-    display: inline-block;
+width: 25px;
+padding: 0;
+height: 25px;
+border: none;
+outline: none;
+display: inline-block;
 }
 .counter_basket button {
-    width: 20px;
-    height: 30px;
-    padding: 0;
-    border: none;
-    outline: none;
-    background-color: transparent;
-    display: inline-block;
+width: 20px;
+height: 30px;
+padding: 0;
+border: none;
+outline: none;
+background-color: transparent;
+display: inline-block;
 }
 .count_flover{
-    width: 155px;
-    height: 100px;
-    float:left;
-    text-align: left;
+/*width: 155px;*/
+height: 100px;
+float:left;
+text-align: left;
 }
 .count_flover p{
-    display: block;
-    margin-bottom: 0;
-    margin-top: 15px;
+display: block;
+margin-bottom: 0;
+margin-top: 15px;
 }
 .sum_inf{
-    width: 155px;
-    float:left;
+/*width: 135px;*/
+float:left;
 }
 .sum_inf p{
-    margin-bottom: 0;
+margin-bottom: 0;
 
 }
 .sum_inf p:first-child{
-    margin-top:20px;
+margin-top:20px;
 }
+.sum_inf a{
+float: right;
+width: 10px;
+height: 10px;
+margin-top:-65px;
+}
+.sum_inf img{
+width: 10px;
+height: 10px;
+}
+
 .delivery_main{
     width: 100%;
     height:100px;
@@ -1110,25 +1122,42 @@ ul:after {
     float:left;
     text-align: left;
 }
-.sum_inf a{
-    float: right;
-    width: 10px;
-    height: 10px;
-    margin-top:-65px;
-}
-.sum_inf img{
-    width: 10px;
-    height: 10px;
-}
 /*начало общего поиска*/
 .search_global{
     width: 890px;
-    height: 890px;
+    height: auto;
     padding: 45px 40px;
+    top: 45%;
+	left: 50%;
+	margin-top: -297px;
+	margin-left: -445px;
+    z-index: 9998;
+    position: fixed;
+    display: none;
+    background-color: white;
 }
 .search_main{
     width: 100%;
     height: auto;
+}
+.search-scroll{
+    width: 100%;
+    max-height: 400px;
+    overflow: auto;
+    overflow-x: hidden;
+}
+.search-scroll::-webkit-scrollbar {
+    width: 10px;
+}
+
+.search-scroll::-webkit-scrollbar-track {
+    border-radius: 5px;
+    border: 1px solid rgba(128, 128, 128, 0.5);
+}
+
+.search-scroll::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    border: 1px solid rgba(128, 128, 128, 0.5);
 }
 .top_search{
     height: 100px;
@@ -1399,4 +1428,25 @@ ul:after {
 }
 .done_cl{
     text-align: center;
+}
+
+@media screen and (max-width: 980px) {
+    .basket_full_main{
+    width: 100%!important;
+    height: auto;
+    padding: 45px 40px;
+    text-align: center;
+    background-color: white;
+    position: fixed;
+	top: 45%;
+	left: 0;
+	margin-top: -297px;
+	margin-left: 0;
+	display: none;
+	opacity: 0;
+	z-index: 9998;
+}
+    .block_info_flover{
+        height: 300px;
+    }
 }

@@ -11,7 +11,23 @@ function SelectCard() {
         url: "/select_product",
         cache: false,
         success: function(data) {
-            $('#info-flover').html(data.product_info);
+            $('#info-flover').html(data.content);
+        // var list = data.packages;
+        //     list.forEach(function(element, i, list){
+        //         alert("OK");
+        //         alert(element.field.name);
+        //
+        //     })
+
+            // var listitems;
+            // $.each(temp, function(key, value){
+            //     listitems += '<option value=' + key + '>' + value + '</option>';
+            // });
+            // $select.append(listitems);
+
+
+
+
         },
         error: function (error) {
             alert(error)

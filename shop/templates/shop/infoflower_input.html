@@ -1,7 +1,9 @@
 {% load staticfiles %}
 <head>
-<script src="{% static 'shop/js/popup_card.js' %}"></script>
-<script src="{% static 'shop/js/add_to_basket.js' %}"></script>
+    <script src="{% static 'shop/js/popup_card.js' %}"></script>
+    <script src="{% static 'shop/js/add_to_basket.js' %}"></script>
+    <script src="{% static 'shop/js/get_package_list.js' %}"></script>
+
 </head>
 
 <img src="{{ product_info.photo.url }}">
@@ -26,16 +28,20 @@
                                 <button type="button" class="but counterBut inc">+</button>
                             </div>
                     </div>
+                    {% if packages %}
                          <div class="list_order">
                              <p>Упаковка</p>
-                            <select >
-                              <option>без упаковки</option>
-                              <option>с красной лентой</option>
-                              <option>с красной бумаге</option>
-                              <option>Пункт 2</option>
-                              <option>Пункт 2</option>
+                            <select id="pack">
+                                {% for pack_elem in packages%}
+                                <option value="{{pack_elem.id}}">{{pack_elem.name}}</option>
+                                {% endfor %}
                             </select>
                         </div>
+                    {% else %}
+                        <select id="pack" style="display: none;">
+                            <option value="999">sdfsdf</option>
+                        </select>
+                    {% endif %}
             </div>
         </div>
         <div class="divide"></div>

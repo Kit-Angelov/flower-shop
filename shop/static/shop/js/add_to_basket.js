@@ -43,12 +43,14 @@ function func(data){
         );
     }
 function Add_to_basket() {
+    var pack = $('#pack').val();
     $.ajax({
         type: "GET",
         url: "/add_to_basket",
         data: {
             flower_count: $('#flower_count').val(),
-            product_id: this.id
+            product_id: this.id,
+            pack: pack
         },
         dataType: "html",
         cache: false,

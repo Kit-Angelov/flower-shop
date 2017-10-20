@@ -1,0 +1,53 @@
+{% load staticfiles %}
+<head>
+    <script src="{% static 'shop/js/popup_search.js' %}"></script>
+</head>
+<div class="search_main">
+    <div class="top_search">
+        <div class="text_search">
+            <h4>Поиск по запросу {{ text_query }}</h4>
+        </div>
+         <div class="form_search">
+             <form type="get">
+                <input required type="text" placeholder="{{ text_query }}" name="q">
+                <button type="submit">
+                    <img src="{% static 'shop/img/LUPA.png' %}">
+                </button>
+            </form>
+          </div>
+         <div id="close_search" class="close_search img_top"><img src="{% static 'shop/img/krest.png' %}"></div>
+    </div>
+    <div class="divide"></div>
+    <div class="search-scroll">
+    {% for product in search_products %}
+    <div class="block_info_search">
+        <div class="search_block">
+            <img src="{{ product.object.photo.url }}">
+            <h4>{{ product.name }}</h4>
+            <p>{{ product.price }}р/шт</p>
+        </div>
+        <div class="count_flover_2"><p>кол-во</p>
+            <div class="counter_basket">
+            <button type="button" class="but counterBut dec">-</button>
+            <input type="number" class="field fieldCount" value="1" data-min="1" data-max="101">
+            <button type="button" class="but counterBut inc">+</button>
+            </div>
+        </div>
+        <div class="packaging">
+            <p>Упаковка</p>
+                        <select >
+                          <option>без упаковки</option>
+                          <option>с красной лентой</option>
+                          <option>с красной бумаге</option>
+                          <option>Пункт 2</option>
+                          <option>Пункт 2</option>
+                        </select>
+        </div>
+        <div class="buy_one"><a href="#"><p>купить в 1 клик</p></a>
+        </div>
+        <div class="bask"> <a href="#"><img src="{% static 'shop/img/korzina.png' %}" ></a>
+        </div>
+    </div>
+    {% endfor %}
+    </div>
+</div>

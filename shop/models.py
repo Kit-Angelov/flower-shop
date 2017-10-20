@@ -1,6 +1,5 @@
 from django.db import models
 from datetime import date
-from django.core.validators import MinValueValidator
 
 
 class Attribute(models.Model):
@@ -71,20 +70,6 @@ class Package(models.Model):
         verbose_name_plural = 'Упаковки'
 
 
-class Decorator(models.Model):
-    name = models.CharField(max_length=30, verbose_name='Название')
-    photo = models.ImageField(upload_to='photo_decor', verbose_name='Фото', null=True, blank=True)
-    description = models.TextField(max_length=300, verbose_name='Описание декораторов', null=True, blank=True)
-    price = models.FloatField(verbose_name='Цена')
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        verbose_name = 'Декоратор'
-        verbose_name_plural = 'Декораторы'
-
-
 class Call(models.Model):
     date = models.DateField(default=date.today(), verbose_name='Дата')
     name = models.CharField(max_length=30, null=True, blank=True, verbose_name='Имя')
@@ -109,7 +94,6 @@ class Product(models.Model):
     category = models.ForeignKey(Category, verbose_name='Категория', null=True, blank=True)
     sale_promo = models.ForeignKey(SalePromo, verbose_name='Акция/Скидка', null=True, blank=True)
     package = models.BooleanField(default=False, verbose_name='Есть выбор упаковки?')
-    decor = models.BooleanField(default=False, verbose_name='Есть выбор декорирования?')
 
     def __str__(self):
         return self.name
@@ -128,6 +112,10 @@ class Basket(models.Model):
     complite = models.BooleanField(default=False, verbose_name='Заказ оформлен')
     closed = models.BooleanField(default=False, verbose_name='Заказ завершен')
 
+    # # доставка товаров корзины
+    # delivery = models.BooleanField(default=False, verbose_name='Доставка')
+    # delivery_sum = models.FloatField(blank=False, default=250, verbose_name='Сумма доставки, руб.')
+
     def __str__(self):
         return '{0}, {1}, {2}, {3}'.format(self.date, self.sum, self.complite, self.closed)
 
@@ -141,10 +129,14 @@ class BasketElem(models.Model):
     basket = models.ForeignKey(Basket, verbose_name='Заказ')
     count = models.IntegerField(verbose_name='Кол-во штук товара')
     sum = models.FloatField(default=0, verbose_name='Сумма заказа, руб.')
+    package = models.ForeignKey(Package, null=True)
 
     @property
     def sum(self):
-        return self.count * self.product.price
+        if self.package is not None:
+            return self.count * self.product.price + self.package.price
+        else:
+            return self.count * self.product.price
 
     def add_total_sum(self):
         self.basket.sum += self.basket.sum + self.sum

@@ -1,246 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title> search </title>
+{% load staticfiles %}
+<div class="search_global" id="search_global">
+    {% include 'shop/search_input.html' %}
+</div>
 
-    <link rel="stylesheet" href="staticmenu/stylemenu/style.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
-
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap..."></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-</head>
-<body>
-    <div class="search_global">
-        <div class="search_main">
-            <div class=" top_search">
-                <div class="text_search">
-                    <h4>Поиск по запросу 'Розы'</h4>
-                </div>
-                 <div class="form_search">
-                     <form type="get" action="/search/">
-                        <input required type="text" placeholder="Редактировать запрос..." name="q">
-                        <button type="submit">
-                        <img src="staticmenu/imagemenu/LUPA.png">
-                        </button>
-                    </form>
-                  </div>
-                 <div class="img_top"><a href="#"><img src="staticmenu/imagemenu/krest.png"></a></div>
-            </div>
-            <div class="divide"></div>
-            <div class="block_info_search">
-                <div class="search_block">
-                    <img src="staticmenu/imagemenu/depositphotos_31813081-stock-photo-flowers.jpg">
-                    <h4>Розы бело-оранжевые</h4>
-                    <p>150р/шт</p>
-                </div>
-                <div class="count_flover_2"><p>кол-во</p>
-                    <div class="counter_basket">
-                    <button type="button" class="but counterBut dec">-</button>
-                    <input type="number" class="field fieldCount" value="1" data-min="1" data-max="101">
-                    <button type="button" class="but counterBut inc">+</button>
-                    </div>
-                </div>
-                <div class="packaging">
-                    <p>Упаковка</p>
-                                <select >
-                                  <option>без упаковки</option>
-                                  <option>с красной лентой</option>
-                                  <option>с красной бумаге</option>
-                                  <option>Пункт 2</option>
-                                  <option>Пункт 2</option>
-                                </select>
-                </div>
-                <div class="buy_one"><a href="#"><p>купить в 1 клик</p></a>
-                </div>
-                <div class="bask"> <a href="#"><img src="staticmenu/imagemenu/korzina.png" ></a>
-                </div>
-
-            </div>
-            <div class="block_info_search">
-                <div class="search_block">
-                    <img src="staticmenu/imagemenu/depositphotos_31813081-stock-photo-flowers.jpg">
-                    <h4>Розы бело-оранжевые</h4>
-                    <p>150р/шт</p>
-                </div>
-                <div class="count_flover_2"><p>кол-во</p>
-                    <div class="counter_basket">
-                    <button type="button" class="but counterBut dec">-</button>
-                    <input type="number" class="field fieldCount" value="1" data-min="1" data-max="101">
-                    <button type="button" class="but counterBut inc">+</button>
-                    </div>
-                </div>
-                <div class="packaging">
-                    <p>Упаковка</p>
-                                <select >
-                                  <option>без упаковки</option>
-                                  <option>с красной лентой</option>
-                                  <option>с красной бумаге</option>
-                                  <option>Пункт 2</option>
-                                  <option>Пункт 2</option>
-                                </select>
-                </div>
-                <div class="buy_one"><a href="#"><p>купить в 1 клик</p></a>
-                </div>
-                <div class="bask"> <a href="#"><img src="staticmenu/imagemenu/korzina.png" ></a>
-                </div>
-
-            </div>
-            <div class="block_info_search">
-                <div class="search_block">
-                    <img src="staticmenu/imagemenu/depositphotos_31813081-stock-photo-flowers.jpg">
-                    <h4>Розы бело-оранжевые</h4>
-                    <p>150р/шт</p>
-                </div>
-                <div class="count_flover_2"><p>кол-во</p>
-                    <div class="counter_basket">
-                    <button type="button" class="but counterBut dec">-</button>
-                    <input type="number" class="field fieldCount" value="1" data-min="1" data-max="101">
-                    <button type="button" class="but counterBut inc">+</button>
-                    </div>
-                </div>
-                <div class="packaging">
-                    <p>Упаковка</p>
-                                <select >
-                                  <option>без упаковки</option>
-                                  <option>с красной лентой</option>
-                                  <option>с красной бумаге</option>
-                                  <option>Пункт 2</option>
-                                  <option>Пункт 2</option>
-                                </select>
-                </div>
-                <div class="buy_one"><a href="#"><p>купить в 1 клик</p></a>
-                </div>
-                <div class="bask"> <a href="#"><img src="staticmenu/imagemenu/korzina.png" ></a>
-                </div>
-
-            </div>
-            <div class="block_info_search">
-                <div class="search_block">
-                    <img src="staticmenu/imagemenu/depositphotos_31813081-stock-photo-flowers.jpg">
-                    <h4>Розы бело-оранжевые</h4>
-                    <p>150р/шт</p>
-                </div>
-                <div class="count_flover_2"><p>кол-во</p>
-                    <div class="counter_basket">
-                    <button type="button" class="but counterBut dec">-</button>
-                    <input type="number" class="field fieldCount" value="1" data-min="1" data-max="101">
-                    <button type="button" class="but counterBut inc">+</button>
-                    </div>
-                </div>
-                <div class="packaging">
-                    <p>Упаковка</p>
-                                <select >
-                                  <option>без упаковки</option>
-                                  <option>с красной лентой</option>
-                                  <option>с красной бумаге</option>
-                                  <option>Пункт 2</option>
-                                  <option>Пункт 2</option>
-                                </select>
-                </div>
-                <div class="buy_one"><a href="#"><p>купить в 1 клик</p></a>
-                </div>
-                <div class="bask"> <a href="#"><img src="staticmenu/imagemenu/korzina.png" ></a>
-                </div>
-
-            </div>
-            <div class="block_info_search">
-                <div class="search_block">
-                    <img src="staticmenu/imagemenu/depositphotos_31813081-stock-photo-flowers.jpg">
-                    <h4>Розы бело-оранжевые</h4>
-                    <p>150р/шт</p>
-                </div>
-                <div class="count_flover_2"><p>кол-во</p>
-                    <div class="counter_basket">
-                    <button type="button" class="but counterBut dec">-</button>
-                    <input type="number" class="field fieldCount" value="1" data-min="1" data-max="101">
-                    <button type="button" class="but counterBut inc">+</button>
-                    </div>
-                </div>
-                <div class="packaging">
-                    <p>Упаковка</p>
-                                <select >
-                                  <option>без упаковки</option>
-                                  <option>с красной лентой</option>
-                                  <option>с красной бумаге</option>
-                                  <option>Пункт 2</option>
-                                  <option>Пункт 2</option>
-                                </select>
-                </div>
-                <div class="buy_one"><a href="#"><p>купить в 1 клик</p></a>
-                </div>
-                <div class="bask"> <a href="#"><img src="staticmenu/imagemenu/korzina.png" ></a>
-                </div>
-
-            </div>
-            <div class="block_info_search">
-                <div class="search_block">
-                    <img src="staticmenu/imagemenu/depositphotos_31813081-stock-photo-flowers.jpg">
-                    <h4>Розы бело-оранжевые</h4>
-                    <p>150р/шт</p>
-                </div>
-                <div class="count_flover_2"><p>кол-во</p>
-                    <div class="counter_basket">
-                    <button type="button" class="but counterBut dec">-</button>
-                    <input type="number" class="field fieldCount" value="1" data-min="1" data-max="101">
-                    <button type="button" class="but counterBut inc">+</button>
-                    </div>
-                </div>
-                <div class="packaging">
-                    <p>Упаковка</p>
-                                <select >
-                                  <option>без упаковки</option>
-                                  <option>с красной лентой</option>
-                                  <option>с красной бумаге</option>
-                                  <option>Пункт 2</option>
-                                  <option>Пункт 2</option>
-                                </select>
-                </div>
-                <div class="buy_one"><a href="#"><p>купить в 1 клик</p></a>
-                </div>
-                <div class="bask"> <a href="#"><img src="staticmenu/imagemenu/korzina.png" ></a>
-                </div>
-
-            </div>
-            <div class="block_info_search">
-                <div class="search_block">
-                    <img src="staticmenu/imagemenu/depositphotos_31813081-stock-photo-flowers.jpg">
-                    <h4>Розы бело-оранжевые</h4>
-                    <p>150р/шт</p>
-                </div>
-                <div class="count_flover_2"><p>кол-во</p>
-                    <div class="counter_basket">
-                    <button type="button" class="but counterBut dec">-</button>
-                    <input type="number" class="field fieldCount" value="1" data-min="1" data-max="101">
-                    <button type="button" class="but counterBut inc">+</button>
-                    </div>
-                </div>
-                <div class="packaging">
-                    <p>Упаковка</p>
-                                <select >
-                                  <option>без упаковки</option>
-                                  <option>с красной лентой</option>
-                                  <option>с красной бумаге</option>
-                                  <option>Пункт 2</option>
-                                  <option>Пункт 2</option>
-                                </select>
-                </div>
-                <div class="buy_one"><a href="#"><p>купить в 1 клик</p></a>
-                </div>
-                <div class="bask"> <a href="#"><img src="staticmenu/imagemenu/korzina.png" ></a>
-                </div>
-
-            </div>
-
-
-
-        </div>
-
-    </div>
-
-</body>
 <script>function catalogItemCounter(field){
 
 			var fieldCount = function(el) {
@@ -272,7 +34,7 @@
 						if(!min || value >= min) {
 							el[0].value = value;
 						}
-					};
+					}
 
 					// Увеличим значение
 					function increment() {
@@ -283,7 +45,7 @@
 						if(!max || value <= max) {
 							el[0].value = value++;
 						}
-					};
+					}
 
 				}
 
@@ -297,4 +59,3 @@
 			});
 		}
     catalogItemCounter('.fieldCount');</script>
-</html>

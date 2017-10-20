@@ -1,45 +1,53 @@
 {% load staticfiles %}
 <head>
-<script src="{% static 'shop/js/popup_basket.js' %}"></script>
+    <script src="{% static 'shop/js/popup_basket.js' %}"></script>
+    <script src="{% static 'shop/js/add_delivery.js' %}"></script>
 </head>
+
 {% if basket_list %}
 <div class="basket_full">
-            <div class=" my_basket">
+            <div class="my_basket">
                 <p>Ваша корзина</p>
                 <div class="close close_basket" id="close_basket"><img src="{% static 'shop/img/krest.png' %}"></div>
             </div>
             <div class="divide"></div>
             <div class="scroll" id="scroll">
             {% for basket_elem in basket_list %}
-                <div class="block_info_flover">
-                    <div class="flover_block">
+                <div class="block_info_flover row">
+                    <div class="flover_block col-md-7 col-xs-12">
                         <img src="{{ basket_elem.product.photo.url }}">
                         <h4>{{ basket_elem.product.name }}</h4>
-                        <p>{{ basket_elem.sum }}</p>
-                        <p>{{ basket_elem.product.package }}</p>
+                        <p>{{ basket_elem.product.price }} р/шт</p>
+                        {% if basket_elem.package %}
+                        <p>Упаковка: {{ basket_elem.package.name }}</p>
+                        {% endif %}
                     </div>
-                    <div class="count_flover"><p>кол-во</p>
+                    <div class="count_flover col-md-2 col-xs-12"><p>кол-во</p>
                         <div class="counter_basket">
                         <button type="button" class="but counterBut dec" id="{{basket_elem.id}}" value="dec" onclick="change_count_in_basket.call(this)">-</button>
                         <input type="number" class="field fieldCount" id="{{basket_elem.id}}" onchange="change_count_in_basket.call(this)" value="{{ basket_elem.count }}" data-min="1" data-max="101">
                         <button type="button" class="but counterBut inc" id="{{basket_elem.id}}" value="inc" onclick="change_count_in_basket.call(this)">+</button>
                         </div>
                     </div>
-                    <button class="delete_basket_elem" type="button" id="{{basket_elem.id}}" onclick="delete_from_basket.call(this)">На хуй из корзины</button>
+                    <div class="sum_inf col-md-3 col-xs-12">
+                        <p>Сумма</p>
+                        <p>{{ basket_elem.sum }} р.</p>
+                        <a class="delete_basket_elem" id="{{basket_elem.id}}" onclick="delete_from_basket.call(this)"><img src="{% static 'shop/img/krest.png' %}"></a>
+                    </div>
                 </div>
             {% endfor %}
                 </div>
             <div class="delivery_main">
                 <div class="delivery">
-                    <input type="radio" id="contactChoice1" name="choise" value="Самовывоз" >
-                    <label for="contactChoice1" ><p>Самовывоз</p></label><br/>
-                    <input type="radio"  id="contactChoice2" name="choise" value="Доставка по адресу(250)">
-                    <label for="contactChoice2"><p>Доставка по адресу (250)</p></label>
+                    <input type="radio" id="delivery1" name="choise" checked="true" onclick="add_delivery.call(this)" value="Самовывоз">
+                    <label for="delivery1" ><p> Самовывоз</p></label><br/>
+                    <input type="radio"  id="delivery2" name="choise" onclick="add_delivery.call(this)" value="Доставка по адресу(250)">
+                    <label for="delivery2"><p> Доставка по адресу (250 р.)</p></label>
                 </div>
                 <div class="delivery_sum">
                     <p>Итого</p>
                     <p>{{ count_basket_elem }} товара на сумму</p>
-                    <p>{{ final_sum }} Руб.</p>
+                    <p id="final_sum">{{ final_sum }} Руб.</p>
                 </div>
             </div>
             <div class=" accept">
