@@ -17,7 +17,15 @@
                     <div class="flover_block col-md-7 col-xs-12">
                         <img src="{{ basket_elem.product.photo.url }}">
                         <h4>{{ basket_elem.product.name }}</h4>
-                        <p>{{ basket_elem.product.price }} р/шт</p>
+                        {% if basket_elem.product.sale_price %}
+                        <div class="sale"><p class="price_in_info">{{ basket_elem.product.price }}</p><p class="sale_price_in_info">&nbsp{{ basket_elem.product.sale_price }} Руб/шт</p>
+                            <img src="{% static 'shop/img/sale.png' %}">
+                            <p>-{{ product_info.sale_promo.percent }}%</p>
+                        </div>
+                        {% else %}
+                            <p>{{ basket_elem.product.price }} р/шт</p>
+                        {% endif %}
+
                         {% if basket_elem.package %}
                         <p>Упаковка: {{ basket_elem.package.name }}</p>
                         {% endif %}
@@ -37,14 +45,14 @@
                 </div>
             {% endfor %}
                 </div>
-            <div class="delivery_main">
-                <div class="delivery">
+            <div class="delivery_main row">
+                <div class="delivery  col-md-6 col-xs-12">
                     <input type="radio" id="delivery1" name="choise" checked="true" onclick="add_delivery.call(this)" value="Самовывоз">
                     <label for="delivery1" ><p> Самовывоз</p></label><br/>
                     <input type="radio"  id="delivery2" name="choise" onclick="add_delivery.call(this)" value="Доставка по адресу(250)">
                     <label for="delivery2"><p> Доставка по адресу (250 р.)</p></label>
                 </div>
-                <div class="delivery_sum">
+                <div class="delivery_sum  col-md-6 col-xs-12">
                     <p>Итого</p>
                     <p>{{ count_basket_elem }} товара на сумму</p>
                     <p id="final_sum">{{ final_sum }} Руб.</p>

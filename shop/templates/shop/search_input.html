@@ -1,6 +1,8 @@
 {% load staticfiles %}
 <head>
     <script src="{% static 'shop/js/popup_search.js' %}"></script>
+    <script src="{% static 'shop/js/research.js' %}"></script>
+    <script src="{% static 'shop/js/add_to_basket_from_search.js' %}"></script>
 </head>
 <div class="search_main">
     <div class="top_search">
@@ -8,8 +10,8 @@
             <h4>Поиск по запросу {{ text_query }}</h4>
         </div>
          <div class="form_search">
-             <form type="get">
-                <input required type="text" placeholder="{{ text_query }}" name="q">
+             <form type="get" id="research-form">
+                <input required type="text" id="research-product" placeholder="{{ text_query }}" name="q">
                 <button type="submit">
                     <img src="{% static 'shop/img/LUPA.png' %}">
                 </button>
@@ -24,30 +26,102 @@
         <div class="search_block">
             <img src="{{ product.object.photo.url }}">
             <h4>{{ product.name }}</h4>
-            <p>{{ product.price }}р/шт</p>
+            {% if product.object.sale_price %}
+            <div class="sale"><p class="price_in_info">{{ product.object.price }}</p><p class="sale_price_in_info">&nbsp{{ product.object.sale_price }} Руб/шт</p>
+                <img src="{% static 'shop/img/sale.png' %}">
+                <p>-{{ product.object.sale_promo.percent }}%</p>
+            </div>
+            {% else %}
+                <p>{{ product.object.price }} руб/шт</p>
+            {% endif %}
+
         </div>
         <div class="count_flover_2"><p>кол-во</p>
-            <div class="counter_basket">
+            <div class="counter_basket2">
             <button type="button" class="but counterBut dec">-</button>
             <input type="number" class="field fieldCount" value="1" data-min="1" data-max="101">
             <button type="button" class="but counterBut inc">+</button>
             </div>
         </div>
-        <div class="packaging">
-            <p>Упаковка</p>
-                        <select >
-                          <option>без упаковки</option>
-                          <option>с красной лентой</option>
-                          <option>с красной бумаге</option>
-                          <option>Пункт 2</option>
-                          <option>Пункт 2</option>
-                        </select>
-        </div>
+        {% if product.object.package %}
+            <div class="packaging">
+                <p>Упаковка</p>
+                <select id="pack">
+                    {% for pack_elem in packages%}
+                    <option value="{{pack_elem.id}}">{{pack_elem.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        {% else %}
+            <div class="packaging" style="visibility: hidden">
+                <select id="pack" style="display: none;">
+                    <option value="999">sdfsdf</option>
+                </select>
+            </div>
+        {% endif %}
         <div class="buy_one"><a href="#"><p>купить в 1 клик</p></a>
         </div>
-        <div class="bask"> <a href="#"><img src="{% static 'shop/img/korzina.png' %}" ></a>
+        <div class="bask bask{{ product.object.id }}" id="{{ product.object.id }}" onclick="Add_to_basket_from_search.call(this)"> <a href="#"><img src="{% static 'shop/img/korzina.png' %}" ></a>
         </div>
     </div>
     {% endfor %}
     </div>
 </div>
+<script>
+    function catalogItemCounter(field){
+
+        var fieldCount = function(el) {
+
+            var
+                // Мин. значение
+                min = el.data('min') || false,
+
+                // Макс. значение
+                max = el.data('max') || false,
+
+                // Кнопка уменьшения кол-ва
+                dec = el.prev('.dec'),
+
+                // Кнопка увеличения кол-ва
+                inc = el.next('.inc');
+
+            function init(el) {
+                if(!el.attr('disabled')){
+                    dec.on('click', decrement);
+                    inc.on('click', increment);
+                }
+
+                // Уменьшим значение
+                function decrement() {
+                    var value = parseInt(el[0].value);
+                    value--;
+
+                    if(!min || value >= min) {
+                        el[0].value = value;
+                    }
+                }
+
+                // Увеличим значение
+                function increment() {
+                    var value = parseInt(el[0].value);
+
+                    value++;
+
+                    if(!max || value <= max) {
+                        el[0].value = value++;
+                    }
+                }
+
+            }
+
+            el.each(function() {
+                init($(this));
+            });
+        };
+
+        $(field).each(function(){
+            fieldCount($(this));
+        });
+    }
+catalogItemCounter('.fieldCount');
+</script>

@@ -5,6 +5,7 @@ from .models import Category, Product, Basket, BasketElem, Package
 # from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import uuid
 from .forms import ProductsSearchForm
+from django.utils import timezone
 # from .telebot import send_telegram
 from datetime import datetime
 # from .send_email import send_email
@@ -61,6 +62,7 @@ def select_product(request):
             {
                 'product_info': product,
                 'packages': packages,
+                'sale_price': product.sale_price
             }
         )
         print(packages)
@@ -129,14 +131,9 @@ def counts(request):
 
 
 def basket(request):
-    # инициализация корзины
     basket = check_basket(request)
     if request.method == 'GET':
-        # print('REQUESTPOST', request.GET)
         basket_list = basket.basketelem_set.all()
-        for basket_elem in basket_list:
-            if basket_elem.package is not None:
-                print(basket_elem.package.name)
         final_sum = final_sum_calc(basket)
         basket_set = loader.render_to_string(
             'shop/basket_input.html',
@@ -244,11 +241,13 @@ def search(request):
         form = ProductsSearchForm(request.GET)
         text_query = request.GET.get('q', None)
         product_list = form.search()
+        packages = Package.objects.all()
         search_set = loader.render_to_string(
             'shop/search_input.html',
             {
                 'search_products': product_list,
                 'text_query': text_query,
+                'packages': packages,
             }
         )
         output_data = {

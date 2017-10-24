@@ -6,6 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{% static 'shop/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'shop/css/media_style.css' %}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
 
@@ -16,7 +17,7 @@
     <script src="{% static 'shop/js/select_filters.js' %}"></script>
     <script src="{% static 'shop/js/delete_from_basket.js' %}"></script>
     <script src="{% static 'shop/js/change_count_in_basket.js' %}"></script>
-    <title>Title</title>
+    <meta name="viewport" content="width=1920">
     <title>Title</title>
 </head>
 <body>
@@ -35,10 +36,17 @@
             </div>
         </div>
     </div>
-    <div class="row top-padding" id="top-padding"></div>
+    <div class="row top-padding" id="top-padding">
+         <div class="col-sm-6 number_mobile">
+            <p>8-910-345-78-95</p>
+        </div>
+        <div class="col-sm-6 logo_mobile">
+            <img src="{% static 'shop/img/logo.png' %}">
+        </div>
+    </div>
     <div class="navigate" id="navigate">
         <div class="row menu">
-        <div class="col-md-2 gamburger">
+        <div class="col-md-2 gamburger col-sm-12">
             <div class="menuvip" id="menuvip">
                 <div class="menuvip-main-li-1"><img src="{% static 'shop/img/hamburger.png' %}"> </div>
                     <div class="menuvip-main-li-2"><p>Меню</p></div>
@@ -53,7 +61,7 @@
             <div class="col-md-2 info" id="info">
             <p>+7(910)244-36-26 <br/>доставка с 10:00 до 12:00</p>
         </div>
-        <div class="col-md-4 logo" id="logo">
+        <div class="col-md-4 logo col-sm-12" id="logo">
             <img src="{% static 'shop/img/logo.png' %}">
         </div>
         <div class="col-md-1 social" id="social">
@@ -62,7 +70,7 @@
             <a href="#"><img class="socweb" src="{% static 'shop/img/instagram.png' %}"></a>
 
         </div>
-        <div class="col-md-3 search">
+        <div class="col-md-3 search col-sm-12">
             <div class="searchinput">
                 <form type="get" action="" id="search-form">
                     <input required type="text" id="search-product" placeholder="Поиск..." name="q">
@@ -88,7 +96,7 @@
             <div class="col-md-2"></div>
         </div>
         <div class="row categor">
-            <div class="col-md-3 categor_list">
+            <div class="col-md-3 categor_list col-sm-6 col-xs-6">
                 <div class="categor-text"><p>Категории:</p></div>
                 <div class="categor-menu">
                     <select id="category" name="category" onChange="SelectFilters.call(this)">
@@ -100,7 +108,7 @@
                 </div>
             </div>
             <div class="col-md-6"></div>
-            <div class="col-md-3 sortir">
+            <div class="col-md-3 sortir col-sm-6 col-xs-6">
                 <div class="sortir-text"><p>Сортировка:</p></div>
                 <div class="sortir-menu">
                     <select id="sort" name="sort" onChange="SelectFilters.call(this)">
@@ -117,7 +125,7 @@
         <div class="row paige"></div>
         <div class="row aftercatalog"></div>
         <div class="row imagelego">
-            <div class="col-md-6">
+            <div class="col-md-6 col-sm-12">
                 <div class="row top">
                     <p class="start_choise caption">1. Выберите цветы</p>
                     <p class="choise_info descrip">В букет можно добавить любые цветы из<br/>ассортимента магазина </p>
@@ -127,7 +135,7 @@
                     <p class="quant_info descrip">В букет можно добавить любые цветы из<br/>ассортимента магазина </p>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 col-sm-12">
                 <div class="row top">
                     <p class="choise_pack caption">1. Выберите цветы</p>
                     <p class="choise_pack_info descrip">В букет можно добавить любые цветы из<br/>ассортимента магазина </p>
@@ -139,19 +147,19 @@
             </div>
         </div>
         <div class="row lego">
-            <div class="col-md-5"></div>
-            <a class="legotext" href="#"> <div class="col-md-2 legotextmain"><p>Перейти в конструктор</p></div></a>
-            <div class="col-md-5"></div>
+            <div class="col-md-5 col-sm-3"></div>
+            <a class="legotext" href="#"> <div class="col-md-2 legotextmain col-sm-6"><p>Перейти в конструктор</p></div></a>
+            <div class="col-md-5 col-sm-3"></div>
         </div>
         <div class="row aftercatalog"></div>
         <div class="row revers_call">
             <div class="col-md-1"></div>
-            <div class="col-md-7 revers_info">
+            <div class="col-md-7 revers_info col-sm-12">
                 <h4>Свяжитесь с нами</h4>
                 <p>Оставьте свой номер телефона,укажите имя и нажмите "заказать звонок"<br/>
                 мы перезвоним Вам в течение 15 минут</p>
             </div>
-            <div class="col-md-3 revers_commun">
+            <div class="col-md-3 revers_commun col-sm-12">
                 <form>
                     <input type="text" placeholder="Телефон">
                     <input type="text" placeholder="Имя">
@@ -163,7 +171,7 @@
     </div>
     <div class="footer row">
         <div class="row end">
-            <div class="col-md-3 adress">
+            <div class="col-md-3 adress col-sm-8">
                 <div><p>Контакты
                     <br/>89102342324
                     <br/>afsdfasdfa@mail.com
@@ -176,7 +184,7 @@
                 </div>
             </div>
             <div class="col-md-8"></div>
-            <div class="col-md-1 minilogo">
+            <div class="col-md-1 minilogo col-sm-4">
                 <img src="{% static 'shop/img/logo.png' %}">
             </div>
         </div>
