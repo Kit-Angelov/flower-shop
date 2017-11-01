@@ -1,0 +1,14 @@
+{% load staticfiles %}
+
+{% for constructor_elem in basket_constructor_elems %}
+<div class="block_info_search2">
+    <div class="search_block2">
+        <img src="{{ constructor_elem.photo.url }}">
+        <h4>{{ constructor_elem.name }}</h4>
+        <p>{{ constructor_elem.price }} р/шт</p>
+    </div>
+    <div class="add_in_lego_flover">
+        <img src="{% static 'shop/img/error.png' %}">
+    </div>
+</div>
+{% endfor %}

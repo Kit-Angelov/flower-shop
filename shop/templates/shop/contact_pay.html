@@ -1,0 +1,18 @@
+{% load staticfiles %}
+
+<script src="{% static 'shop/js/contact_pay.js' %}"></script>
+
+<div class="main_call_back" id="main_call_back">
+    <div class="call_back">
+        <div class="call_back_top">
+            <p>Контактные данные</p>
+        <a id="close_call_back"><img src="staticmenu/imagemenu/krest.png"></a></div>
+        <a class="be_back" href =""><p> Вернуться в корзину</p></a>
+         <form id="make_order_form">
+                <input type="tel" name="phone" required placeholder="Ваш Телефон">
+                <input type="text" name="name" placeholder="Ваше Имя">
+                <textarea name="address" placeholder="Адрес на который необходимо доставить цветы"></textarea>
+                <button type="submit"><p>Далее</p></button>
+         </form>
+    </div>
+</div>
