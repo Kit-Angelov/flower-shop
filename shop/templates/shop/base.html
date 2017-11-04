@@ -17,18 +17,21 @@
     <script src="{% static 'shop/js/select_filters.js' %}"></script>
     <script src="{% static 'shop/js/delete_from_basket.js' %}"></script>
     <script src="{% static 'shop/js/change_count_in_basket.js' %}"></script>
-    <meta name="viewport" content="width=1920">
+    <script src="{% static 'shop/js/contact_pay.js' %}"></script>
+    <script src="{% static 'shop/js/openconstructor.js' %}"></script>
+    <script src="{% static 'shop/js/mask.js' %}"></script>
+
+{#    <meta name="viewport" content="width=1920">#}
     <title>Title</title>
 </head>
 <body>
     <div class="menu_revers" id="menu_revers">
         <div class="line_menu"></div>
         <div class="menu_revers_main">
-            <a href="#">каталог</a>
-            <a href="#">конструктор</a>
-            <a href="#">контакты</a>
-            <a href="#">заказать звонок</a>
-            <a href="#">оптовыя торговля</a>
+            <a href="#anchor_catalog">каталог</a>
+            <a href="#anchor_constructor">конструктор</a>
+            <a href="#anchor_contacts">контакты</a>
+            <a class="menu_href" onclick="optom()">оптовыя торговля</a>
             <div class="menu_infor">
              <a href="#"><img class="socweb vk" src="{% static 'shop/img/vk.png' %}"></a>
             <a href="#"><img class="socweb" src="{% static 'shop/img/whatsapp.png' %}"></a>
@@ -52,19 +55,20 @@
                     <div class="menuvip-main-li-2"><p>Меню</p></div>
             </div>
             <div class="count">
-                <div class="count-main"><div id="count-basket" class="count-basket"><p id="counter">{{ count }}</p></div>
-                    <img class="basket-menu" src="{% static 'shop/img/shopping-cart.png' %}" onclick=OpenBasket()>
+                <div class="count-main" onclick=OpenBasket()>
+                    <div id="count-basket" class="count-basket"><p id="counter">{{ count }}</p></div>
+                    <img class="basket-menu" src="{% static 'shop/img/shopping-cart.png' %}">
                 </div>
             </div>
 
         </div>
-            <div class="col-md-2 info" id="info">
-            <p>+7(910)244-36-26 <br/>доставка с 10:00 до 12:00</p>
+            <div class="col-md-3 info" id="info">
+            <p>+7 (910) 244-36-26 <br/></p>
         </div>
-        <div class="col-md-4 logo col-sm-12" id="logo">
+        <div class="col-md-2 logo col-sm-12" id="logo">
             <img src="{% static 'shop/img/logo.png' %}">
         </div>
-        <div class="col-md-1 social" id="social">
+        <div class="col-md-1 col-md-offset-1 social" id="social">
             <a href="#"><img class="socweb" src="{% static 'shop/img/whatsapp.png' %}"></a>
             <a href="#"><img class="socweb vk" src="{% static 'shop/img/vk.png' %}"></a>
             <a href="#"><img class="socweb" src="{% static 'shop/img/instagram.png' %}"></a>
@@ -78,7 +82,6 @@
                         <img src="{% static 'shop/img/LUPA.png' %}">
                     </button>
                 </form>
-
             </div>
         </div>
         </div>
@@ -95,7 +98,7 @@
             <div class="col-md-8 textmain"><p>Цветы приносят ощущение романтики и весенней свежести<br/>Дарите девушкам цветы<br/>Им это нравится!</p></div>
             <div class="col-md-2"></div>
         </div>
-        <div class="row categor">
+        <div class="row categor" id="anchor_catalog">
             <div class="col-md-3 categor_list col-sm-6 col-xs-6">
                 <div class="categor-text"><p>Категории:</p></div>
                 <div class="categor-menu">
@@ -116,14 +119,13 @@
                         <option value="-price">По убыванию цены</option>
                     </select>
                 </div>
-                <img src="{% static 'shop/img/arrow_down.png' %}">
             </div>
         </div>
         <div class="row catalog_content" id="catalog_content">
             {% include 'shop/catalog.html' %}
         </div>
         <div class="row paige"></div>
-        <div class="row aftercatalog"></div>
+        <div class="row aftercatalog" id="anchor_constructor"></div>
         <div class="row imagelego">
             <div class="col-md-6 col-sm-12">
                 <div class="row top">
@@ -131,39 +133,39 @@
                     <p class="choise_info descrip">В букет можно добавить любые цветы из<br/>ассортимента магазина </p>
                 </div>
                 <div class="row bot">
-                    <p class="start_quant caption">1. Выберите цветы</p>
-                    <p class="quant_info descrip">В букет можно добавить любые цветы из<br/>ассортимента магазина </p>
+                    <p class="start_quant caption">2. Укажите количество</p>
+                    <p class="quant_info descrip">При добавлении желаемых цветов к букету можно<br/>указать, сколько цветков каждого вида он<br/>будет содержать</p>
                 </div>
             </div>
             <div class="col-md-6 col-sm-12">
                 <div class="row top">
-                    <p class="choise_pack caption">1. Выберите цветы</p>
-                    <p class="choise_pack_info descrip">В букет можно добавить любые цветы из<br/>ассортимента магазина </p>
+                    <p class="choise_pack caption">3. Выберите упаковку</p>
+                    <p class="choise_pack_info descrip">Для букетов доступно несколько вариантов<br/>упаковочного материала</p>
                 </div>
                 <div class="row bot">
-                    <p class="order caption">1. Выберите цветы</p>
-                    <p class="order_info descrip">В букет можно добавить любые цветы из<br/>ассортимента магазина </p>
+                    <p class="order caption">4. Оформите заказ</p>
+                    <p class="order_info descrip">После сборки и подсчета стоимости букет<br/>добавляется в корзину, откуда можно оформить<br/>заказ и доставку в любую точку города</p>
                 </div>
             </div>
         </div>
         <div class="row lego">
             <div class="col-md-5 col-sm-3"></div>
-            <a class="legotext" href="#"> <div class="col-md-2 legotextmain col-sm-6"><p>Перейти в конструктор</p></div></a>
+            <a class="legotext" onclick="OpenConstructor()"> <div class="col-md-2 legotextmain col-sm-6"><p>Перейти в конструктор</p></div></a>
             <div class="col-md-5 col-sm-3"></div>
         </div>
         <div class="row aftercatalog"></div>
-        <div class="row revers_call">
+        <div class="row revers_call" id="anchor_contacts">
             <div class="col-md-1"></div>
             <div class="col-md-7 revers_info col-sm-12">
                 <h4>Свяжитесь с нами</h4>
                 <p>Оставьте свой номер телефона,укажите имя и нажмите "заказать звонок"<br/>
                 мы перезвоним Вам в течение 15 минут</p>
             </div>
-            <div class="col-md-3 revers_commun col-sm-12">
-                <form>
-                    <input type="text" placeholder="Телефон">
-                    <input type="text" placeholder="Имя">
-                    <button type="submit"><p>Заказать звонок</p></button>
+            <div class="col-md-3 revers_commun col-sm-12" id="revers_commun">
+                <form id="coll-back-form" method="get">
+                    <input class="revers_commun_tel" id="call_back_phone" required type="text" placeholder="Телефон (обязательно)">
+                    <input class="revers_commun_name" id="call_back_name" type="text" placeholder="Имя">
+                    <button class="revers_commun_sub" type="submit"><p>Заказать звонок</p></button>
                 </form>
             </div>
             <div class="col-md-1"></div>
@@ -173,7 +175,7 @@
         <div class="row end">
             <div class="col-md-3 adress col-sm-8">
                 <div><p>Контакты
-                    <br/>89102342324
+                    <br/>+7 (910) 234-23-24
                     <br/>afsdfasdfa@mail.com
                     <br/>aderesxcvxv</p>
                 </div>
@@ -185,7 +187,7 @@
             </div>
             <div class="col-md-8"></div>
             <div class="col-md-1 minilogo col-sm-4">
-                <img src="{% static 'shop/img/logo.png' %}">
+                <img src="{% static 'shop/img/logo_bely.png' %}">
             </div>
         </div>
     </div>
@@ -194,5 +196,17 @@
 {% include 'shop/infoflover.html' %}
 {% include 'shop/basket.html' %}
 {% include 'shop/search.html' %}
+{% include 'shop/contact_pay.html' %}
+{% include 'shop/payment.html' %}
+{% include 'shop/lego_flover_shop.html' %}
+{% include 'shop/one_click_form.html' %}
+{% include 'shop/close_consturctor.html' %}
+{% include 'shop/optom.html' %}
+    <script src="{% static 'shop/js/call.js' %}"></script>
+<script type="text/javascript">
+    jQuery(function($){
+       $("#call_back_phone").mask("+7(999) 999-9999");
+    });
+</script>
 </body>
 </html>

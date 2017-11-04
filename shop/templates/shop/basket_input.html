@@ -2,6 +2,7 @@
 <head>
     <script src="{% static 'shop/js/popup_basket.js' %}"></script>
     <script src="{% static 'shop/js/add_delivery.js' %}"></script>
+    <script src="{% static 'shop/js/make_order.js' %}"></script>
 </head>
 
 {% if basket_list %}
@@ -13,53 +14,80 @@
             <div class="divide"></div>
             <div class="scroll" id="scroll">
             {% for basket_elem in basket_list %}
-                <div class="block_info_flover row">
-                    <div class="flover_block col-md-7 col-xs-12">
-                        <img src="{{ basket_elem.product.photo.url }}">
-                        <h4>{{ basket_elem.product.name }}</h4>
-                        {% if basket_elem.product.sale_price %}
-                        <div class="sale"><p class="price_in_info">{{ basket_elem.product.price }}</p><p class="sale_price_in_info">&nbsp{{ basket_elem.product.sale_price }} Руб/шт</p>
-                            <img src="{% static 'shop/img/sale.png' %}">
-                            <p>-{{ product_info.sale_promo.percent }}%</p>
+                {% if basket_elem.build == True %}
+                    <div class="block_info_flover row">
+                        <div class="flover_block col-md-7 col-xs-12">
+                            <img src="{% static 'shop/img/1600.png' %}">
+                            <h4 class="name_basket_product">Собранный вами букет</h4>
+                            <p style="visibility: hidden">Цена:</p>
+                            <p class="basket_package">Упаковка: {{ basket_elem.package.name }}</p>
                         </div>
-                        {% else %}
-                            <p>{{ basket_elem.product.price }} р/шт</p>
-                        {% endif %}
+                        <div class="count_flover col-md-2 col-xs-12" style="visibility: hidden;: none"><p>кол-во</p>
+                        </div>
+                        <div class="sum_inf col-md-3 col-xs-12">
+                            <p>Сумма</p>
+                            <p>{{ basket_elem.sum }} р.</p>
+                            <a class="delete_basket_elem" id="{{basket_elem.id}}" onclick="delete_from_basket.call(this)"><img src="{% static 'shop/img/error.png' %}"></a>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="block_info_flover row">
+                        <div class="flover_block col-md-7 col-xs-12">
+                            <img src="{{ basket_elem.product.photo.url }}">
+                            <h4 class="name_basket_product">{{ basket_elem.product.name }}</h4>
+                            {% if basket_elem.product.sale_price %}
+                            <div class="sale sale_basket"><strike class="price_in_basket">{{ basket_elem.product.price }}</strike>
+                                <p class="sale_price_in_info sale_price_in_basket">&nbsp{{ basket_elem.product.sale_price }} Руб/шт</p>
+                                <img src="{% static 'shop/img/sale.png' %}">
+                            </div>
+                            {% else %}
+                                <p class="basket_price_without_sale">{{ basket_elem.product.price }} р/шт</p>
+                            {% endif %}
 
-                        {% if basket_elem.package %}
-                        <p>Упаковка: {{ basket_elem.package.name }}</p>
-                        {% endif %}
-                    </div>
-                    <div class="count_flover col-md-2 col-xs-12"><p>кол-во</p>
-                        <div class="counter_basket">
-                        <button type="button" class="but counterBut dec" id="{{basket_elem.id}}" value="dec" onclick="change_count_in_basket.call(this)">-</button>
-                        <input type="number" class="field fieldCount" id="{{basket_elem.id}}" onchange="change_count_in_basket.call(this)" value="{{ basket_elem.count }}" data-min="1" data-max="101">
-                        <button type="button" class="but counterBut inc" id="{{basket_elem.id}}" value="inc" onclick="change_count_in_basket.call(this)">+</button>
+                            {% if basket_elem.package %}
+                            <p class="basket_package">Упаковка: {{ basket_elem.package.name }}</p>
+                            {% endif %}
+                        </div>
+                        <div class="count_flover col-md-2 col-xs-12"><p>кол-во</p>
+                            <div class="counter_basket">
+                            <button type="button" class="but counterBut dec" id="{{basket_elem.id}}" value="dec" onclick="change_count_in_basket.call(this)">-</button>
+                            <input type="number" class="field fieldCount" id="{{basket_elem.id}}" onchange="change_count_in_basket.call(this)" value="{{ basket_elem.count }}" data-min="1" data-max="101">
+                            <button type="button" class="but counterBut inc" id="{{basket_elem.id}}" value="inc" onclick="change_count_in_basket.call(this)">+</button>
+                            </div>
+                        </div>
+                        <div class="sum_inf col-md-3 col-xs-12">
+                            <p>Сумма</p>
+                            <p>{{ basket_elem.sum }} р.</p>
+                            <a class="delete_basket_elem" id="{{basket_elem.id}}" onclick="delete_from_basket.call(this)"><img src="{% static 'shop/img/error.png' %}"></a>
                         </div>
                     </div>
-                    <div class="sum_inf col-md-3 col-xs-12">
-                        <p>Сумма</p>
-                        <p>{{ basket_elem.sum }} р.</p>
-                        <a class="delete_basket_elem" id="{{basket_elem.id}}" onclick="delete_from_basket.call(this)"><img src="{% static 'shop/img/krest.png' %}"></a>
-                    </div>
-                </div>
+                {% endif %}
             {% endfor %}
                 </div>
             <div class="delivery_main row">
-                <div class="delivery  col-md-6 col-xs-12">
-                    <input type="radio" id="delivery1" name="choise" checked="true" onclick="add_delivery.call(this)" value="Самовывоз">
-                    <label for="delivery1" ><p> Самовывоз</p></label><br/>
-                    <input type="radio"  id="delivery2" name="choise" onclick="add_delivery.call(this)" value="Доставка по адресу(250)">
-                    <label for="delivery2"><p> Доставка по адресу (250 р.)</p></label>
-                </div>
+                {% if basket_delivery == True %}
+                    <div class="delivery  col-md-6 col-xs-12">
+                        <input type="radio" id="delivery1" name="choise" onclick="add_delivery.call(this)" value="Самовывоз">
+                        <label for="delivery1" ><p> Самовывоз</p></label><br/>
+                        <input type="radio"  id="delivery2" name="choise" checked="true" onclick="add_delivery.call(this)" value="Доставка по адресу(250)">
+                        <label for="delivery2"><p> Доставка по адресу (250 р.)</p></label>
+                    </div>
+                {% else %}
+                    <div class="delivery  col-md-6 col-xs-12">
+                        <input type="radio" id="delivery1" name="choise" checked="true" onclick="add_delivery.call(this)" value="Самовывоз">
+                        <label for="delivery1" ><p> Самовывоз</p></label><br/>
+                        <input type="radio"  id="delivery2" name="choise" onclick="add_delivery.call(this)" value="Доставка по адресу(250)">
+                        <label for="delivery2"><p> Доставка по адресу (250 р.)</p></label>
+                    </div>
+                {% endif %}
                 <div class="delivery_sum  col-md-6 col-xs-12">
-                    <p>Итого</p>
+                    <p>Итого:</p>
                     <p>{{ count_basket_elem }} товара на сумму</p>
                     <p id="final_sum">{{ final_sum }} Руб.</p>
                 </div>
             </div>
             <div class=" accept">
-                <button class="accept_finish" type=submit value="Оформить заказ"><p>Оформить заказ</p> </button>
+                <a class="accept_finish" onclick="make_order()"><p>Оформить заказ</p></a>
             </div>
         </div>
 {% else %}

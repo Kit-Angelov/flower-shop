@@ -1,7 +1,7 @@
 /**
  * Created by kit on 15.10.17.
 */
-function SelectFilterInConstructor(){
+function SelectFiltersInConstructor(){
     var category = $('#category_in_constructor').val();
     $.ajax({
         data: {

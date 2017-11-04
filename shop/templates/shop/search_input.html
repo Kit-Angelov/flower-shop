@@ -3,11 +3,12 @@
     <script src="{% static 'shop/js/popup_search.js' %}"></script>
     <script src="{% static 'shop/js/research.js' %}"></script>
     <script src="{% static 'shop/js/add_to_basket_from_search.js' %}"></script>
+    <script src="{% static 'shop/js/openoneclick_from_search.js' %}"></script>
 </head>
 <div class="search_main">
     <div class="top_search">
         <div class="text_search">
-            <h4>Поиск по запросу {{ text_query }}</h4>
+            <h4>Поиск по запросу "{{ text_query }}"</h4>
         </div>
          <div class="form_search">
              <form type="get" id="research-form">
@@ -19,7 +20,7 @@
           </div>
          <div id="close_search" class="close_search img_top"><img src="{% static 'shop/img/krest.png' %}"></div>
     </div>
-    <div class="divide"></div>
+    <div class="divide" style="display: inline-block"></div>
     <div class="search-scroll">
     {% for product in search_products %}
     <div class="block_info_search">
@@ -27,41 +28,20 @@
             <img src="{{ product.object.photo.url }}">
             <h4>{{ product.name }}</h4>
             {% if product.object.sale_price %}
-            <div class="sale"><p class="price_in_info">{{ product.object.price }}</p><p class="sale_price_in_info">&nbsp{{ product.object.sale_price }} Руб/шт</p>
+            <div class="sale sale_search">
+                <strike class="price_in_search">{{ product.object.price }}</strike>
+                <p class="sale_price_in_info">&nbsp{{ product.object.sale_price }} Руб/шт</p>
                 <img src="{% static 'shop/img/sale.png' %}">
-                <p>-{{ product.object.sale_promo.percent }}%</p>
             </div>
             {% else %}
                 <p>{{ product.object.price }} руб/шт</p>
             {% endif %}
 
         </div>
-        <div class="count_flover_2"><p>кол-во</p>
-            <div class="counter_basket2">
-            <button type="button" class="but counterBut dec">-</button>
-            <input type="number" class="field fieldCount" value="1" data-min="1" data-max="101">
-            <button type="button" class="but counterBut inc">+</button>
-            </div>
+        <div class="buy_one"><a id="{{ product.object.id }}" onclick="Open_one_click_from_search.call(this)"><p>купить в 1 клик</p></a>
         </div>
-        {% if product.object.package %}
-            <div class="packaging">
-                <p>Упаковка</p>
-                <select id="pack">
-                    {% for pack_elem in packages%}
-                    <option value="{{pack_elem.id}}">{{pack_elem.name}}</option>
-                    {% endfor %}
-                </select>
-            </div>
-        {% else %}
-            <div class="packaging" style="visibility: hidden">
-                <select id="pack" style="display: none;">
-                    <option value="999">sdfsdf</option>
-                </select>
-            </div>
-        {% endif %}
-        <div class="buy_one"><a href="#"><p>купить в 1 клик</p></a>
-        </div>
-        <div class="bask bask{{ product.object.id }}" id="{{ product.object.id }}" onclick="Add_to_basket_from_search.call(this)"> <a href="#"><img src="{% static 'shop/img/korzina.png' %}" ></a>
+        <div class="bask" id="{{ product.object.id }}" onclick="Add_to_basket_from_search.call(this)">
+            <a id="{{ product.object.id }}" onclick="Add_to_basket_from_search.call(this)"><img src="{% static 'shop/img/korzina.png' %}" ></a>
         </div>
     </div>
     {% endfor %}

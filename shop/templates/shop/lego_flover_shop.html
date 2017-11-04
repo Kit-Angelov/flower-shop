@@ -1,0 +1,49 @@
+{% load staticfiles %}
+<div class="consturctor-wrapp row" id="constructor-wrapp">
+    <div class="catalog_for_flover">
+        <div class="catalog_for_flover_content">
+            <div class="top_catalog_flover">
+                <div class="info_top_catalog_flover">
+                    <h3>Выберите цветы</h3>
+                </div>
+                <div class="categor_list_content">
+                <div class="categor-menu">
+                    <select id="category_in_constructor" name="category" onChange="SelectFiltersInConstructor.call(this)">
+                        <option value="999">Все</option>
+                        {% for cat in categories %}
+                          <option value="{{ cat.id }}">{{ cat.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                </div>
+            </div>
+            <div class="divide"></div>
+            <div class="scroll scroll-constructor" id="scroll-in-consturctor">
+                {% include 'shop/catalog_in_constructor.html' %}
+           </div>
+       </div>
+    </div>
+    <div class="basket_lego_main">
+        <div class="basket_lego_main_top">
+            <h3>Итого</h3>
+            <p>Ваш букет будет состоять из:</p>
+            <img class="close_constructor close" id="close_constructor" src="{% static 'shop/img/krest.png' %}">
+        </div>
+        <div class="divide"></div>
+        <div class="scroll scroll-basket_constructor" id="scroll-basket-in-constructor">
+            {% include 'shop/basket_in_constructor.html' %}
+        </div>
+        <div class="footer_lego_flover">
+            <div class="packaging2" id="pack_constructor_wrap">
+                {% include 'shop/pack_costructor.html' %}
+            </div>
+            <p id="final_sum_constructor" style="color: black; font-size: 14pt"></p>
+            <p onclick="add_to_basket_constructor()" style="cursor: pointer" id="add_to_basket_from_constructor" class="add_in_basket">Добавить в корзину</p>
+        </div>
+    </div>
+</div>
+<script src="{% static 'shop/js/selectFiltersInConstructor.js' %}"></script>
+<script src="{% static 'shop/js/add_product_to_basket_in_costructor.js' %}"></script>
+<script src="{% static 'shop/js/delete_from_lego_flower.js' %}"></script>
+<script src="{% static 'shop/js/change_pack_in_constructor.js' %}"></script>
+<script src="{% static 'shop/js/add_to_basket_constructor.js' %}"></script>

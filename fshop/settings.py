@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'shop',
     'haystack',
+    'robokassa',
 ]
 
 MIDDLEWARE = [
@@ -132,3 +133,6 @@ HAYSTACK_CONNECTIONS = {
 }
 
 HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
+
+ROBOKASSA_LOGIN = "purepure"
+ROBOKASSA_PASSWORD1 = "F6j62Qs2Wn"

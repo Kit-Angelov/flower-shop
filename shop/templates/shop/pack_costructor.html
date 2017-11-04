@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% load staticfiles %}
+
+<p>Упаковка:</p>
+    <select id="pack_constructor" onchange="change_pack_in_constructor()">
+        {% for pack_elem in packages_constructor%}
+        <option value="{{pack_elem.id}}">{{pack_elem.name}}</option>
+        {% endfor %}
+    </select>
+

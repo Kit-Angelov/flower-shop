@@ -6,7 +6,7 @@ function SelectFilters(){
     var sort = $('#sort').val();
     $.ajax({
         data: { category: category,
-                sort: sort,
+                sort: sort
         },
         type: "GET",
         url: "/change_filters",

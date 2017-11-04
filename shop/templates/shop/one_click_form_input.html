@@ -1,10 +1,109 @@
-<!DOCTYPE html>
-<html lang="en">
+{% load staticfiles %}
+
 <head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
+    <script src="{% static 'shop/js/one_click.js' %}"></script>
 </head>
-<body>
-$END$
-</body>
-</html>
+ <div class="window-one-click">
+        <div class="name-one-click"><h3>{{ product_info.name }}</h3>
+        <div class="close_one_click close" id="close_one_click"><img src="{% static 'shop/img/krest.png' %}"></div>
+        <div class="divide" style="display: inline-block"></div>
+        <div class="content-one-click">
+            <div class="row">
+                <div class="col-md-4 img-one-click">
+                    <img src="{{ product_info.photo.url }}" style="float: left; width: 100%">
+                </div>
+                <div class="col-md-8 product_info-block">
+                    {% if product_info.attribute %}
+                        <p>Страна: {{ product_info.attribute.county }}</p>
+                        <p>Длина: {{ product_info.attribute.length }} см</p>
+                    {% endif %}
+                    {% if product_info.sale_price %}
+                        <div class="sale-one-click">
+                            <strike class="price_in_info-one-click">{{ product_info.price }}</strike>
+                            <p class="sale_price_in_info-one-click">&nbsp{{ product_info.sale_price }} Руб/шт</p>
+                            <img src="{% static 'shop/img/sale.png' %}">
+                        </div>
+                    {% else %}
+                        <div class="sale-one-click">
+                            <p class="price_in_info-one-click">{{ product_info.price }} Руб/шт</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="window_info-one-click"><p>{{ product_info.description }}</p>
+            </div>
+            <div class="order_counter-one-click">
+                    <div class="counter_main">
+                            <p>Koл-во</p>
+                            <div class="counter">
+                                 <button type="button" class="but counterBut counter-one-click dec" id="{{product_info.id}}" value="dec" onclick="change_count_one_click.call(this)">-</button>
+                                 <input type="number" class="field fieldCount fieldcountoneclick" id="{{product_info.id}}" onchange="change_count_one_click.call(this)" value="{{ count }}" data-min="1" data-max="101">
+                                <button type="button" class="but counterBut counter-one-click inc" id="{{product_info.id}}" value="inc" onclick="change_count_one_click.call(this)">+</button>
+                            </div>
+                    </div>
+                    {% if packages %}
+                         <div class="list_order">
+                             <p>Упаковка</p>
+                            <select id="pack-one-click" onchange="change_pack_one_click.call(this)">
+                                {% for pack_elem in packages%}
+                                <option value="{{pack_elem.id}}">{{pack_elem.name}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    {% else %}
+                        <select id="pack" style="display: none;">
+                            <option value="999">sdfsdf</option>
+                        </select>
+                    {% endif %}
+            </div>
+            <div class="delivery_main row">
+                <div class="delivery-one-click  col-md-8 col-xs-12">
+                    {% if delivery_check == True %}
+                        <input type="radio" id="delivery1" name="choise-one-click" onclick="add_delivery_one_click.call(this)" value="Самовывоз">
+                        <label for="delivery1" ><p> Самовывоз</p></label><br/>
+                        <input type="radio"  id="delivery2" name="choise-one-click" checked="true" onclick="add_delivery_one_click.call(this)" value="Доставка по адресу(250)">
+                        <label for="delivery2"><p> Доставка по адресу (250 р.)</p></label>
+                    {% else %}
+                        <input type="radio" id="delivery1" name="choise-one-click" checked="true" onclick="add_delivery_one_click.call(this)" value="Самовывоз">
+                        <label for="delivery1" ><p> Самовывоз</p></label><br/>
+                        <input type="radio"  id="delivery2" name="choise-one-click" onclick="add_delivery_one_click.call(this)" value="Доставка по адресу(250)">
+                        <label for="delivery2"><p> Доставка по адресу (250 р.)</p></label>
+                    {% endif %}
+                </div>
+                <div class="delivery_sum-one-click  col-md-4 col-xs-12">
+                    <p>Итого:</p>
+                    {% if final_sum %}
+                        <p class="final_sum_one_click" id="final_sum">{{ final_sum }} Руб.</p>
+                    {% else %}
+                        {% if product_info.sale_price %}
+                        <p class="final_sum_one_click" id="final_sum">{{ product_info.sale_price }} Руб.</p>
+                        {% else %}
+                        <p class="final_sum_one_click" id="final_sum">{{ product_info.price }} Руб.</p>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="divide" style="display: inline-block"></div>
+        </div>
+        <div class="call_back_top-one-click">
+            <p>Контактные данные</p>
+        </div>
+         <form id="make-order-form-one-click" method="get">
+                <input type="tel" id="contact_phone_one_click" required placeholder="Ваш Телефон *">
+                <input type="text" id="contact_name_one_click" placeholder="Ваше Имя">
+                <textarea class="contact_address_one_click" id="contact_address_one_click" placeholder="Адрес на который необходимо доставить цветы"></textarea>
+                <button class="one_click_sub" type="submit"><p>Далее</p></button>
+         </form>
+    </div>
+<script src="{% static 'shop/js/one_click.js' %}"></script>
+<script src="{% static 'shop/js/change_count_one_click.js' %}"></script>
+<script src="{% static 'shop/js/change_pack_one_click.js' %}"></script>
+<script src="{% static 'shop/js/add_delivery_one_click.js' %}"></script>
+<script src="{% static 'shop/js/make_order_one_click.js' %}"></script>
+<script src="{% static 'shop/js/mask.js' %}"></script>
+<script type="text/javascript">
+    jQuery(function($){
+       $("#contact_phone_one_click").mask("+7(999) 999-9999");
+    });
+</script>

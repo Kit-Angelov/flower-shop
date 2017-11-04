@@ -1,10 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% load staticfiles %}
+
+<div class="main_optom" id="main_optom">
+    <div class="optom">
+        <div class="optom_top">
+            <p>Контактные данные</p>
+            <div class="close" id="close_optom">
+                <img src="{% static 'shop/img/krest.png' %}">
+            </div>
+        </div>
+        <p class="optom-info">Г. ВОронеж, ул. Керамическая, д. 99</p>
+        <p class="optom-info">Тел.: +7(999) 999-33-33</p>
+        <p class="optom-info">E-mail: flower@flower.ru</p>
+        <p class="optom-info">text text text text text text text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text text text</p>
+{#        <div style="width: 100%; height: 300px;" id="map"></div>#}
+        <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A0a1ba391ca268412dced42953608074b2eacb4c6cdc2d9a0bf5c7a44d035762f&amp;source=constructor" width="100%" height="300" frameborder="0"></iframe>
+    </div>
+</div>
+<script src="{% static 'shop/js/optom.js' %}"></script>
+<script src="{% static 'shop/js/map.js' %}"></script>
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOZlN8ugs0l-tiEPrOrKWageWO-RxbXgc&callback=initMap">
+</script>

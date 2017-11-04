@@ -1,10 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% load staticfiles %}
+
+<div class="call_back">
+    <div class="call_back_top">
+        <p>Подтверждение данных</p>
+    <a class="close" id="close_confirm"><img src="{% static 'shop/img/krest.png' %}"></a>
+    </div>
+    {% if one_click %}
+        <a class="be_back" id="{{ id }}" onclick="back_to_one_click()"><p> Исправить данные</p></a>
+    {% else %}
+        <a class="be_back" onclick="back_to_contact_pay()"><p> Исправить данные</p></a>
+    {% endif %}
+    {% if phone %}
+    <p class="elem_payment" id="phone_confirm">Тел.: {{ phone }}</p>
+    {% endif %}
+    {% if name %}
+    <p class="elem_payment" id="name_confirm">Имя: {{ name }}<p>
+    {% endif %}
+    {% if address %}
+    <p class="elem_payment" id="address_confirm">Адрес доставки: {{ address }}</p>
+    {% endif %}
+    {% if sum %}
+    <p class="elem_payment" id="address_confirm">Сумма заказа: {{ sum }} Руб.</p>
+    {% endif %}
+    <div class="payment">
+        <form action="{{ form.target }}" method="POST">
+            <p>{{ form.as_p }}</p>
+            <p class="p_pay"><input class="pay" type="submit" value="Оплатить"></p>
+        </form>
+    </div>
+</div>
+<script src="{% static 'shop/js/back_to_contact_pay.js' %}"></script>
+<script src="{% static 'shop/js/back_to_one_click.js' %}"></script>
+<script>
+    $(document).ready(function() {
+    $('#close_confirm, #overlay').click(function(){
+        $('#confirm_order')
+            .animate({opacity: 0, top: '45%'}, 200,
+            function(){
+                $(this).css('display', 'none');
+                $('#overlay').fadeOut(400);
+            }
+        );
+    });
+});
+</script>

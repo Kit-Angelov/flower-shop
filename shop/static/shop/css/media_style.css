@@ -54,6 +54,10 @@
     .flover_block{
         width: 100%;
         height: auto;
+
+    }
+    .flover_block p:nth-child(2) {
+        margin-top: 10px;
     }
     .flover_block img{
         width: 96%;
@@ -499,11 +503,226 @@
     .menu_revers_main{
         font-size: 35pt;
     }
+    /*начало адаптивного поиска*/
+    .search_global{
+        max-height: 100%!important;
+        overflow: auto;
+        height: auto;
+        margin-top: 0!important;
+        top:0!important;
+        width: 100%;
+        margin-left: 0!important;
+        left:0!important;
+    }
+    .search_main{
+        height: auto;
+        width: 100%;
+    }
+    .top_search{
+        width: 100%;
+        height: auto;
+    }
+    .text_search{
+        width:80%;
+        display: inline-block;
+        float:left;
+    }
+    .text_search h4{
+        font-size: 40pt;
+    }
+    .search{
+        height: auto;
+        margin-top: 0;
+    }
+    .form_search{
+        font-size: 38pt;
+        height: 100px;
+        border-radius: 35px;
+        width: 100%;
+    }
+    .form_search input{
+        height: 90px;
+        padding-left: 20px;
+    }
+    .form_search button{
+        height: 90px;
 
+    }
+    .form_search img{
+        height: 40px;
+        width: 40px;
+    }
+    .img_top{
+        float:none;
+        max-width: 50px;
+        max-height: 50px;
+        width: 20%;
+        display: inline-block;
+    }
+    .top_search img{
+        max-height: 50px;
+        max-width: 50px;
+    }
+    .divide{
+        display: inline-block;
+    }
+    .search-scroll{
+        height: auto!important;
+        width: 100%;
+        overflow: auto!important;
+        max-height: none!important;
+    }
+    .block_info_search{
+        height: auto;
+        text-align: center;
+        border-bottom: none;
+    }
+    .search_block{
+        height: auto;
+        width: 100%;
+    }
+    .search_block img{
+        width: 100%;
+        height: auto;
+    }
+    .search_block h4{
+        display: inline-block;
+        font-size: 40pt;
+        padding-left: 0;
+    }
+    .sale_flowerinput {
+        width: 100%;
+        height: auto;
+    }
+    .sale_flowerinput strike{
+        font-size: 30pt;
+    }
+    .sale_flowerinput p{
+        padding-left: 0;
+    }
+    .sale_flowerinput img{
+        width: 70px!important;
+        height: 70px!important;
+        margin-top: 0;
+    }
+    .count_flover_2{
+        width: 100%;
+        height: auto;
+        float:none;
+        display: inline-block;
+    }
+    .count_flover_2 p{
+        font-size: 30pt;
+    }
+    .packaging{
+        display: inline-block;
+        width: 100%;
+        height: auto;
+        float:none;
+        margin-left: 0;
+    }
+    .packaging select{
+        width: 100%;
+        height: 150px;
+        font-size: 30pt;
+        border-radius: 75px;
+    }
+    .packaging p{
+        font-size: 30pt;
+        float:left;
+    }
+    .buy_one{
+        display: inline-block;
+        width: 500px;
+        height: 150px;
+        font-size: 40pt;
+        float:none;
+        border-radius: 75px;
+    }
+    .buy_one p{
+        padding-top: 30px;
+    }
+    .bask{
+        display: inline-block;
+        width: 100%;
+        height: 150px;
+    }
+    .bask img{
+        height: 100px;
+        width: 100px;
+    }
+    .counter_basket2{
+        height: auto;
+        width: 100%;
+        border-radius: 75px;
+    }
+    .counter_basket2 button{
+        width: 20%;
+        height: 150px;
+        font-size: 60pt;
+    }
+    .counter_basket2 input {
+        width:50%;
+        height: 150px;
+        font-size: 60pt;
+        padding-left: 20%;
+    }
+    .sale_search img{
+        height: 50px!important;
+        width: 50px!important;
+    }
+    .sale_search strike{
+        font-size: 30pt;
+    }
+    .sale_basket strike{
+        font-size: 30pt;
+        margin-top: 10px!important;
+    }
+    .sale_basket img{
+        height: 50px!important;
+        width: 50px!important;
+    }
+    .main_call_back_form_one_click{
+        font-size: 30pt;
+        height: auto;
+        width: 100%;
+    }
+    .call_back_top_one_click{
+        height: auto;
+        font-size: 38pt;
 
-
-
-
+    }
+    .call_back_top_one_click p{
+        float: none;
+        display: inline-block;
+    }
+    .be_back{
+        display: none;
+    }
+    .call_back_form_one_click input{
+        height: 100px;
+        margin-top: 30px;
+        border-radius: 50px;
+        padding-left: 20px;
+    }
+    .call_back_form_one_click textarea{
+        height: 200px;
+        border-radius: 50px;
+        margin-top: 30px;
+        padding-left: 20px;
+    }
+    .end_one_click {
+        text-align: center;
+    }
+    .end_one_click button{
+        height: 100px;
+        border-radius: 50px;
+        width: 300px;
+    }
+    .end_one_click p{
+        font-size: 30pt;
+        padding-top: 7px;
+    }
 
 
 }

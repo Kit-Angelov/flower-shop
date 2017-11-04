@@ -2,15 +2,22 @@
 
 {% for product in products %}
     <div class="col-md-3 col-sm-6 tryvers">
-        <div class="tryvers_block card_flower" id="{{ product.id }}" onclick=SelectCard.call(this)>
-                <img class="flovers_foto" src="{{ product.photo.url }}">
+        <div class="tryvers_block card_flower">
+                <img class="flovers_foto" src="{{ product.photo.url }}" id="{{ product.id }}" onclick=SelectCard.call(this)>
                 <div class="flovers_discript">
                     <p class="name_flower">{{ product.name }}</p>
-                    <p class="price">{{ product.price }} р/шт</p>
-
+                    {% if product.sale_price %}
+                        <div class="catalog_sale_price">
+                            <strike class="price_in_catalog">{{ product.price }}</strike>
+                            <p class="sale_price_in_catalog">&nbsp{{ product.sale_price }} р/шт</p>
+                            <img src="{% static 'shop/img/sale.png' %}">
+                        </div>
+                    {% else %}
+                        <p class="price">{{ product.price }} р/шт</p>
+                    {% endif %}
                     <div class="info_and_basket">
-                        <a class="one_click" href=""> <p>Подробнее</p></a>
-                        <a class="basket_add" href=""> <img src="{% static 'shop/img/korzina.png' %}" ></a>
+                        <a class="one_click" id="{{ product.id }}" onclick="OneClick.call(this)"> <p>Купить в 1 клик</p></a>
+                        <a class="basket_add"> <img id="{{ product.id }}" onclick=SelectCard.call(this) src="{% static 'shop/img/korzina.png' %}" ></a>
                     </div>
                 </div>
         </div>

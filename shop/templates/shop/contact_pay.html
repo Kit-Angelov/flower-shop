@@ -1,18 +1,25 @@
 {% load staticfiles %}
 
-<script src="{% static 'shop/js/contact_pay.js' %}"></script>
-
 <div class="main_call_back" id="main_call_back">
     <div class="call_back">
         <div class="call_back_top">
             <p>Контактные данные</p>
-        <a id="close_call_back"><img src="staticmenu/imagemenu/krest.png"></a></div>
-        <a class="be_back" href =""><p> Вернуться в корзину</p></a>
-         <form id="make_order_form">
-                <input type="tel" name="phone" required placeholder="Ваш Телефон">
-                <input type="text" name="name" placeholder="Ваше Имя">
-                <textarea name="address" placeholder="Адрес на который необходимо доставить цветы"></textarea>
-                <button type="submit"><p>Далее</p></button>
+        <div class="close" id="close_call_back"><img src="{% static 'shop/img/krest.png' %}"></div>
+        </div>
+        <a class="be_back" onclick="back_to_basket()"><p>Вернуться в корзину</p></a>
+         <form id="make-order-form" method="get">
+                <input type="tel" id="contact_phone" required placeholder="Ваш Телефон">
+                <input type="text" id="contact_name" placeholder="Ваше Имя">
+                <textarea id="contact_address" placeholder="Адрес на который необходимо доставить цветы"></textarea>
+                <button type="submit" style="text-align: center; color: white; font-size: 12pt;">Далее</button>
          </form>
     </div>
 </div>
+<script src="{% static 'shop/js/contact_pay.js' %}"></script>
+<script src="{% static 'shop/js/mask.js' %}"></script>
+<script src="{% static 'shop/js/back_to_basket.js' %}"></script>
+<script type="text/javascript">
+jQuery(function($){
+   $("#contact_phone").mask("+7(999) 999-9999");
+});
+</script>

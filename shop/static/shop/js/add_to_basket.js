@@ -5,7 +5,6 @@ function func(data){
         $('#counter').html(data);
          document.getElementById('add_to_basket').innerHTML = '<div class="done_cl">' +
              '<p class="to_basket" id="to_basket">Перейти в корзину</p>' +
-             '<p class="done" id="done">Продолжить покупки</p>' +
              '</div>';
          $('#done').click( function(){
 		    $('#info-flover')

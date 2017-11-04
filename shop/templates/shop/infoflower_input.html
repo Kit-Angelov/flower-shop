@@ -15,16 +15,18 @@
         <div class="divide"></div>
         <div class="content">
             {% if product_info.attribute %}
-                <p>Страна: {{ product_info.attribute.county }}</p>
-                <p>Длина: {{ product_info.attribute.length }} см</p>
+                <p class="country_info attr_info">Страна: {{ product_info.attribute.county }}</p>
+                <p class="length_info attr_info">Длина: {{ product_info.attribute.length }} см</p>
             {% endif %}
             {% if sale_price %}
-                <div class="sale"><p class="price_in_info">{{ product_info.price }}</p><p class="sale_price_in_info">&nbsp{{ sale_price }} Руб/шт</p>
-                <img src="{% static 'shop/img/sale.png' %}">
-                <p>-{{ product_info.sale_promo.percent }}%</p>
+                <div class="sale">
+                    <strike class="price_in_info">{{ product_info.price }}</strike>
+                    <p class="sale_price_in_info">&nbsp{{ sale_price }} Руб/шт</p>
+                    <img src="{% static 'shop/img/sale.png' %}">
                 </div>
             {% else %}
-                <div class="sale"><p class="price_in_info">{{ product_info.price }} Руб/шт</p>
+                <div class="sale">
+                    <p class="price_in_info">{{ product_info.price }} Руб/шт</p>
                 </div>
             {% endif %}
             <div class="window_info"><p>{{ product_info.description }}</p>
@@ -62,7 +64,7 @@
             </a>
         </div>
         <div class="go_back">
-            <a class="one_click_2" id="{{ product_info.id }}"> <p>купить в один клик</p></a>
+            <a class="one_click_2" id="{{ product_info.id }}" onclick="OneClick.call(this)"> <p>купить в 1 клик</p></a>
         </div>
         </div>
     </div>

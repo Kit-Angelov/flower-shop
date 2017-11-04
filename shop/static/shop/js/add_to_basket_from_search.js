@@ -1,29 +1,49 @@
 /**
  * Created by kit on 15.10.17.
  */
-function func_search(data, id) {
-    $('#counter').html(data);
-    var ok_bask = document.getElementsByClassName('bask'+id);
-    $(ok_bask).html('<p style="color: #b85778">В корзине</p>');
 
-}
+/**
+* Created by kit on 15.10.17.
+*/
 function Add_to_basket_from_search() {
-    var pack = $('#pack').val();
-    var id = this.id;
+    $('#search_global')
+            .animate({opacity: 0, top: '45%'}, 200,
+            function(){
+                $(this).css('display', 'none');
+            }
+        );
+    var product_id = this.id;
     $.ajax({
-        type: "GET",
-        url: "/add_to_basket",
         data: {
-            flower_count: $('#flower_count').val(),
-            product_id: id,
-            pack: pack
+        product_id: product_id
         },
-        dataType: "html",
+        type: "GET",
+        url: "/select_product",
         cache: false,
-        success: function (data) {
-            func_search(data, id)
+        success: function(data) {
+            $('#info-flover').html(data.content);
+        },
+        error: function (error) {
+            alert(error)
         }
+    });
+    $('#overlay').fadeIn(400, function () {
+        $('#info-flover')
+            .css('display', 'block')
+            .animate({opacity: 1, top: '50%'}, 200);
     });
     return false;
 }
+
+$(document).ready(function() {
+    $('#close_card, #overlay').click(function(){
+        $('#info-flover')
+            .animate({opacity: 0, top: '45%'}, 200,
+            function(){
+                $(this).css('display', 'none');
+                $('#overlay').fadeOut(400);
+            }
+        );
+    });
+});
 
