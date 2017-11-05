@@ -2,56 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6c08cc36-0c49-4ee9-bdd9-9c1db9216edc" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/fshop/whoosh_index/_MAIN_3.toc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/fshop/whoosh_index/MAIN_58chn18x71r9i0vp.seg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/fshop/whoosh_index/MAIN_67vrpnvnlpcq7tlm.seg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/fshop/whoosh_index/MAIN_682pgwfoeq8elu8l.seg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/fshop/whoosh_index/MAIN_cwjvpcgrb110zgbk.seg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/fshop/whoosh_index/MAIN_zh3fp2vdfxz8zno6.seg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/fshop/whoosh_index/_MAIN_5.toc" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fshop/settings.py" afterPath="$PROJECT_DIR$/fshop/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shop/admin.py" afterPath="$PROJECT_DIR$/shop/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shop/context_processors/counter.py" afterPath="$PROJECT_DIR$/shop/context_processors/counter.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shop/models.py" afterPath="$PROJECT_DIR$/shop/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shop/static/shop/css/media_style.css" afterPath="$PROJECT_DIR$/shop/static/shop/css/media_style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shop/static/shop/css/style.css" afterPath="$PROJECT_DIR$/shop/static/shop/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shop/static/shop/js/add_delivery_one_click.js" afterPath="$PROJECT_DIR$/shop/static/shop/js/add_delivery_one_click.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shop/static/shop/js/add_product_to_basket_in_costructor.js" afterPath="$PROJECT_DIR$/shop/static/shop/js/add_product_to_basket_in_costructor.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shop/static/shop/js/add_to_basket.js" afterPath="$PROJECT_DIR$/shop/static/shop/js/add_to_basket.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shop/static/shop/js/add_to_basket_constructor.js" afterPath="$PROJECT_DIR$/shop/static/shop/js/add_to_basket_constructor.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shop/static/shop/js/add_to_basket_from_search.js" afterPath="$PROJECT_DIR$/shop/static/shop/js/add_to_basket_from_search.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shop/static/shop/js/back_to_basket.js" afterPath="$PROJECT_DIR$/shop/static/shop/js/back_to_basket.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shop/static/shop/js/back_to_contact_pay.js" afterPath="$PROJECT_DIR$/shop/static/shop/js/back_to_contact_pay.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shop/static/shop/js/back_to_one_click.js" afterPath="$PROJECT_DIR$/shop/static/shop/js/back_to_one_click.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shop/static/shop/js/call.js" afterPath="$PROJECT_DIR$/shop/static/shop/js/call.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shop/static/shop/js/change_count_one_click.js" afterPath="$PROJECT_DIR$/shop/static/shop/js/change_count_one_click.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shop/static/shop/js/change_pack_in_constructor.js" afterPath="$PROJECT_DIR$/shop/static/shop/js/change_pack_in_constructor.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shop/static/shop/js/change_pack_one_click.js" afterPath="$PROJECT_DIR$/shop/static/shop/js/change_pack_one_click.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shop/static/shop/js/contact_pay.js" afterPath="$PROJECT_DIR$/shop/static/shop/js/contact_pay.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shop/static/shop/js/delete_from_lego_flower.js" afterPath="$PROJECT_DIR$/shop/static/shop/js/delete_from_lego_flower.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shop/static/shop/js/make_order.js" afterPath="$PROJECT_DIR$/shop/static/shop/js/make_order.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shop/static/shop/js/make_order_one_click.js" afterPath="$PROJECT_DIR$/shop/static/shop/js/make_order_one_click.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shop/static/shop/js/map.js" afterPath="$PROJECT_DIR$/shop/static/shop/js/map.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shop/static/shop/js/mask.js" afterPath="$PROJECT_DIR$/shop/static/shop/js/mask.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shop/static/shop/js/one_click.js" afterPath="$PROJECT_DIR$/shop/static/shop/js/one_click.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shop/static/shop/js/openconstructor.js" afterPath="$PROJECT_DIR$/shop/static/shop/js/openconstructor.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shop/static/shop/js/openoneclick_from_search.js" afterPath="$PROJECT_DIR$/shop/static/shop/js/openoneclick_from_search.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shop/static/shop/js/optom.js" afterPath="$PROJECT_DIR$/shop/static/shop/js/optom.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shop/static/shop/js/popup_card.js" afterPath="$PROJECT_DIR$/shop/static/shop/js/popup_card.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shop/static/shop/js/selectFiltersInConstructor.js" afterPath="$PROJECT_DIR$/shop/static/shop/js/selectFiltersInConstructor.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shop/static/shop/js/select_filters.js" afterPath="$PROJECT_DIR$/shop/static/shop/js/select_filters.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shop/templates/shop/base.html" afterPath="$PROJECT_DIR$/shop/templates/shop/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shop/templates/shop/basket_in_constructor.html" afterPath="$PROJECT_DIR$/shop/templates/shop/basket_in_constructor.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shop/templates/shop/basket_input.html" afterPath="$PROJECT_DIR$/shop/templates/shop/basket_input.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shop/templates/shop/catalog.html" afterPath="$PROJECT_DIR$/shop/templates/shop/catalog.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shop/templates/shop/catalog_in_constructor.html" afterPath="$PROJECT_DIR$/shop/templates/shop/catalog_in_constructor.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shop/templates/shop/close_consturctor.html" afterPath="$PROJECT_DIR$/shop/templates/shop/close_consturctor.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shop/templates/shop/contact_pay.html" afterPath="$PROJECT_DIR$/shop/templates/shop/contact_pay.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shop/templates/shop/infoflower_input.html" afterPath="$PROJECT_DIR$/shop/templates/shop/infoflower_input.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shop/templates/shop/one_click_form_input.html" afterPath="$PROJECT_DIR$/shop/templates/shop/one_click_form_input.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shop/templates/shop/optom.html" afterPath="$PROJECT_DIR$/shop/templates/shop/optom.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shop/templates/shop/pack_costructor.html" afterPath="$PROJECT_DIR$/shop/templates/shop/pack_costructor.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shop/templates/shop/payment.html" afterPath="$PROJECT_DIR$/shop/templates/shop/payment.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shop/templates/shop/payment_input.html" afterPath="$PROJECT_DIR$/shop/templates/shop/payment_input.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shop/templates/shop/search_input.html" afterPath="$PROJECT_DIR$/shop/templates/shop/search_input.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shop/urls.py" afterPath="$PROJECT_DIR$/shop/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shop/views.py" afterPath="$PROJECT_DIR$/shop/views.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -65,11 +23,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="admin.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/shop/static/shop/css/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="189">
+              <caret line="1361" column="24" lean-forward="true" selection-start-line="1361" selection-start-column="24" selection-end-line="1361" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="admin.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/shop/admin.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="547">
-              <caret line="39" column="0" lean-forward="true" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+              <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
               </folding>
@@ -81,7 +49,7 @@
         <entry file="file://$PROJECT_DIR$/shop/models.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="338">
-              <caret line="134" column="0" lean-forward="true" selection-start-line="134" selection-start-column="0" selection-end-line="134" selection-end-column="0" />
+              <caret line="134" column="0" lean-forward="false" selection-start-line="134" selection-start-column="0" selection-end-line="134" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -187,10 +155,10 @@
         <option value="$PROJECT_DIR$/shop/static/shop/js/optom.js" />
         <option value="$PROJECT_DIR$/shop/templates/shop/one_click_form_input.html" />
         <option value="$PROJECT_DIR$/shop/templates/shop/base.html" />
-        <option value="$PROJECT_DIR$/shop/static/shop/css/style.css" />
         <option value="$PROJECT_DIR$/shop/static/shop/js/map.js" />
         <option value="$PROJECT_DIR$/shop/templates/shop/optom.html" />
         <option value="$PROJECT_DIR$/shop/admin.py" />
+        <option value="$PROJECT_DIR$/shop/static/shop/css/style.css" />
       </list>
     </option>
   </component>
@@ -265,6 +233,14 @@
               <item name="static" type="462c0819:PsiDirectoryNode" />
               <item name="shop" type="462c0819:PsiDirectoryNode" />
               <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="flower-shop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="flower-shop" type="462c0819:PsiDirectoryNode" />
+              <item name="shop" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="shop" type="462c0819:PsiDirectoryNode" />
+              <item name="img" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="flower-shop" type="b2602c69:ProjectViewProjectNode" />
@@ -731,14 +707,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/shop/static/shop/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="29">
-          <caret line="2313" column="19" lean-forward="false" selection-start-line="2313" selection-start-column="19" selection-end-line="2313" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/shop/static/shop/js/map.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -766,7 +734,7 @@
     <entry file="file://$PROJECT_DIR$/shop/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="338">
-          <caret line="134" column="0" lean-forward="true" selection-start-line="134" selection-start-column="0" selection-end-line="134" selection-end-column="0" />
+          <caret line="134" column="0" lean-forward="false" selection-start-line="134" selection-start-column="0" selection-end-line="134" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -774,10 +742,18 @@
     <entry file="file://$PROJECT_DIR$/shop/admin.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="547">
-          <caret line="39" column="0" lean-forward="true" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+          <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shop/static/shop/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="1361" column="24" lean-forward="true" selection-start-line="1361" selection-start-column="24" selection-end-line="1361" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>
