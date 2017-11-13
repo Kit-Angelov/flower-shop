@@ -5,7 +5,7 @@ function make_order() {
         var delivery = $('input[name=choise]:checked').attr('id');
         var value = 'delivery1';
         $('#basket_full_main')
-            .animate({opacity: 0, top: '45%'}, 200,
+            .animate({opacity: 0, top: '45%'}, 100,
             function(){
                 $(this).css('display', 'none');
             }
@@ -20,16 +20,16 @@ function make_order() {
 
         $('#main_call_back')
             .css('display', 'block')
-            .animate({opacity: 1, top: '50%'}, 200);
+            .animate({opacity: 1, top: '50%'}, 100);
 }
 
 $(document).ready(function() {
     $('#close_call_back, #overlay').click(function(){
         $('#main_call_back')
-            .animate({opacity: 0, top: '45%'}, 200,
+            .animate({opacity: 0, top: '45%'}, 100,
             function(){
                 $(this).css('display', 'none');
-                $('#overlay').fadeOut(400);
+                $('#overlay').fadeOut(100);
             }
         );
     });

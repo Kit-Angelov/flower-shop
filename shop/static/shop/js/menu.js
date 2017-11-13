@@ -1,21 +1,15 @@
 /**
  * Created by kit on 15.10.17.
  */
-$(function() {
+function menu() {
     var width = $('.menu_revers').css("width");
     var elem = $('#menu_revers');
-    $("#menuvip").hover(
+    var close_elem = $('#menu-revers-close');
+    elem.css('left', '0');
+    // elem.css('left', '-' + width);
+    close_elem.click(
         function () {
-            elem.css('left', '0');
-        }, function () {
             elem.css('left', '-' + width);
         }
     );
-    $("#menu_revers").hover(
-        function () {
-            elem.css('left', '0');
-        }, function () {
-            elem.css('left', '-' + width);
-        }
-    );
-});
+}

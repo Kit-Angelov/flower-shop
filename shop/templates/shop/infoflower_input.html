@@ -10,13 +10,12 @@
 
 <img src="{{ product_info.photo.url }}">
         <div class="window">
-        <div class="name"><h3>{{ product_info.name }}</h3>
         <div class="close_card close" id="close_card"><img src="{% static 'shop/img/krest.png' %}"></div>
+        <div class="name"><h3>{{ product_info.name }}</h3>
         <div class="divide"></div>
         <div class="content">
             {% if product_info.attribute %}
-                <p class="country_info attr_info">Страна: {{ product_info.attribute.county }}</p>
-                <p class="length_info attr_info">Длина: {{ product_info.attribute.length }} см</p>
+                <p class="country_info attr_info">Страна - {{ product_info.attribute.county }}; Длина - {{ product_info.attribute.length }} см</p>
             {% endif %}
             {% if sale_price %}
                 <div class="sale">

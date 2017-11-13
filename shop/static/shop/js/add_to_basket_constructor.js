@@ -4,24 +4,24 @@
 function func_close_constructor(data) {
     $('#counter').html(data);
     $('#constructor-wrapp')
-        .animate({opacity: 0, top: '45%'}, 200,
+        .animate({opacity: 0, top: '45%'}, 100,
             function(){
                 $(this).css('display', 'none');
             }
         );
     $('#closing_constructor')
         .css('display', 'block')
-        .animate({opacity: 1, top: '50%'}, 200);
+        .animate({opacity: 1, top: '50%'}, 100);
 
 
 }
 $(document).ready(function() {
 	$('#close_constructor, #overlay').click(function(){
 		$('#closing_constructor')
-			.animate({opacity: 0, top: '45%'}, 200,
+			.animate({opacity: 0, top: '45%'}, 100,
 				function(){
 					$(this).css('display', 'none');
-					$('#overlay').fadeOut(400);
+					$('#overlay').fadeOut(100);
 				}
 			);
 	});

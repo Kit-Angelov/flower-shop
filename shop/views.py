@@ -1,25 +1,24 @@
-from django.shortcuts import render, get_object_or_404, render_to_response, get_list_or_404
+from django.shortcuts import render, get_object_or_404, render_to_response, get_list_or_404, redirect
 from django.template import loader
 from django.http import HttpResponse, JsonResponse
-from .models import Category, Product, Basket, BasketElem, Package, OneClick, Constructor, Call
+from .models import Category, Product, Basket, BasketElem, Package, Constructor, Call
 # from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import uuid
+from hashlib import sha256
 from .forms import ProductsSearchForm
 from django.utils import timezone
-# from .telebot import send_telegram
+from .telebot import send_telegram
 from datetime import datetime
-# from .send_email import send_email
 from django.shortcuts import get_object_or_404, render
 from django.contrib.auth.decorators import login_required
-
-from robokassa.forms import RobokassaForm
+from django.views.decorators.csrf import csrf_exempt
+from .send_mail import send_email
 
 delivery_price = 250
 
 
 def index(request):
     basket = check_basket(request)
-
     categories = Category.objects.filter(display=True)
     products = Product.objects.filter(display=True).order_by('price')
     context = {
@@ -299,7 +298,6 @@ def search(request):
         return JsonResponse(output_data)
 
 
-@login_required
 def contact_pay(request):
     basket = check_basket(request)
     if request.method == 'GET':
@@ -313,17 +311,9 @@ def contact_pay(request):
         basket.sum = final_sum_calc(basket)
         basket.save()
 
-        form = RobokassaForm(initial={
-            'OutSum': basket.sum,
-            'InvId': basket.id,
-            'Desc': basket.phone,
-            'Email': "kit.angelov@gmail.com",
-        })
-
         pay_set = loader.render_to_string(
             'shop/payment_input.html',
             {
-                'form': form,
                 'sum': basket.sum,
                 'name': basket.name,
                 'phone': basket.phone,
@@ -334,6 +324,38 @@ def contact_pay(request):
             'pay_set': pay_set,
         }
         return JsonResponse(output_data)
+
+
+def popoln(request):
+    basket = check_basket(request)
+    mrh_login = "purpur36"
+    mrh_pass1 = "hj70P4CQgxGIn1A5tiZk"
+    inv_id = str(basket.id)
+    inv_desc = str(basket.phone)
+    out_summ = str(float(basket.sum))
+
+    result_string = "{}:{}:{}:{}".format(mrh_login, out_summ, inv_id, mrh_pass1)
+    sign_hash = sha256(result_string.encode())
+    crc = sign_hash.hexdigest().upper()
+    url = "https://auth.robokassa.ru/Merchant/Index.aspx?MrchLogin={}&OutSum={}&InvId={}&Desc={}&SignatureValue={}".format(
+    mrh_login, out_summ, inv_id, inv_desc, crc)
+    return redirect(url)
+
+
+def popoln_one_click(request, one_click_id):
+    one_click = Basket.objects.get(id=one_click_id)
+    mrh_login = "purpur36"
+    mrh_pass1 = "hj70P4CQgxGIn1A5tiZk"
+    inv_id = str(one_click.id)
+    inv_desc = str(one_click.phone)
+    out_summ = str(float(one_click.sum))
+
+    result_string = "{}:{}:{}:{}".format(mrh_login, out_summ, inv_id, mrh_pass1)
+    sign_hash = sha256(result_string.encode())
+    crc = sign_hash.hexdigest().upper()
+    url = "https://auth.robokassa.ru/Merchant/Index.aspx?MrchLogin={}&OutSum={}&InvId={}&Desc={}&SignatureValue={}".format(
+    mrh_login, out_summ, inv_id, inv_desc, crc)
+    return redirect(url)
 
 
 def select_product_one_click(request):
@@ -509,11 +531,9 @@ def add_delivery_one_click(request):
         return JsonResponse(output_data)
 
 
-@login_required
 def make_order_one_click(request):
     if request.method == 'GET':
-        guid = check_guid(request)
-        id = request.GET.get('id')
+        guid = uuid.uuid4()
         name = request.GET.get('name')
         phone = request.GET.get('phone')
         address = request.GET.get('address')
@@ -546,34 +566,33 @@ def make_order_one_click(request):
             sum = product.sale_price * count + pack_price + delivery_sum
         else:
             sum = product.price * count + pack_price + delivery_sum
-        one_click_order = OneClick(
+        one_click_basket = Basket(
             guid=guid,
             sum=sum,
             name=name,
             phone=phone,
             address=address,
             delivery=delivery_check,
-            product=product,
-            count=count,
-            package=pack
         )
-        one_click_order.save()
-        form = RobokassaForm(initial={
-            'OutSum': one_click_order.sum,
-            'InvId': one_click_order.id,
-            'Desc': one_click_order.phone,
-            'Email': "kit.angelov@gmail.com",
-        })
+        one_click_basket.save()
+
+        one_click_basket_elem = BasketElem(
+            product=product,
+            basket=one_click_basket,
+            count=count,
+            package=pack,
+        )
+        one_click_basket_elem.save()
 
         pay_set = loader.render_to_string(
             'shop/payment_input.html',
             {
                 'one_click': 'ok',
-                'form': form,
-                'sum': one_click_order.sum,
-                'name': one_click_order.name,
-                'phone': one_click_order.phone,
-                'address': one_click_order.address
+                'one_click_id': one_click_basket.id,
+                'sum': one_click_basket.sum,
+                'name': one_click_basket.name,
+                'phone': one_click_basket.phone,
+                'address': one_click_basket.address
             }
         )
         output_data = {
@@ -777,4 +796,130 @@ def call(request):
         name = request.GET.get('name')
         call = Call(name=name, phone=phone)
         call.save()
+        send_email(type="call", from_to=['kit.angelov@gmail.com', 'dimkabelyaev@gmail.com'],
+                   name=name,
+                   phone=phone,
+                   order_date=datetime.now().strftime("%Y.%m.%d %H:%M"))
+        send_telegram(type='call',
+                      name=name,
+                      phone=phone,
+                      order_date=datetime.now().strftime("%Y.%m.%d %H:%M"))
         return HttpResponse()
+
+
+@csrf_exempt
+def res(request):
+    if not request.method == 'GET':
+        return HttpResponse('error')
+    mrh_pass2 = "m5d0r3C7NVH2wmXFPgqx"
+    if request.method == 'GET':
+        request.session['guid'] = None
+        out_summ = request.GET['OutSum']
+        inv_id = request.GET['InvId']
+        crc = request.GET['SignatureValue']
+        crc = crc.upper()
+        crc = str(crc)
+        result_string = "{}:{}:{}".format(out_summ, inv_id, mrh_pass2)
+        sign_hash = sha256(result_string.encode())
+        my_crc = sign_hash.hexdigest().upper()
+        if my_crc not in crc:
+            context = "bad sign"
+            return HttpResponse(context)
+        else:
+            basket = Basket.objects.get(id=inv_id)
+            basket.complite = True
+            basket.save()
+            basket_elems = basket.basketelem_set.all()
+            basket_constructors = basket.constructor_set.all()
+            elem_list = list()
+            for elem in basket_elems:
+                if elem.constructor_child is False:
+                    attr = [str(elem.product.name),
+                            str(elem.count),
+                            str(elem.package.name),
+                            str(elem.sum)]
+                    elem_list.append(attr)
+
+            for constructor_elem in basket_constructors:
+                if constructor_elem.build is True:
+                    constructor_elem_elems = constructor_elem.basketelem_set
+                    attr = [
+                        str('Конструктор {0}'.format(constructor_elem.id)),
+                        str(constructor_elem.sum),
+                        str(constructor_elem.package.name)
+                    ]
+                    attr_elems = list()
+                    for i in constructor_elem_elems:
+                        attr_elem = [
+                            str('Элемент конструктора {0}'.format(i.constructor_child.id)),
+                            str(i.product.name),
+                            str(i.count),
+                        ]
+                        attr_elems.append(attr_elem)
+                    attr.append(attr_elems)
+                    elem_list.append(attr)
+
+            categories = Category.objects.filter(display=True)
+            products = Product.objects.filter(display=True).order_by('price')
+            context = {
+                'categories': categories,
+                'products': products,
+                'success_popup': True,
+            }
+            send_email(type="order", from_to=['kit.angeov@gmail.com', 'dimkabelyaev@gmail.co,'],
+                       name=basket.name,
+                       address=basket.address,
+                       phone=basket.phone,
+                       order_date=basket.date_upload.strftime("%Y.%m.%d %H:%M"),
+                       order_sum=basket.sum,
+                       elem_list=elem_list)
+            send_telegram(type='order',
+                          name=basket.name,
+                          address=basket.address,
+                          phone=basket.phone,
+                          order_date=basket.date_upload.strftime("%Y.%m.%d %H:%M"),
+                          order_sum=basket.sum,
+                          elem_list=elem_list)
+            return render(request, 'shop/base.html', context=context)
+
+
+@csrf_exempt
+def success(request):
+    if not request.method == 'GET':
+        return HttpResponse('error')
+    mrh_pass1 = "hj70P4CQgxGIn1A5tiZk"
+    if request.method == 'GET':
+        request.session['guid'] = None
+        out_summ = request.GET['OutSum']
+        inv_id = request.GET['InvId']
+        crc = request.GET['SignatureValue']
+        crc = crc.upper()
+        crc = str(crc)
+        result_string = "{}:{}:{}".format(out_summ, inv_id, mrh_pass1)
+        sign_hash = sha256(result_string.encode())
+        my_crc = sign_hash.hexdigest().upper()
+        if my_crc not in crc:
+            context = "bad sign"
+            return HttpResponse(context)
+        else:
+            categories = Category.objects.filter(display=True)
+            products = Product.objects.filter(display=True).order_by('price')
+            context = {
+                'categories': categories,
+                'products': products,
+                'success_popup': True,
+            }
+            return render(request, 'shop/base.html', context=context)
+
+
+@csrf_exempt
+def fail(request):
+    if request.method == "GET":
+        categories = Category.objects.filter(display=True)
+        products = Product.objects.filter(display=True).order_by('price')
+        context = {
+            'categories': categories,
+            'products': products,
+            'fail_popup': True,
+        }
+        return render(request, 'shop/base.html', context=context)

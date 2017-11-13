@@ -63,7 +63,7 @@ class Package(models.Model):
 class Call(models.Model):
     date = models.DateTimeField(default=timezone.now(), verbose_name='Дата')
     name = models.CharField(max_length=30, null=True, blank=True, verbose_name='Имя')
-    phone = models.CharField(max_length=15, null=True, blank=True, verbose_name='Телефон')
+    phone = models.CharField(max_length=20, null=True, blank=True, verbose_name='Телефон')
     closed = models.BooleanField(default=False, verbose_name='Звонок выполнен')
 
     def __str__(self):
@@ -78,7 +78,7 @@ class Product(models.Model):
     name = models.CharField(max_length=30, verbose_name='Название')
     price = models.IntegerField(verbose_name='Цена за штуку')
     sale_price = models.IntegerField(verbose_name='Цена с акцией', editable=False, default=None)
-    description = models.TextField(max_length=300, verbose_name='Описание')
+    description = models.TextField(max_length=140, verbose_name='Описание')
     photo = models.ImageField(upload_to='photo_product', verbose_name='Фото')
     display = models.BooleanField(default=False, verbose_name='Отображать на сайте?')
     attribute = models.ForeignKey(Attribute, verbose_name='Характеристики', null=True, blank=True)
@@ -106,10 +106,10 @@ class Basket(models.Model):
     sum = models.IntegerField(blank=True, null=True, verbose_name='Сумма заказа, руб.')
     date = models.DateTimeField(default=timezone.now(), verbose_name='Дата заказа')
     name = models.CharField(max_length=30, null=True, blank=True, verbose_name='Имя заказчика')
-    phone = models.CharField(max_length=15, null=True, blank=True, verbose_name='Телефон заказчика')
+    phone = models.CharField(max_length=20, null=True, blank=True, verbose_name='Телефон заказчика')
     address = models.TextField(null=True, blank=True, verbose_name='Адрес доставки')
     delivery = models.BooleanField(default=False, verbose_name='Доставка')
-    complite = models.BooleanField(default=False, verbose_name='Заказ оформлен')
+    complite = models.BooleanField(default=False, verbose_name='Заказ оплачен')
     closed = models.BooleanField(default=False, verbose_name='Заказ завершен')
 
     def __str__(self):
@@ -139,7 +139,7 @@ class BasketElem(models.Model):
     basket = models.ForeignKey(Basket, verbose_name='Заказ')
     count = models.IntegerField(verbose_name='Кол-во штук товара')
     sum = models.IntegerField(default=0, verbose_name='Сумма заказа, руб.')
-    package = models.ForeignKey(Package, null=True)
+    package = models.ForeignKey(Package, null=True, blank=True)
     constructor_child = models.BooleanField(default=False, verbose_name='товар в конструкторе')
     constructor = models.ForeignKey(Constructor, null=True, verbose_name='Конструктор')
 
@@ -166,24 +166,3 @@ class BasketElem(models.Model):
         verbose_name = 'Элемент корзины'
         verbose_name_plural = 'Элементы корзины'
 
-
-class OneClick(models.Model):
-    guid = models.CharField(max_length=36, verbose_name='Идентификатор заказчика')
-    sum = models.IntegerField(blank=True, null=True, verbose_name='Сумма заказа, руб.')
-    date = models.DateTimeField(default=timezone.now(), verbose_name='Дата заказа')
-    name = models.CharField(max_length=30, null=True, blank=True, verbose_name='Имя заказчика')
-    phone = models.CharField(max_length=15, null=True, blank=True, verbose_name='Телефон заказчика')
-    address = models.TextField(null=True, blank=True, verbose_name='Адрес доставки')
-    delivery = models.BooleanField(default=False, verbose_name='Доставка')
-    complite = models.BooleanField(default=False, verbose_name='Заказ оплачен')
-    closed = models.BooleanField(default=False, verbose_name='Заказ завершен')
-    product = models.ForeignKey(Product, verbose_name='Товар')
-    count = models.IntegerField(verbose_name='Кол-во штук товара')
-    package = models.ForeignKey(Package, null=True)
-
-    def __str__(self):
-        return '{0}, {1}'.format(self.product, self.sum)
-
-    class Meta:
-        verbose_name = 'Заказ в один клик'
-        verbose_name_plural = 'Заказы в один клик'

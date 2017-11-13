@@ -17,10 +17,10 @@ function SelectCard() {
             alert(error)
         }
     });
-    $('#overlay').fadeIn(400, function () {
+    $('#overlay').fadeIn(100, function () {
         $('#info-flover')
             .css('display', 'block')
-            .animate({opacity: 1, top: '50%'}, 200);
+            .animate({opacity: 1, top: '50%'}, 100);
     });
     return false;
 }
@@ -28,10 +28,10 @@ function SelectCard() {
 $(document).ready(function() {
     $('#close_card, #overlay').click(function(){
         $('#info-flover')
-            .animate({opacity: 0, top: '45%'}, 200,
+            .animate({opacity: 0, top: '45%'}, 100,
             function(){
                 $(this).css('display', 'none');
-                $('#overlay').fadeOut(400);
+                $('#overlay').fadeOut(100);
             }
         );
     });

@@ -4,6 +4,7 @@
 
 <html lang="en">
 <head>
+    <link rel="shortcut icon" href="{% static 'shop/img/flower_icon.png' %}" type="image/png">
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{% static 'shop/css/style.css' %}">
     <link rel="stylesheet" href="{% static 'shop/css/media_style.css' %}">
@@ -22,20 +23,21 @@
     <script src="{% static 'shop/js/mask.js' %}"></script>
 
 {#    <meta name="viewport" content="width=1920">#}
-    <title>Title</title>
+    <title>Purpur – магазин цветов</title>
 </head>
 <body>
     <div class="menu_revers" id="menu_revers">
+        <div class="menu-revers-cross" id="menu-revers-close"><img class="menu-revers-cross-img" src="{% static 'shop/img/cross_white.png' %}"></div>
         <div class="line_menu"></div>
         <div class="menu_revers_main">
-            <a href="#anchor_catalog">каталог</a>
-            <a href="#anchor_constructor">конструктор</a>
-            <a href="#anchor_contacts">контакты</a>
-            <a class="menu_href" onclick="optom()">оптовыя торговля</a>
+            <a href="#anchor_catalog">КАТАЛОГ</a>
+            <a href="#anchor_constructor">КОНСТРУКТОР</a>
+            <a href="#anchor_contacts">КОНТАКТЫ</a>
+            <a class="menu_href" onclick="optom()">ОПТОВАЯ ТОРГОВЛЯ</a>
             <div class="menu_infor">
-             <a href="#"><img class="socweb vk" src="{% static 'shop/img/vk.png' %}"></a>
-            <a href="#"><img class="socweb" src="{% static 'shop/img/whatsapp.png' %}"></a>
-            <a href="#"><img class="socweb" src="{% static 'shop/img/instagram.png' %}"></a>
+             <a href="#"><img class="socweb vk" src="{% static 'shop/img/vk_white.png' %}"></a>
+            <a href="#"><img class="socweb" src="{% static 'shop/img/whatsapp_white.png' %}"></a>
+            <a href="#"><img class="socweb" src="{% static 'shop/img/inst_white.png' %}"></a>
             </div>
         </div>
     </div>
@@ -50,9 +52,9 @@
     <div class="navigate" id="navigate">
         <div class="row menu">
         <div class="col-md-2 gamburger col-sm-12">
-            <div class="menuvip" id="menuvip">
-                <div class="menuvip-main-li-1"><img src="{% static 'shop/img/hamburger.png' %}"> </div>
-                    <div class="menuvip-main-li-2"><p>Меню</p></div>
+            <div class="menuvip" id="menuvip" onclick="menu()">
+                <div id="hamburger" class="menuvip-main-li-1"><img src="{% static 'shop/img/hamburger.png' %}"> </div>
+                <div class="menuvip-main-li-2"><p>МЕНЮ</p></div>
             </div>
             <div class="count">
                 <div class="count-main" onclick=OpenBasket()>
@@ -69,8 +71,8 @@
             <img src="{% static 'shop/img/logo.png' %}">
         </div>
         <div class="col-md-1 col-md-offset-1 social" id="social">
-            <a href="#"><img class="socweb" src="{% static 'shop/img/whatsapp.png' %}"></a>
             <a href="#"><img class="socweb vk" src="{% static 'shop/img/vk.png' %}"></a>
+            <a href="#"><img class="socweb" src="{% static 'shop/img/whatsapp.png' %}"></a>
             <a href="#"><img class="socweb" src="{% static 'shop/img/instagram.png' %}"></a>
 
         </div>
@@ -95,7 +97,7 @@
     <div class="main">
         <div class="row infmain">
             <div class="col-md-2"></div>
-            <div class="col-md-8 textmain"><p>Цветы приносят ощущение романтики и весенней свежести<br/>Дарите девушкам цветы<br/>Им это нравится!</p></div>
+            <div class="col-md-8 textmain"><p>Цветы приносят ощущение романтики и весенней свежести<br/>Дарите девушкам цветы, им это нравится!</p></div>
             <div class="col-md-2"></div>
         </div>
         <div class="row categor" id="anchor_catalog">
@@ -115,8 +117,8 @@
                 <div class="sortir-text"><p>Сортировка:</p></div>
                 <div class="sortir-menu">
                     <select id="sort" name="sort" onChange="SelectFilters.call(this)">
-                        <option value="price">По возрастанию цены</option>
-                        <option value="-price">По убыванию цены</option>
+                        <option value="price">Цена (возрастание)</option>
+                        <option value="-price">Цена (убывание)</option>
                     </select>
                 </div>
             </div>
@@ -149,9 +151,7 @@
             </div>
         </div>
         <div class="row lego">
-            <div class="col-md-5 col-sm-3"></div>
-            <a class="legotext" onclick="OpenConstructor()"> <div class="col-md-2 legotextmain col-sm-6"><p>Перейти в конструктор</p></div></a>
-            <div class="col-md-5 col-sm-3"></div>
+            <a class="legotext" onclick="OpenConstructor()"><div class="legotextmain"><p>Перейти в конструктор</p></div></a>
         </div>
         <div class="row aftercatalog"></div>
         <div class="row revers_call" id="anchor_contacts">
@@ -165,7 +165,10 @@
                 <form id="coll-back-form" method="get">
                     <input class="revers_commun_tel" id="call_back_phone" required type="text" placeholder="Телефон (обязательно)">
                     <input class="revers_commun_name" id="call_back_name" type="text" placeholder="Имя">
-                    <button class="revers_commun_sub" type="submit"><p>Заказать звонок</p></button>
+                    <button class="revers_commun_sub" type="submit">
+                        <p style="font-family: Arial !important; color: white; text-decoration: none!important; float: right;">&ensp;&rArr;</p>
+                        <p>Заказать звонок</p>
+                    </button>
                 </form>
             </div>
             <div class="col-md-1"></div>
@@ -177,12 +180,12 @@
                 <div><p>Контакты
                     <br/>+7 (910) 234-23-24
                     <br/>afsdfasdfa@mail.com
-                    <br/>aderesxcvxv</p>
+                    <br/>Ул. Бульвар победы 36, 2 этаж</p>
                 </div>
                 <div class="soc_adress">
-                    <a href="#"><img class="socweb socweb-footer" src="{% static 'shop/img/whatsapp.png' %}"></a>
-                    <a href="#"><img class="socweb vk socweb-footer" src="{% static 'shop/img/vk.png' %}"></a>
-                    <a href="#"><img class="socweb socweb-footer" src="{% static 'shop/img/instagram.png' %}"></a>
+                    <a href="#"><img class="socweb vk socweb-footer" src="{% static 'shop/img/vk_white.png' %}"></a>
+                    <a href="#"><img class="socweb socweb-footer" src="{% static 'shop/img/whatsapp_white.png' %}"></a>
+                    <a href="#"><img class="socweb socweb-footer" src="{% static 'shop/img/inst_white.png' %}"></a>
                 </div>
             </div>
             <div class="col-md-8"></div>
@@ -192,7 +195,13 @@
         </div>
     </div>
     <div class="podval row"></div>
-<div id="overlay"></div>
+    {% if success_popup == True %}
+        <a href="{% url "shop:index" %}" id="overlay" style="display: block;"></a>
+    {% elif fail_popup == True %}
+        <a href="{% url "shop:index" %}" id="overlay" style="display: block;"></a>
+    {% else %}
+        <div id="overlay"></div>
+    {% endif %}
 {% include 'shop/infoflover.html' %}
 {% include 'shop/basket.html' %}
 {% include 'shop/search.html' %}
@@ -202,6 +211,12 @@
 {% include 'shop/one_click_form.html' %}
 {% include 'shop/close_consturctor.html' %}
 {% include 'shop/optom.html' %}
+{% if success_popup == True %}
+    {% include 'shop/success_popup.html' %}
+{% endif %}
+{% if fail_popup == True %}
+    {% include 'shop/fail.html' %}
+{% endif %}
     <script src="{% static 'shop/js/call.js' %}"></script>
 <script type="text/javascript">
     jQuery(function($){

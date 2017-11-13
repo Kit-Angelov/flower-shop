@@ -65,20 +65,23 @@
         display: inline-block;
     }
     .flover_block h4{
-        font-size: 500%;
+        font-size: 40pt;
+        padding-left: 0px;
     }
     .flover_block p{
-        font-size: 300%;
+        font-size: 30pt;
+        padding-left: 0;
     }
     .count_flover{
         height: auto;
     }
     .count_flover p{
-        font-size: 300%;
+        font-size: 30pt;
     }
     .counter_basket{
         height: auto;
         width: 100%;
+        border-radius: 70px;
     }
     .counter_basket button{
         width: 20%;
@@ -93,7 +96,8 @@
     }
     .sum_inf p{
         width: 50%;
-        font-size: 40pt;
+        font-size: 30pt!important;
+        text-align: left;
     }
     .sum_inf a{
         width: auto;
@@ -104,8 +108,8 @@
         width: 50%;
     }
     .sum_inf img{
-        width: 40px;
-        height: 40px;
+        width: 70px;
+        height: 70px;
     }
     .delivery_main{
         height: auto;
@@ -118,7 +122,7 @@
         height: 30px;
     }
     .delivery p{
-        font-size: 29pt;
+        font-size: 30pt;
     }
     .delivery_sum{
         height: auto;
@@ -133,11 +137,12 @@
     }
     .accept_finish{
         height: 100px;
-        width: 300px;
+        width: 400px;
         border-radius: 50px;
     }
     .accept_finish p{
         font-size: 25pt;
+        padding-top: 15px;
     }
 /* начало мобильной версии для телефона*/
     .info_flover{
@@ -182,10 +187,13 @@
         min-height: 56px;
     }
     .sale img{
-        height: 50px;
-        width: 50px;
+        height: 70px;
+        width: 70px!important;
     }
     .sale p{
+        font-size: 30pt;
+    }
+    .sale strike{
         font-size: 30pt;
     }
     .window_info{
@@ -195,11 +203,15 @@
     .order_counter {
         width: 100%;
         height: 460px;
+        position: static;
     }
     .counter_main{
         width: 100%;
         height: 230px;
         float: left;
+    }
+    .counter_main p {
+        font-size: 30pt;
     }
     .list_order{
         width: 100%;
@@ -216,13 +228,14 @@
         height: auto;
     }
     .add_order{
-        width: 300px;
+        width: 400px;
         height: 100px;
         border-radius: 50px;
         font-size: 25pt;
     }
     .add_order p{
-        padding-top: 0!important;
+        padding-top: 20px!important;
+        font-size: 25pt;
     }
     .counter{
         height:160px;
@@ -244,6 +257,7 @@
         font-size: 40pt;
         width: 100%;
         height: 160px;
+        border-radius: 80px;
     }
     .one_click_2{
         font-size: 30pt;
@@ -251,6 +265,9 @@
         margin-left: 0!important;
         margin-top: 20px!important;
 
+    }
+    .one_click_2 p{
+        font-size: 30pt;
     }
     #package_list {
          border-radius: 75px;
@@ -266,6 +283,14 @@
     .catalog_content{
         height: auto;
     }
+    .catalog_sale_price{
+        height: auto;
+    }
+    .catalog_sale_price strike{
+        font-size: 28pt;
+        padding-top: 10px;
+        margin-bottom: 10px;
+    }
     .navigate{
         height: auto;
     }
@@ -276,12 +301,17 @@
     .gamburger{
         height: auto;
     }
+    .count{
+        margin-right: 20px;
+    }
     .menuvip {
         width: 50%;
     }
     .menuvip-main-li-1{
-        border-radius: 35px 0px 0px 35px;
+        border-radius: 35px;
         height: 70px;
+        width: 80px;
+        margin-left: 20px;
     }
     .menuvip-main-li-1 img{
         max-height: 40px;
@@ -291,6 +321,7 @@
     .menuvip-main-li-2{
         height: 70px;
         border-radius: 0px 35px 35px 0px;
+        display: none;
     }
     .menuvip-main-li-2 p {
         font-size: 30pt;
@@ -331,7 +362,7 @@
     }
     .searchinput input{
         height: 60px;
-        padding-left: 20px;
+        padding-left: 30px;
     }
     .searchinput button{
         height: auto;
@@ -359,8 +390,10 @@
     .number_mobile{
         display: block;
     }
+
     .number_mobile p{
         margin-top: 20px;
+        font-size: 28pt;
     }
     .textmain p{
         font-size: 18pt;
@@ -420,6 +453,78 @@
     .tryvers_block{
         height: auto;
     }
+    .tryvers_block:hover{
+    width: 100%;
+    height: auto;
+    text-align: center;
+    overflow: hidden;
+}
+
+.tryvers_block:hover .name_flower{
+    color:#333;
+}
+.tryvers_block:hover .flovers_foto{
+    display: inline-block;
+    height: 250px;
+    margin-left: -5%;
+}
+.tryvers_block:hover .basket_add{
+     height: 35px;
+    max-width: 35px;
+    float: right;
+    display: none;
+}
+.tryvers_block:hover .basket_add img{
+    display: block;
+    height: 35px;
+    max-width: 35px;
+    }
+.tryvers_block:hover .price{
+     margin-bottom: 0;
+    color:#b85778;
+    padding-top: 10px;
+}
+.tryvers_block:hover .name_flower{
+    margin-bottom: 0;
+    padding-top: 15px;
+
+}
+.tryvers_block:hover .info_and_basket{;
+     width: 70%;
+    margin: auto;
+    height: 35px;
+    background-color: transparent;
+    padding-top: 15px;
+}
+.tryvers_block:hover .one_click{
+    float: left;
+    height: 35px;
+    border-radius: 17px;
+    border:1px solid #b85778;
+    width: 70%;
+    text-decoration: none;
+    color: #b85778;
+    display:none;
+}
+
+.tryvers_block:hover .one_click:hover{
+    padding-top:1px;
+    font: 16px 'cursive';
+    color: #b85778;
+}
+
+.tryvers_block:hover .one_click p{
+    width: 100%;
+    height: 100px;
+    background-color: white;
+}
+.tryvers_block:hover .flovers_discript{
+    height: auto!important;
+    margin-top: 0!important;
+}
+.tryvers_block:hover .flovers_discript p {
+    font-size: 28pt;
+}
     .flovers_discript{
         height: auto;
     }
@@ -430,6 +535,7 @@
         background: none;
         height: auto;
         font-size: 28pt;
+        display: none;
     }
     .top{
         height: auto;
@@ -445,6 +551,7 @@
     }
     .lego {
         height: auto;
+        display: none;
     }
     .legotext{
         height: 70px;
@@ -475,18 +582,31 @@
         height: auto;
         font-size: 40pt;
     }
+    .revers_commun h4{
+        font-size: 35pt!important;
+    }
+    .revers_commun p{
+        font-size: 30pt!important;
+        height: auto;
+    }
     .end{
         height: auto;
         padding: 0px 10px!important;
     }
-    .adress{
+    .adress p{
         font-size: 28pt;
     }
     .socweb-footer {
-        height: 70px;
-        width: 50px;
+        height: 70px!important;
+        width: 70px!important;
         margin-left: 30px;
         margin-top: 30px;
+        margin-bottom: 20px;
+    }
+    .socweb-footer.vk{
+        width: 75px!important;
+        margin-left: 30px;
+        margin-top: 30px!important;
         margin-bottom: 20px;
     }
     .minilogo img{
@@ -500,8 +620,8 @@
         width: 50%;
         left: -50%;
     }
-    .menu_revers_main{
-        font-size: 35pt;
+    .menu_revers_main a{
+        font-size: 28pt;
     }
     /*начало адаптивного поиска*/
     .search_global{
@@ -522,6 +642,12 @@
         width: 100%;
         height: auto;
     }
+    .top_search img{
+        width: 50px;
+        height: 50px;
+        max-width: none;
+        max-height: none;
+    }
     .text_search{
         width:80%;
         display: inline-block;
@@ -539,6 +665,7 @@
         height: 100px;
         border-radius: 35px;
         width: 100%;
+        margin-top: 50px;
     }
     .form_search input{
         height: 90px;
@@ -560,8 +687,9 @@
         display: inline-block;
     }
     .top_search img{
-        max-height: 50px;
-        max-width: 50px;
+        height: 50px;
+        width: 50px;
+        margin-top: 10px;
     }
     .divide{
         display: inline-block;
@@ -633,19 +761,21 @@
     }
     .buy_one{
         display: inline-block;
-        width: 500px;
-        height: 150px;
+        width: 450px;
+        height: 100px;
         font-size: 40pt;
-        float:none;
+        float:left;
         border-radius: 75px;
     }
     .buy_one p{
-        padding-top: 30px;
+        padding-top: 10px;
+        font-size: 40pt;
     }
     .bask{
         display: inline-block;
-        width: 100%;
+        float: left;
         height: 150px;
+        margin-left: 70px;
     }
     .bask img{
         height: 100px;
@@ -667,20 +797,27 @@
         font-size: 60pt;
         padding-left: 20%;
     }
+    .sale_search {
+        margin-left: 0!important;
+    }
     .sale_search img{
-        height: 50px!important;
-        width: 50px!important;
+        height: 70px!important;
+        width: 70px!important;
     }
     .sale_search strike{
         font-size: 30pt;
     }
+    .sale_basket{
+        margin-left: 0;
+    }
     .sale_basket strike{
         font-size: 30pt;
         margin-top: 10px!important;
+        padding-top: 0!important;
     }
     .sale_basket img{
-        height: 50px!important;
-        width: 50px!important;
+        height: 70px!important;
+        width: 70px!important;
     }
     .main_call_back_form_one_click{
         font-size: 30pt;
@@ -696,8 +833,18 @@
         float: none;
         display: inline-block;
     }
-    .be_back{
-        display: none;
+
+    .be_back p {
+        font-size: 30pt;
+
+    }
+    .call_back input{
+        font-size: 30pt!important;
+        height: auto!important;
+    }
+    .call_back textarea{
+        height: auto!important;
+        font-size: 30pt!important;
     }
     .call_back_form_one_click input{
         height: 100px;
@@ -722,6 +869,109 @@
     .end_one_click p{
         font-size: 30pt;
         padding-top: 7px;
+    }
+    #final_sum {
+        font-size: 30pt;
+    }
+    .optom p {
+        font-size: 20pt;
+    }
+    #close_optom img{
+        width: 30px!important;
+        height: 30px!important;
+    }
+    .main_optom{
+        z-index: 99999;
+    }
+    .name-one-click h3 {
+        font-size: 40pt;
+    }
+    .sale-one-click p{
+        font-size: 30pt;
+    }
+    .sale-one-click{
+        height: auto;
+    }
+    .window_info-one-click p {
+        font-size: 30pt!important;
+    }
+    .main_call_back{
+        height: auto!important;
+        width: 100%!important;
+        top:25%!important;
+        margin-top: 0!important;
+        margin-left: 0!important;
+        left:0!important;
+    }
+    .call_back_top{
+        height: auto;
+    }
+    .call_back_top p {
+        font-size: 40pt;
+        height: 70px;
+    }
+    .call_back button{
+        height: 100px;
+        width: 300px;
+        border-radius: 50px;
+        font-size: 30pt!important;
+    }
+    .form_one_click{
+        width: 100%!important;
+        left:0!important;
+        top:0!important;
+        margin-top: 0!important;
+        margin-left: 0!important;
+        height: auto!important;
+        overflow: auto!important;
+        max-height: 100%!important;
+    }
+    .window-one-click{
+        width: 100%;
+    }
+    .delivery-one-click input{
+        height: 30px;
+        width: 30px;
+    }
+    .delivery-one-click p{
+        font-size: 30pt;
+    }
+    .delivery_sum-one-click p{
+        font-size: 30pt!important;
+    }
+    .call_back_top-one-click p{
+        font-size: 40pt;
+        height: auto;
+    }
+    .call_back_top-one-click {
+        height: auto;
+    }
+    .list_order p{
+        font-size: 30pt;
+    }
+    #make-order-form-one-click input{
+        font-size: 30pt!important;
+        height: 100px!important;
+        border-radius: 50px;
+        margin-top: 30px;
+    }
+    #make-order-form-one-click textarea {
+        font-size: 30pt!important;
+        height: 200px!important;
+        border-radius: 50px;
+        margin-top: 30px;
+    }
+    #make-order-form-one-click button {
+        height: 100px;
+        border-radius: 50px;
+        width: 300px;
+        margin-top: 30px;
+    }
+    .one_click_sub p{
+        font-size: 30pt;
+    }
+    .to_basket {
+        font-size: 30pt!important;
     }
 
 

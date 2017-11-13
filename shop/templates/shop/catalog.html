@@ -8,7 +8,6 @@
                     <p class="name_flower">{{ product.name }}</p>
                     {% if product.sale_price %}
                         <div class="catalog_sale_price">
-                            <strike class="price_in_catalog">{{ product.price }}</strike>
                             <p class="sale_price_in_catalog">&nbsp{{ product.sale_price }} р/шт</p>
                             <img src="{% static 'shop/img/sale.png' %}">
                         </div>

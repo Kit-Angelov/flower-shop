@@ -47,18 +47,19 @@ p, a, h1, h2, h3, h4, span, option, select, button, input{
     height: 64px;
     padding: 0 !important;
     padding-left: 20px !important;
-    padding-top: 18px!important;
+    padding-top: 20px!important;
 }
 .info p{
     padding-left: 15px;
-    font-size: 14pt;
-    font-weight: 500;
-    color: gray;
+    font-size: 12pt;
+    font-weight: 400;
+    color: #333;
 }
 .logo{
     background-color:transparent;
     height: 100px;
-    margin-top: -20px;
+    margin-top: -35px;
+    padding: 0!important;
 }
 .logo img{
     display: block;
@@ -103,7 +104,8 @@ form {
   float: left;
     margin-top:1px;
     border-radius:20px 0px 0px 20px;
-    padding-left: 15px;
+    padding-left: 20px;
+    padding-top: 2px!important;
 }
 .searchinput button{
     height: 40px;
@@ -118,8 +120,9 @@ outline: none;
 }
 .searchinput img{
     max-width: 60%;
-    max-height: 20px;
+    max-height: 15px;
     margin-top: -4px;
+    margin-right: 3px;
 }
 .searchinput{
     height: 40px;
@@ -154,6 +157,9 @@ ul:after {
     border-radius: 20px;
     margin-top: 12px;
 }
+.menuvip:hover{
+    cursor: pointer;
+}
 .menuvip-main-li{
     width: 100%;
     height: 40px;
@@ -170,10 +176,9 @@ ul:after {
     vertical-align: middle;
 }
 .menuvip-main-li-1 img{
-    max-height: 14px;
-    max-width: 14px;
-    margin-top: 12px;
-    filter:invert(100%);
+    max-height: 11px;
+    margin-top: 13px;
+    margin-left: 3px;
     }
 .menuvip-main-li-2{
     width: 66%;
@@ -185,7 +190,8 @@ ul:after {
     border: 1px solid #b85778
 }
 .menuvip-main-li-2 p{
-    font-size: 12pt;
+    padding-top: 3px;
+    font-size: 9pt!important;
     margin-top: 8px;
     color: #b85778;
 }
@@ -215,12 +221,12 @@ ul:after {
     width: 25%!important;
     display: block;
     float:left;
-    padding-right:5px;
-    margin-top: 11px;
+    padding-right:10px;
+    margin-top: 14px;
 }
 .vk{
-    width: 33%!important;
-    margin-top: 7px;
+    width: 30%!important;
+    margin-top: 12px;
 }
 .basket-menu{
     display: block;
@@ -264,14 +270,13 @@ ul:after {
 .textmain{
     background-color: transparent;
     height: 100px;
-    margin-top: 200px;
+    margin-top: 220px;
     text-align: center;
     }
 .textmain p{
-    color: #b85778;
-    font-size: 14pt;
+    color: #9d9d9d;
+    font-size: 11pt;
     font-family: 'Roboto', sans-serif !important;
-    font-style: italic;
 }
 .imagegirl{
     width: 100%;
@@ -325,7 +330,9 @@ ul:after {
     height: 26px;
     background-color: white;
     font-size: 12pt;
-    padding-left: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 1px;
     color: #333;
 }
 .categor-text{
@@ -336,6 +343,7 @@ ul:after {
 .categor-text p{
     margin-bottom: 0;
     margin-top: 2px;
+    color: #333;
 }
 .sortir{
     padding: 0!important;
@@ -356,7 +364,9 @@ ul:after {
     height: 26px;
     background-color: white;
     font-size: 12pt;
-    padding-left: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 1px;
 }
 .sortir-text{
     display: block;
@@ -366,6 +376,7 @@ ul:after {
 .sortir-text p{
     margin-bottom: 0;
     margin-top:2px;
+    color: #333;
 }
 .sortir img{
     display:block;
@@ -414,6 +425,8 @@ ul:after {
 
 .name_flower{
     color:#333;
+    font-size: 14pt!important;
+    font-weight: 500!important;
 }
 .flovers_foto{
     display: inline-block;
@@ -435,17 +448,17 @@ ul:after {
     }
 .price{
     margin-bottom: 0;
-    font: 16pt 'monospace';
+    font: 14pt!important;
     color:#b85778;
-    padding-top: 10px;
+    padding-top: 5px;
 }
 .name_flower{
     margin-bottom: 0;
-    padding-top: 15px;
+    padding-top: 25px;
     font: 16pt 'monospace';
 }
 .info_and_basket{
-    width: 70%;
+    width: 70%!important;
     margin: auto;
     height: 35px;
     background-color: transparent;
@@ -456,15 +469,15 @@ ul:after {
     height: 35px;
     border-radius: 17px;
     border:1px solid #b85778;
-    width: 70%;
+    width: 77%!important;
     text-decoration: none;
     color: #b85778;
     display:none;
 }
 
 .one_click p{
-    padding-top:1px;
-    font: 16px 'cursive';
+    padding-top:3px;
+    font: 14px 'cursive';
     color: #b85778;
 }
 .flovers_discript{
@@ -499,14 +512,21 @@ ul:after {
     }
 .tryvers_block:hover .price{
     margin-bottom: 0;
-    font: 16pt 'monospace';
+    font: 14pt;
+    color:#b85778;
+    padding-top: 10px;
+}
+
+.tryvers_block:hover .catalog_sale_price p{
+    margin-bottom: 0;
+    font: 14pt;
     color:#b85778;
     padding-top: 10px;
 }
 .tryvers_block:hover .name_flower{
     margin-bottom: 0;
     padding-top: 15px;
-    font: 16pt 'monospace';
+    font: 14pt;
 }
 .tryvers_block:hover .info_and_basket{;
     margin: auto;
@@ -571,6 +591,9 @@ ul:after {
     text-align: right;
 }
 .legotextmain{
+    width: 230px;
+    margin: auto;
+    margin-top: 10px;
     text-align: center;
     border: 1px solid #b85778;
     border-radius: 20px!important;
@@ -605,13 +628,14 @@ ul:after {
 }
 .revers_info{
     text-align: left;
-    padding-top: 40px;
+    padding-top: 45px;
     color:white;
 }
 .revers_info p{
-    font-size: 12pt;
+    font-size: 11pt;
     color: white;
-    padding-top: 5px;
+    padding-top: 2px;
+    line-height: 1.2;
 }
 .revers_info h4{
     font-size: 16pt;
@@ -622,12 +646,21 @@ ul:after {
     width: 100%;
 }
 .revers_commun_name{
-    margin-top: 3px;
+    margin-top: 5px;
 }
 .revers_commun_sub{
-    margin-top: 3px;
+    float: right;
+    width: 200px;
+    margin-top: 10px;
+}
+.revers_commun_sub p{
+    display: block;
+    float: right;
+
 }
 .revers_commun input{
+    font-size: 10pt;
+    font-family: "Roboto"!important;
     width: 100%;
     border: none;
     background: transparent;
@@ -670,7 +703,7 @@ ul:after {
 .adress{
     background: transparent;
     height: auto;
-    margin-top: 30px;
+    margin-top: 60px;
     padding-left: 0!important;
     padding-right: 0!important;
     color:white;
@@ -678,7 +711,7 @@ ul:after {
 .adress p{
     margin-bottom: 0;
     color: white;
-    line-height: 1.7;
+    line-height: 2;
 }
 .soc_adress{
     width: 100%;
@@ -686,7 +719,7 @@ ul:after {
 }
 .minilogo{
     text-align: right;
-    margin-top: 60px;
+    margin-top: 95px;
     padding-left: 0!important;
     padding-right: 0!important;
 }
@@ -709,8 +742,8 @@ ul:after {
 }
 .socweb-footer.vk{
     margin: 0;
-    margin-top: -3px!important;
-    width: 33px!important;
+    margin-top: 2px;
+    width: 30px!important;
     height: auto!important;
 }
 /*начало всплывающего окна корзины*/
@@ -944,22 +977,21 @@ ul:after {
     opacity: .5;
 }
 .close {
-    height: 15px;
-    margin-top:0;
-    float: right;
-    opacity: .2;
+    height: 10px;
+    width: 10px;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    opacity: 1!important;
 }
 
 .close img{
-    width: 15px;
-    height: 15px;
-    float:left;
-    display: block;
+    width: 10px;
+    height: 10px;
 }
 .close:hover{
     cursor: pointer;
-    filter: alpha(opacity=50);
-    opacity: .5;
+    opacity: 0.5!important;
 }
 
 .window{
@@ -1006,40 +1038,41 @@ ul:after {
     float: left;
     margin-bottom: 0;
     padding-left: 0!important;
-    font-size: 16pt;
+    font-size: 12pt;
     color: #b85778;
 }
 .sale strike{
     display: inline-block;
     float: left;
-    font-size: 14pt;
-    color: dimgray;
-    padding-top: 7px;
+    font-size: 10pt;
+    color: #9d9d9d;
+    padding-top: 2px;
 }
 .sale_price_in_info{
-    margin-top: 5px;
     display: inline-block;
     float: left;
+    font-size: 12pt!important;
 }
 .sale{
     display: inline-block;
     width: 300px;
     height: 35px;
     float:left;
+    margin-top: 10px;
 }
 .sale img{
     display: inline-block;
-    width: 35px!important;
+    width: 20px!important;
     height: auto;
     float: left;
-    margin-top: 2px!important;
+    margin-top: 0px!important;
     margin-left: 5px;
 }
 .window_info{
     display: inline-block;
     width: 320px;
     height: auto;
-    margin-top: 10px;
+    margin-top: 0px;
 }
 .window_info p{
     margin-bottom: 0;
@@ -1060,7 +1093,9 @@ ul:after {
     float:left;
 }
 .counter_main p{
+    color: #333;
     margin-bottom: 5px!important;
+    font-size: 11pt!important;
 }
 .order_counter{
     position: absolute;
@@ -1078,6 +1113,7 @@ ul:after {
     display: inline-block;
     font-size: 12pt;
     color: #333;
+    text-align: center;
 }
 .counter button{
     width: 20px;
@@ -1091,6 +1127,9 @@ ul:after {
 .inc{
     float:right;
 }
+.dec{
+    width: 18px!important;
+}
 .counter input::-webkit-inner-spin-button {  -webkit-appearance: none;    display: none;    width: 10px;    opacity: 1;  background-color: red;}
 .counter_basket input::-webkit-inner-spin-button {  -webkit-appearance: none;    display: none;    width: 10px;    opacity: 1;  background-color: red;}
 .counter_basket2 input::-webkit-inner-spin-button {  -webkit-appearance: none;    display: none;    width: 10px;    opacity: 1;  background-color: red;}
@@ -1101,12 +1140,16 @@ ul:after {
     margin-left: 10px;
 }
 .list_order p{
+    color: #333;
     margin-bottom: 5px!important;
+    font-size: 11pt!important;
 }
 .list_order select{
     display: block;
-    width: 150px;
+    width: 180px;
     padding: 0;
+    padding-left: 10px;
+    padding-right: 10px;
     height: 30px;
     border: 1px solid #333;
     outline: none;
@@ -1124,7 +1167,7 @@ ul:after {
     background-color: #b85778;
     outline: none;
     display: inline-block;
-    margin-top: 5px!important;
+    margin-top: 20px!important;
 }
 .add_order:hover{
     text-decoration: none;
@@ -1139,7 +1182,7 @@ ul:after {
 .one_click_2{
     width: 140px;
     height: 20px;
-    margin-top: 10px;
+    margin-top: 5px;
     color:#b85778;
     border:none;
     display: block;
@@ -1148,7 +1191,7 @@ ul:after {
     margin-left: 90px;
 }
 .one_click_2 p{
-    font-size: 14pt;
+    font-size: 11pt;
     color: #b85778;
     margin-bottom: 0;
     text-decoration: underline;
@@ -1579,11 +1622,11 @@ height: 20px;
 /*ыпадающее меню*/
 .menu_revers{
     top:0;
-    width: 25%;
+    width: 23%;
     height: 100%;
     position: fixed;
-    background-color: #301225;
-    padding: 20px 25px;
+    background-color: #292929;
+    padding: 20px 30px;
     text-align: right;
     left: -25%;
     -webkit-transition-duration: 0.3s; /* анимационное выдвижение для всех браузеров*/
@@ -1594,6 +1637,13 @@ height: 20px;
 }
 .menuvip:hover .menu_revers {
     left:0!important;
+}
+.menu-revers-cross{
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    width: 10px;
+    height: 10px;
 }
 .menu_revers_main {
     display: block;
@@ -1608,22 +1658,32 @@ height: 20px;
     float:right;
     display: block;
     margin-top: 122px;
-    border-radius: 3px;
 }
 .menu_revers_main a{
-    font-size: 16pt;
+    color: white;
+    font-size: 12pt;
     display: block;
     height: 20px;
-    margin-top: 50px;
+    margin-top: 35px;
     outline: none;
     text-decoration: none;
 }
 .menu_revers_main a:hover{
     text-decoration: none;
     outline: none;
+    color: #cccccc;
 }
 .menu_infor{
-    margin-top: 70px;
+    position: absolute;
+    top: 85%;
+    right: 20px;
+}
+.menu_infor .socweb.vk{
+    margin-top: 16px;
+    width: 29px!important;
+}
+.menu_infor .socweb{
+    width: 25px!important;
 }
 .menu_infor a{
     display: inline-block;
@@ -1674,13 +1734,14 @@ height: 20px;
     outline: none;
 }
 .done_cl{
+    margin-top: 20px;
     text-align: center;
 }
 .done_cl p{
     width: 180px;
     margin: auto;
     font-size: 14pt;
-    padding-top: 19px;
+    padding-top: 10px;
     color: #b85778;
     text-decoration: underline;
     text-underline-color: #b85778;
@@ -2161,7 +2222,7 @@ input:-webkit-autofill {
 }
 
 .catalog_sale_price img{
-    width: 35px;
+    width: 20px;
     display: inline-block;
     margin-top: -5px;
 }
@@ -2174,14 +2235,16 @@ input:-webkit-autofill {
 
 .catalog_sale_price p{
     color: #b85778;
-    font-size: 16pt;
-    padding-top: 10px;
+    font-size: 12pt;
+    padding-top: 5px;
     display: inline-block;
 }
 
 .attr_info{
-    color: #333;
-    font-size: 14pt;
+    margin-top: 15px;
+    color: #9d9d9d;
+    font-size: 10pt;
+    margin-bottom: 0!important;
 }
 
 .caption{
@@ -2286,21 +2349,30 @@ input:-webkit-autofill {
     display: none;
 }
 
-.p_pay{
-    margin-top: 10px;
-    width: 100%;
+.pay:hover{
+    text-decoration: none;
+    color: white;
+}
+.pay:visited{
+    text-decoration: none;
+    color: white;
 }
 
 .pay{
     margin: auto;
+    margin-top: 20px;
     background-color: #b85778;
     color: white;
     padding: 0!important;
+    padding-top: 8px!important;
+    border-radius: 20px 20px 20px 20px;
     font-size: 12pt;
+    font-family: 'Roboto'!important;
     text-align: center;
     border: none!important;
     width: 100px!important;
     height: 40px!important;
+    display: inline-block;
 }
 
 .main_optom{
@@ -2340,4 +2412,8 @@ input:-webkit-autofill {
     text-align: left;
     color: #333;
     font-size: 14pt;
+}
+
+.menu-revers-cross:hover{
+    cursor: pointer;
 }

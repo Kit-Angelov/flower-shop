@@ -134,5 +134,11 @@ HAYSTACK_CONNECTIONS = {
 
 HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 
-ROBOKASSA_LOGIN = "purepure"
-ROBOKASSA_PASSWORD1 = "F6j62Qs2Wn"
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+#EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'kit.angelov@gmail.com'
+EMAIL_HOST_PASSWORD = 'm937ma1993'
+EMAIL_PORT = 465
+EMAIL_USE_SSL = True

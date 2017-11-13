@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Product, Category, Basket, BasketElem, Package, SalePromo, Attribute, OneClick, Constructor, Call
+from .models import Product, Category, Basket, BasketElem, Package, SalePromo, Attribute, Constructor, Call
 from django.db import models
 from django.forms import CheckboxSelectMultiple
 
@@ -34,6 +34,5 @@ admin.site.register(BasketElem, BasketElemAdmin)
 admin.site.register(Package)
 admin.site.register(SalePromo)
 admin.site.register(Attribute)
-admin.site.register(OneClick)
 admin.site.register(Constructor)
 admin.site.register(Call)

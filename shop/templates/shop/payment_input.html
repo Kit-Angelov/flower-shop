@@ -6,7 +6,7 @@
     <a class="close" id="close_confirm"><img src="{% static 'shop/img/krest.png' %}"></a>
     </div>
     {% if one_click %}
-        <a class="be_back" id="{{ id }}" onclick="back_to_one_click()"><p> Исправить данные</p></a>
+        <a class="be_back" id="{{ one_click_id }}" onclick="back_to_one_click()"><p> Исправить данные</p></a>
     {% else %}
         <a class="be_back" onclick="back_to_contact_pay()"><p> Исправить данные</p></a>
     {% endif %}
@@ -22,12 +22,11 @@
     {% if sum %}
     <p class="elem_payment" id="address_confirm">Сумма заказа: {{ sum }} Руб.</p>
     {% endif %}
-    <div class="payment">
-        <form action="{{ form.target }}" method="POST">
-            <p>{{ form.as_p }}</p>
-            <p class="p_pay"><input class="pay" type="submit" value="Оплатить"></p>
-        </form>
-    </div>
+    {% if one_click %}
+            <a class="pay" href="{% url 'shop:popoln_one_click' one_click_id %}">Оплатить</a>
+    {% else %}
+            <a class="pay" href="{% url 'shop:popoln' %}">Оплатить</a>
+    {% endif %}
 </div>
 <script src="{% static 'shop/js/back_to_contact_pay.js' %}"></script>
 <script src="{% static 'shop/js/back_to_one_click.js' %}"></script>
@@ -35,10 +34,10 @@
     $(document).ready(function() {
     $('#close_confirm, #overlay').click(function(){
         $('#confirm_order')
-            .animate({opacity: 0, top: '45%'}, 200,
+            .animate({opacity: 0, top: '45%'}, 100,
             function(){
                 $(this).css('display', 'none');
-                $('#overlay').fadeOut(400);
+                $('#overlay').fadeOut(100);
             }
         );
     });

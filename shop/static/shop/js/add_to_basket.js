@@ -6,18 +6,19 @@ function func(data){
          document.getElementById('add_to_basket').innerHTML = '<div class="done_cl">' +
              '<p class="to_basket" id="to_basket">Перейти в корзину</p>' +
              '</div>';
+         $('.one_click_2').css('display', 'none');
          $('#done').click( function(){
 		    $('#info-flover')
-			.animate({opacity: 0, top: '45%'}, 200,
+			.animate({opacity: 0, top: '45%'}, 100,
 				function(){
 					$(this).css('display', 'none');
-					$('#overlay').fadeOut(400);
+					$('#overlay').fadeOut(100);
 				}
 			);
          });
          $('#to_basket').click( /*OpenBasket(),*/  function(){
 		    $('#info-flover')
-			.animate({opacity: 0, top: '45%'}, 200,
+			.animate({opacity: 0, top: '45%'}, 100,
 				function(){
 					$(this).css('display', 'none');
 				}
@@ -36,7 +37,7 @@ function func(data){
                 });
                 $('#basket_full_main')
                     .css('display', 'block')
-                    .animate({opacity: 1, top: '50%'}, 200);
+                    .animate({opacity: 1, top: '50%'}, 100);
                 return false;
             }
         );

@@ -1,6 +1,6 @@
 function Open_one_click_from_search() {
     $('#search_global')
-            .animate({opacity: 0, top: '45%'}, 200,
+            .animate({opacity: 0, top: '45%'}, 100,
             function(){
                 $(this).css('display', 'none');
             }
@@ -23,7 +23,7 @@ function Open_one_click_from_search() {
     $('#overlay').fadeIn(400, function () {
         $('#form_one_click')
             .css('display', 'block')
-            .animate({opacity: 1, top: '50%'}, 200);
+            .animate({opacity: 1, top: '50%'}, 100);
     });
     return false;
 }
@@ -31,10 +31,10 @@ function Open_one_click_from_search() {
 $(document).ready(function() {
     $('#close_one_click, #overlay').click(function(){
         $('#form_one_click')
-            .animate({opacity: 0, top: '45%'}, 200,
+            .animate({opacity: 0, top: '45%'}, 100,
             function(){
                 $(this).css('display', 'none');
-                $('#overlay').fadeOut(400);
+                $('#overlay').fadeOut(100);
             }
         );
     });

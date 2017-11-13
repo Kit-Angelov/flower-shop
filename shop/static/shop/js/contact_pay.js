@@ -17,14 +17,14 @@ $('#make-order-form').submit(function() {
             success: function(data){
                 $('#confirm_order').html(data.pay_set);
                 $('#main_call_back')
-                    .animate({opacity: 0, top: '45%'}, 200,
+                    .animate({opacity: 0, top: '45%'}, 100,
                     function(){
                     $(this).css('display', 'none');
                     }
                     );
                 $('#confirm_order')
                     .css('display', 'block')
-                    .animate({opacity: 1, top: '50%'}, 200);
+                    .animate({opacity: 1, top: '50%'}, 100);
             },
             error: function (error) {
                 alert(error)
@@ -36,10 +36,10 @@ $('#make-order-form').submit(function() {
 $(document).ready(function() {
     $('#close_card, #overlay').click(function(){
         $('#main_call_back')
-            .animate({opacity: 0, top: '45%'}, 200,
+            .animate({opacity: 0, top: '45%'}, 100,
             function(){
                 $(this).css('display', 'none');
-                $('#overlay').fadeOut(400);
+                $('#overlay').fadeOut(100);
             }
         );
     });
