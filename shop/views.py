@@ -923,3 +923,4 @@ def fail(request):
             'fail_popup': True,
         }
         return render(request, 'shop/base.html', context=context)
+
