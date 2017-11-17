@@ -47,7 +47,7 @@ p, a, h1, h2, h3, h4, span, option, select, button, input{
     height: 64px;
     padding: 0 !important;
     padding-left: 20px !important;
-    padding-top: 20px!important;
+    padding-top: 8px!important;
 }
 .info p{
     padding-left: 15px;
@@ -570,7 +570,9 @@ ul:after {
     background-color: transparent;
 }
 .lego{
+    margin-top: 10px;
     height: 40px;
+    z-index: 9996;
 }
 .imagelego {
     height: 300px;
@@ -583,6 +585,9 @@ ul:after {
     margin-top: 10px;
 
 }
+.quant_info{
+    float: left;
+}
 .bot {
     height: 90px;
     width: 100%;
@@ -590,10 +595,12 @@ ul:after {
 .choise_pack , .choise_pack_info ,.order_info , .order{
     text-align: right;
 }
+.order_info{
+    float: right;
+}
 .legotextmain{
     width: 230px;
     margin: auto;
-    margin-top: 10px;
     text-align: center;
     border: 1px solid #b85778;
     border-radius: 20px!important;
@@ -602,7 +609,7 @@ ul:after {
     background: #b85778;
 }
 .legotextmain:hover{
-    cursor: pointer;
+    cursor: pointer!important;
 }
 .legotext{
     height: 40px;
@@ -803,6 +810,7 @@ ul:after {
 .my_basket{
     width: 100%;
     height: 30px;
+    margin-bottom: 10px;
 }
 .my_basket p{
     float:left;
@@ -816,19 +824,24 @@ ul:after {
     width: 15px;
     height: 15px;
 }
-.my_basket img{
-    width: 15px;
-    height: 15px;
 
-}
 .accept{
     width: 100%;
     text-align: center;
-    height: 30px;
+    height: auto;
+}
+.accept p{
+    font-size: 11pt;
+    color: #333;
+}
+.time_false{
+    font-size: 10pt;
+    color: #333;
+    padding-top: 10px;
 }
 .accept_finish {
     border: 1px solid #b85778;
-    width: 150px;
+    width: 170px;
     height: 40px;
     display: inline-block;
     border-radius: 20px;
@@ -959,16 +972,10 @@ ul:after {
     float:left;
 }
 .close_search{
-    height: 15px;
-    margin-top:0;
-    float: right;
-    opacity: .2;
+
 }
 .close_search img{
-    width: 15px;
-    height: 15px;
-    float:left;
-    display: block;
+    margin-top: -15px!important;
 }
 
 .close_search:hover{
@@ -1056,7 +1063,7 @@ ul:after {
 .sale{
     display: inline-block;
     width: 300px;
-    height: 35px;
+    height: 25px;
     float:left;
     margin-top: 10px;
 }
@@ -1072,7 +1079,7 @@ ul:after {
     display: inline-block;
     width: 320px;
     height: auto;
-    margin-top: 0px;
+    margin-top: 5px;
 }
 .window_info p{
     margin-bottom: 0;
@@ -1138,6 +1145,9 @@ ul:after {
     height: 60px;
     float:left;
     margin-left: 10px;
+}
+.counter_basket2 input{
+    text-align: center;
 }
 .list_order p{
     color: #333;
@@ -1218,9 +1228,6 @@ height: 100px;
 float:left;
 text-align: left;
 }
-.flover_block p:nth-child(2){
-margin-top: 5px;
-}
 .flover_block img{
 width: 100px;
 height: 80px;
@@ -1232,12 +1239,12 @@ margin-top: 10px;
 display: block;
 margin-bottom: 0;
 padding-left: 130px;
-margin-top: 5px;
+margin-top: 10px;
 }
 .flover_block h4{
 padding-left: 130px;
 margin-bottom: 0;
-margin-top:15px;
+margin-top:10px;
 }
 .counter_basket {
 width: 72px;
@@ -1325,8 +1332,9 @@ text-align: left;
 .count_flover p{
 display: block;
 margin-bottom: 0;
-margin-top: 15px;
-    font-size: 14pt;
+margin-top: 20px;
+    font-size: 11pt;
+    color: #333;
 }
 .sum_inf{
 width: 135px;
@@ -1334,14 +1342,14 @@ float:left;
 }
 .sum_inf p{
 margin-bottom: 0;
-    font-size: 16pt;
+    font-size: 12pt;
     color:#333;
+    margin-top: 8px;
 
 }
 .sum_inf p:first-child{
-margin-top:15px;
-    font-size: 14pt;
-    color: dimgray;
+margin-top:20px;
+    font-size: 11pt;
 
 }
 .sum_inf a{
@@ -1364,19 +1372,21 @@ height: 20px;
 }
 .delivery{
     width: 50%;
-    height: 100px;
+    height: 70px;
     float:left;
     text-align: left;
+}
+.delivery label{
+    margin-bottom: 0px!important;
 }
 
 .delivery p{
     font-family: "Roboto";
     color: #333;
-    font-size: 14pt;
+    font-size: 12pt;
     font-weight: 400;
 }
 .delivery_sum:last-child{
-    margin-bottom: 5px;
 
 }
 .delivery_sum p{
@@ -1385,11 +1395,12 @@ height: 20px;
     font-size: 12pt;
 }
 #final_sum {
-    font-size: 14pt;
+    font-size: 12pt;
+    margin-top: 10px;
 }
 .delivery_sum{
     width: 50%;
-    height: 100px;
+    height: 70px;
     float:right;
     text-align: right;
 
@@ -1480,7 +1491,7 @@ height: 20px;
     width:40%;
     border-radius: 20px;
     border: 1px solid dimgray;
-    float:left;
+    float:right;
 }
 .form_search img{
     max-width: 20px!important;
@@ -1575,14 +1586,14 @@ height: 20px;
     padding-left: 130px;
     margin-top: 10px;
     color: #333;
-    font-size: 14pt;
+    font-size: 12pt;
 }
 .search_block h4 {
     display: block;
     margin-bottom: 0;
     padding-left: 130px;
     color: #333;
-    font-size: 16pt;
+    font-size: 14pt;
 }
 .count_flover_2{
     width: 72px;
@@ -1812,7 +1823,7 @@ height: 20px;
     display: block;
     text-align: left;
     margin-bottom: 10px;
-
+    color: #333;
 }
 .packaging2 select {
     display: block;
@@ -1873,13 +1884,13 @@ height: 20px;
     display: block;
     margin-bottom: 0;
     padding-left: 130px;
-    margin-top: 5px;
+    margin-top: 10px;
     color: #333;
-    font-size: 14pt;
+    font-size: 12pt;
 }
 .search_block2 h4 {
     color: #333;
-    font-size: 16pt;
+    font-size: 14pt;
     display: block;
     margin-bottom: 0;
     padding-left: 130px;
@@ -1910,6 +1921,7 @@ input:-webkit-autofill {
 
 .sale_basket{
     margin-left: 30px;
+    display: block;
 }
 
 .sale_basket strike{
@@ -1925,7 +1937,7 @@ input:-webkit-autofill {
     position: fixed;
 	top: 45%;
 	left: 50%;
-	margin-top: -417px;
+	margin-top: -350px;
 	margin-left: -240px;
 	display: none;
 	opacity: 0;
@@ -2053,23 +2065,28 @@ input:-webkit-autofill {
 
 .sale-one-click{
     width: auto;
-    height: 50px;
+    height: 25px;
     float:right;
     display: inline-block;
     text-align: right;
 }
+
+.list_order_one_click{
+    margin-top: 10px;
+}
+
 .sale-one-click strike{
-    font-size: 14pt;
+    font-size: 10pt;
     padding-top: 7px;
 }
 .sale-one-click p{
-    font-size: 16pt;
+    font-size: 12pt;
     color: #333;
 }
 .sale-one-click img{
     margin-top: 5px;
     margin-left: 5px;
-    width: 30px;
+    width: 20px;
     display: block;
     float:left;
 }
@@ -2085,6 +2102,7 @@ input:-webkit-autofill {
 .price_in_info-one-click{
     display: block;
     float:left;
+    color: #333;
 }
 .sale_price_in_info-one-click{
     margin-top: 5px;
@@ -2157,8 +2175,9 @@ input:-webkit-autofill {
 .delivery-one-click p{
     font-family: "Roboto";
     color: #333;
-    font-size: 14pt;
+    font-size: 12pt;
     font-weight: 400;
+    margin-bottom: 5px!important;
 }
 .delivery_sum-one-click{
     text-align: right;
@@ -2167,13 +2186,13 @@ input:-webkit-autofill {
 .delivery_sum-one-click p{
     font-family: "Roboto";
     color: #333;
-    font-size: 14pt;
+    font-size: 12pt;
     font-weight: 400;
 }
 
 .final_sum_one_click{
-    margin-top: 12px;
-    font-size: 16pt!important;
+    margin-top: 10px;
+    font-size: 12pt!important;
 }
 .img-one-click{
     padding-left: 0!important;
@@ -2183,7 +2202,14 @@ input:-webkit-autofill {
     padding-right: 0!important;
 }
 .product_info-block p{
-    color: #333;
+}
+
+.product_info_attr{
+    color: gray;
+}
+
+.counter_main_one_click{
+    margin-top: 10px;
 }
 
 .consturctor-wrapp{
@@ -2267,12 +2293,13 @@ input:-webkit-autofill {
 }
 
 .counter_basket{
-    margin-top: 1px;
+    margin-top: 5px;
 }
 
 .counter_basket input{
     color: #333;
     font-size: 12pt;
+    text-align: center;
 }
 
 .delete_basket_elem:hover{
@@ -2280,17 +2307,24 @@ input:-webkit-autofill {
 }
 
 .basket_package{
+    height: 20px;
     color: #333;
     font-size: 12pt;
+    display: inline-block!important;
+    margin-left: 30px!important;
+    padding-left: 0!important;
+    margin-top: 3px!important;
 }
 
 .basket_price_without_sale{
     color: #333;
-    font-size: 16pt;
+    font-size: 12pt;
+    margin-top: 10px;!important;
 }
 
 .name_basket_product{
     font-size: 16pt;
+    font-weight: 500;
 }
 
 .sale_search{
@@ -2299,19 +2333,19 @@ input:-webkit-autofill {
     margin-left: 30px;
 }
 .sale_search strike{
-    font-size: 14pt;
-    color: dimgray;
-    padding-top: 10px;
+    font-size: 10pt;
+    color: #333;
+    padding-top: 1px!important;
 }
 .sale_search p{
-    font-size: 14pt;
+    font-size: 12pt;
     color: #b85778;
+    margin-top: 0!important;
 }
 
 .sale_search img{
-    width: 35px;
-    height: 35px;
-    margin-top: 5px!important;
+    width: 20px;
+    height: 20px;
 }
 .scroll-constructor{
     max-height: 400px!important;
@@ -2416,4 +2450,27 @@ input:-webkit-autofill {
 
 .menu-revers-cross:hover{
     cursor: pointer;
+}
+
+#close_basket img{
+    margin-top: -10px!important;
+}
+
+.sale_price_in_basket{
+    margin-top: 0!important;
+}
+
+.basket_constructor_sum{
+    width: 55px;
+    float: left;
+    margin-top: 39px;
+}
+.basket_constructor_sum p{
+    color: #333;
+}
+.basket_constructor{
+    width: 320px!important;
+    height: 100px;
+    float:left;
+    text-align: left;
 }

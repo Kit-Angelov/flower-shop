@@ -35,11 +35,12 @@ def send_telegram(type, **kwargs):
                     str(attr[3]))
 
         bot.send_message(chat_id,
-                         'Заказ\nИмя: {0}\nАдрес: {1}\nТелефон: {2}\nДата заказа: {3}\nСумма заказа: {4} Р.\n{5}'.format(
+                         'Заказ\nИмя: {0}\nАдрес: {1}\nТелефон: {2}\nДата заказа: {3}\nСумма заказа: {4} Р.\nДоставка: {5}\n{6}'.format(
                              kwargs['name'],
                              kwargs['address'],
                              kwargs['phone'],
                              str(kwargs['order_date']),
                              str(kwargs['order_sum']),
+                             kwargs['delivery'],
                              order)
                          )

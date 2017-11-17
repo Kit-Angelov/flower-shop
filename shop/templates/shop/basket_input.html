@@ -9,7 +9,7 @@
 <div class="basket_full">
             <div class="my_basket">
                 <p>Ваша корзина</p>
-                <div class="close close_basket" id="close_basket"><img src="{% static 'shop/img/krest.png' %}"></div>
+                <div class="close" id="close_basket"><img src="{% static 'shop/img/krest.png' %}"></div>
             </div>
             <div class="divide"></div>
             <div class="scroll" id="scroll">
@@ -22,7 +22,7 @@
                             <p style="visibility: hidden">Цена:</p>
                             <p class="basket_package">Упаковка: {{ basket_elem.package.name }}</p>
                         </div>
-                        <div class="count_flover col-md-2 col-xs-12" style="visibility: hidden;: none"><p>кол-во</p>
+                        <div class="count_flover col-md-2 col-xs-12" style="visibility: hidden;: none"><p>Кол-во</p>
                         </div>
                         <div class="sum_inf col-md-3 col-xs-12">
                             <p>Сумма</p>
@@ -48,7 +48,7 @@
                             <p class="basket_package">Упаковка: {{ basket_elem.package.name }}</p>
                             {% endif %}
                         </div>
-                        <div class="count_flover col-md-2 col-xs-12"><p>кол-во</p>
+                        <div class="count_flover col-md-2 col-xs-12"><p>Кол-во</p>
                             <div class="counter_basket">
                             <button type="button" class="but counterBut dec" id="{{basket_elem.id}}" value="dec" onclick="change_count_in_basket.call(this)">-</button>
                             <input type="number" class="field fieldCount" id="{{basket_elem.id}}" onchange="change_count_in_basket.call(this)" value="{{ basket_elem.count }}" data-min="1" data-max="101">
@@ -68,26 +68,31 @@
                 {% if basket_delivery == True %}
                     <div class="delivery  col-md-6 col-xs-12">
                         <input type="radio" id="delivery1" name="choise" onclick="add_delivery.call(this)" value="Самовывоз">
-                        <label for="delivery1" ><p>Самовывоз (ул. Бульвар победы 34, 2 этаж)</p></label><br/>
+                        <label for="delivery1" ><p>Самовывоз (ул. Бульвар Победы 30, ТЦ "Дон")</p></label><br/>
                         <input type="radio"  id="delivery2" name="choise" checked="true" onclick="add_delivery.call(this)" value="Доставка по адресу(250)">
                         <label for="delivery2"><p>Доставка по адресу (250 р.)</p></label>
                     </div>
                 {% else %}
                     <div class="delivery  col-md-6 col-xs-12">
                         <input type="radio" id="delivery1" name="choise" checked="true" onclick="add_delivery.call(this)" value="Самовывоз">
-                        <label for="delivery1" ><p>Самовывоз (ул. Бульвар победы 34, 2 этаж)</p></label><br/>
+                        <label for="delivery1" ><p>Самовывоз (ул. Бульвар Победы 30, ТЦ "Дон")</p></label><br/>
                         <input type="radio"  id="delivery2" name="choise" onclick="add_delivery.call(this)" value="Доставка по адресу(250)">
                         <label for="delivery2"><p>Доставка по адресу (250 р.)</p></label>
                     </div>
                 {% endif %}
                 <div class="delivery_sum  col-md-6 col-xs-12">
                     <p>Итого:</p>
-                    <p>{{ count_basket_elem }} товара на сумму</p>
                     <p id="final_sum">{{ final_sum }} Руб.</p>
                 </div>
             </div>
-            <div class=" accept">
+            <div class="accept">
+                {% if true_time == True %}
                 <a class="accept_finish" onclick="make_order()"><p>Оформить заказ</p></a>
+                {% else %}
+                <p>Вы можете оформить заказ только с 8:00 до 20:00<br>
+                    Но если время не ждет, то позввоните по номеру<br>+7 (999) 999-99-99<br>
+                    И мы постараемся вам помочь!</p>
+                {% endif %}
             </div>
         </div>
 {% else %}

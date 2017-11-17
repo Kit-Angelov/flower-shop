@@ -8,7 +8,7 @@ from hashlib import sha256
 from .forms import ProductsSearchForm
 from django.utils import timezone
 from .telebot import send_telegram
-from datetime import datetime
+from datetime import datetime, time
 from django.shortcuts import get_object_or_404, render
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
@@ -148,9 +148,13 @@ def basket(request):
         for k in constructor_list:
             elem_list.append(k)
         final_sum = final_sum_calc(basket)
+        true_time = False
+        if time(20) > datetime.now().time() > time(8):
+            true_time = True
         basket_set = loader.render_to_string(
             'shop/basket_input.html',
             {
+                'true_time': true_time,
                 'basket_list': elem_list,
                 'count_basket_elem': len(elem_list),
                 'final_sum': final_sum,
@@ -366,9 +370,14 @@ def select_product_one_click(request):
             packages = Package.objects.all()
         else:
             packages = ""
+
+        true_time = False
+        if time(20) > datetime.now().time() > time(8):
+            true_time = True
         product_html = loader.render_to_string(
             'shop/one_click_form_input.html',
             {
+                'true_time': true_time,
                 'product_info': product,
                 'packages': packages,
                 'count': '1',
@@ -842,7 +851,7 @@ def res(request):
 
             for constructor_elem in basket_constructors:
                 if constructor_elem.build is True:
-                    constructor_elem_elems = constructor_elem.basketelem_set
+                    constructor_elem_elems = constructor_elem.basketelem_set.all()
                     attr = [
                         str('Конструктор {0}'.format(constructor_elem.id)),
                         str(constructor_elem.sum),
@@ -851,7 +860,7 @@ def res(request):
                     attr_elems = list()
                     for i in constructor_elem_elems:
                         attr_elem = [
-                            str('Элемент конструктора {0}'.format(i.constructor_child.id)),
+                            str('Элемент конструктора {0}'.format(i.constructor.id)),
                             str(i.product.name),
                             str(i.count),
                         ]
@@ -866,19 +875,25 @@ def res(request):
                 'products': products,
                 'success_popup': True,
             }
+            if basket.delivery is True:
+                delivery_text = 'Да'
+            else:
+                delivery_text = 'Нет'
             send_email(type="order", from_to=['kit.angeov@gmail.com', 'dimkabelyaev@gmail.co,'],
                        name=basket.name,
                        address=basket.address,
                        phone=basket.phone,
-                       order_date=basket.date_upload.strftime("%Y.%m.%d %H:%M"),
+                       order_date=basket.date.strftime("%Y.%m.%d %H:%M"),
                        order_sum=basket.sum,
+                       delivery=delivery_text,
                        elem_list=elem_list)
             send_telegram(type='order',
                           name=basket.name,
                           address=basket.address,
                           phone=basket.phone,
-                          order_date=basket.date_upload.strftime("%Y.%m.%d %H:%M"),
+                          order_date=basket.date.strftime("%Y.%m.%d %H:%M"),
                           order_sum=basket.sum,
+                          delivery=delivery_text,
                           elem_list=elem_list)
             return render(request, 'shop/base.html', context=context)
 
@@ -924,3 +939,67 @@ def fail(request):
         }
         return render(request, 'shop/base.html', context=context)
 
+
+# def result_test(request):
+#     basket = check_basket(request)
+#     basket.complite = True
+#     basket.save()
+#     basket_elems = basket.basketelem_set.all()
+#     basket_constructors = basket.constructor_set.all()
+#     elem_list = list()
+#     for elem in basket_elems:
+#         if elem.constructor_child is False:
+#             attr = [str(elem.product.name),
+#                     str(elem.count),
+#                     str(elem.package.name),
+#                     str(elem.sum)]
+#             elem_list.append(attr)
+#
+#     for constructor_elem in basket_constructors:
+#         if constructor_elem.build is True:
+#             constructor_elem_elems = constructor_elem.basketelem_set.all()
+#             attr = [
+#                 str('Конструктор {0}'.format(constructor_elem.id)),
+#                 str(constructor_elem.sum),
+#                 str(constructor_elem.package.name)
+#             ]
+#             attr_elems = list()
+#             for i in constructor_elem_elems:
+#                 attr_elem = [
+#                     str('Элемент конструктора {0}'.format(i.constructor.id)),
+#                     str(i.product.name),
+#                     str(i.count),
+#                 ]
+#                 attr_elems.append(attr_elem)
+#             attr.append(attr_elems)
+#             elem_list.append(attr)
+#
+#     categories = Category.objects.filter(display=True)
+#     products = Product.objects.filter(display=True).order_by('price')
+#     context = {
+#         'categories': categories,
+#         'products': products,
+#         'success_popup': True,
+#     }
+#     delivery_text = str()
+#     if basket.delivery is True:
+#         delivery_text = 'Да'
+#     else:
+#         delivery_text = 'Нет'
+#     send_email(type="order", from_to=['kit.angeov@gmail.com', 'dimkabelyaev@gmail.co,'],
+#                name=basket.name,
+#                address=basket.address,
+#                phone=basket.phone,
+#                order_date=basket.date.strftime("%Y.%m.%d %H:%M"),
+#                order_sum=basket.sum,
+#                delivery=delivery_text,
+#                elem_list=elem_list)
+#     send_telegram(type='order',
+#                   name=basket.name,
+#                   address=basket.address,
+#                   phone=basket.phone,
+#                   order_date=basket.date.strftime("%Y.%m.%d %H:%M"),
+#                   order_sum=basket.sum,
+#                   delivery=delivery_text,
+#                   elem_list=elem_list)
+#     return render(request, 'shop/base.html', context=context)

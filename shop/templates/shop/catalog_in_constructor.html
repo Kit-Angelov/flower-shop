@@ -8,8 +8,8 @@
         {% if product.sale_price %}
             <div class="sale sale_search">
                 <strike class="price_in_search" style="padding-top: 5px!important;">{{ product.price }}</strike>
-                <p class="sale_price_in_lego" style="margin-top: 5px!important;">&nbsp{{ product.sale_price }} Руб/шт</p>
-                <img style="margin-top: 0px!important;" src="{% static 'shop/img/sale.png' %}">
+                <p class="sale_price_in_lego" style="margin-top: 3px!important;">&nbsp{{ product.sale_price }} Руб/шт</p>
+                <img style="margin-top: 3px!important;" src="{% static 'shop/img/sale.png' %}">
             </div>
         {% else %}
             <p>{{ product.price }} руб/шт</p>

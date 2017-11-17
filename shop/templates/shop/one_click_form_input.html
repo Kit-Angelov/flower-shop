@@ -6,7 +6,7 @@
  <div class="window-one-click">
         <div class="name-one-click"><h3>{{ product_info.name }}</h3>
         <div class="close_one_click close" id="close_one_click"><img src="{% static 'shop/img/krest.png' %}"></div>
-        <div class="divide" style="display: inline-block"></div>
+        <div class="divide" style="display: block; margin-bottom: 20px!important;"></div>
         <div class="content-one-click">
             <div class="row">
                 <div class="col-md-4 img-one-click">
@@ -14,8 +14,8 @@
                 </div>
                 <div class="col-md-8 product_info-block">
                     {% if product_info.attribute %}
-                        <p>Страна: {{ product_info.attribute.county }}</p>
-                        <p>Длина: {{ product_info.attribute.length }} см</p>
+                        <p class="product_info_attr">Страна: {{ product_info.attribute.county }}</p>
+                        <p class="product_info_attr">Длина: {{ product_info.attribute.length }} см</p>
                     {% endif %}
                     {% if product_info.sale_price %}
                         <div class="sale-one-click">
@@ -30,10 +30,8 @@
                     {% endif %}
                 </div>
             </div>
-            <div class="window_info-one-click"><p>{{ product_info.description }}</p>
-            </div>
             <div class="order_counter-one-click">
-                    <div class="counter_main">
+                    <div class="counter_main counter_main_one_click">
                             <p>Koл-во</p>
                             <div class="counter">
                                  <button type="button" class="but counterBut counter-one-click dec" id="{{product_info.id}}" value="dec" onclick="change_count_one_click.call(this)">-</button>
@@ -42,7 +40,7 @@
                             </div>
                     </div>
                     {% if packages %}
-                         <div class="list_order">
+                         <div class="list_order list_order_one_click">
                              <p>Упаковка</p>
                             <select id="pack-one-click" onchange="change_pack_one_click.call(this)">
                                 {% for pack_elem in packages%}
@@ -93,7 +91,13 @@
                 <input type="tel" id="contact_phone_one_click" required placeholder="Ваш Телефон *">
                 <input type="text" id="contact_name_one_click" placeholder="Ваше Имя">
                 <textarea class="contact_address_one_click" id="contact_address_one_click" placeholder="Адрес на который необходимо доставить цветы"></textarea>
+                {% if true_time == True %}
                 <button class="one_click_sub" type="submit"><p>Далее</p></button>
+                {% else %}
+                <p class="time_false">Вы можете оформить заказ только с 8:00 до 20:00<br>
+                    Но если время не ждет, то позввоните по номеру<br>+7 (999) 999-99-99<br>
+                    И мы постараемся вам помочь!</p>
+                {% endif %}
          </form>
     </div>
 <script src="{% static 'shop/js/one_click.js' %}"></script>

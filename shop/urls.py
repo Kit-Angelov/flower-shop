@@ -32,4 +32,5 @@ urlpatterns = [
     url(r'^result$', views.res, name='result'),
     url(r'^success$', views.success, name='success'),
     url(r'^fail$', views.fail, name='fail'),
+    # url(r'^res$', views.result_test, name='result_test'),
 ]

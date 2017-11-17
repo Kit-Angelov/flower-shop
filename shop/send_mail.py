@@ -32,12 +32,13 @@ def send_email(type, from_to, **kwargs):
                     str(attr[3]))
 
         send_mail('Заказ',
-                  'Имя: {0}\nАдрес: {1}\nТелефон: {2}\nДата заказа: {3}\nСумма заказа: {4} Р.\n{5}'.format(
+                  'Имя: {0}\nАдрес: {1}\nТелефон: {2}\nДата заказа: {3}\nСумма заказа: {4} Р.\nДоставка: {5}\n{6}'.format(
                       kwargs['name'],
                       kwargs['address'],
                       kwargs['phone'],
                       str(kwargs['order_date']),
                       str(kwargs['order_sum']),
+                      kwargs['delivery'],
                       order),
                   from_to[0],
                   [from_to[1]],
